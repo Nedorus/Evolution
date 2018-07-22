@@ -67,6 +67,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\Gene.vb" />
+    <Compile Include="Model\GeneInfo.vb" />
+    <Compile Include="Model\GeneInfoProvider.vb" />
+    <Compile Include="Model\GeneInfos.vb" />
+    <Compile Include="ViewModel\GenesListViewDataTemplateSelector.vb" />
+    <Compile Include="ViewModel\GenesViewModel.vb" />
+    <Compile Include="ViewModel\GeneViewModel.vb" />
+    <Compile Include="ViewModel\ViewModel.vb" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -76,6 +84,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Common\BindableBase.vb" />
+    <Compile Include="Common\GeneralFunctions.vb" />
+    <Compile Include="Common\GlobalVariables.vb" />
     <Compile Include="Common\LogMessageHNDLR.vb" />
     <Compile Include="Common\RandomGenerator.vb" />
     <Compile Include="Common\XMLFileHandlerDAO.vb" />
@@ -135,8 +145,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Model\" />
-    <Folder Include="ViewModel\" />
+    <Resource Include="Resources\GeneInfos.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

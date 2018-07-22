@@ -4,9 +4,87 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Evolution"
+        xmlns:app="clr-namespace:Evolution"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+    <Window.Resources>
+        <SolidColorBrush x:Key="DarkBackground" Color="#FF1D1D1D"/>
+        <SolidColorBrush x:Key="MediumBackground" Color="#FF5D5D5D"/>
+        <SolidColorBrush x:Key="LightBackground" Color="#FF747474"/>
+        <SolidColorBrush x:Key="HighLight" Color="#FF999999"/>
+        <SolidColorBrush x:Key="MediumBlue" Color="#FF5D5D74"/>
+        <SolidColorBrush x:Key="LightBlue" Color="#FF747499"/>
+        <SolidColorBrush x:Key="HighLightBlue" Color="#FF9999FF"/>
+        <app:GenesListViewDataTemplateSelector x:Key="genesListViewDataTemplateSelector" />
+
+        <DataTemplate x:Key="regularItem">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="24"/>
+                    <ColumnDefinition Width="48"/>
+                    <ColumnDefinition Width="52"/>
+                    <ColumnDefinition Width="24"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="{Binding Path=Index}"/>
+                <TextBlock Grid.Column="1" Text="{Binding Path=Value}"/>
+                <TextBlock Grid.Column="2" Text="{Binding Path=Code}"/>
+                <TextBlock Grid.Column="3" Text="{Binding Path=NumberOfArgs}"/>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="selectedItem">
+            <Grid Background="{StaticResource LightBlue}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="24"/>
+                    <ColumnDefinition Width="48"/>
+                    <ColumnDefinition Width="52"/>
+                    <ColumnDefinition Width="24"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="{Binding Path=Index}"/>
+                <TextBlock Grid.Column="1" Text="{Binding Path=Value}"/>
+                <!-- <TextBox Name="SelectedGeneCodeTextBox" TextChanged="SelectedGeneCodeTextBox_TextChanged" Background="White"  Grid.Column="2" Text="{Binding Path=Code}"/> -->
+                <ComboBox Name="SelectedGeneCodeComboBox" ItemsSource="{Binding FilteredCodeList}" Text="{Binding Path=Code}" Margin="0,0,0,0" IsEditable="True" SelectionChanged="SelectedGeneCodeComboBox_SelectionChanged" IsDropDownOpen="{Binding Path=SelectedGeneCodeComboBoxIsopen}" Grid.Column="2" />
+                <TextBlock Grid.Column="3" Text="{Binding Path=NumberOfArgs}"/>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="usedAsDataBySelectedItem">
+            <Grid Background="{StaticResource HighLightBlue}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="24"/>
+                    <ColumnDefinition Width="48"/>
+                    <ColumnDefinition Width="52"/>
+                    <ColumnDefinition Width="24"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="{Binding Path=Index}"/>
+                <TextBlock Grid.Column="1" Text="{Binding Path=Value}"/>
+                <TextBlock Grid.Column="2" Text="{Binding Path=Value}"/>
+                <TextBlock Grid.Column="3" Text="{Binding Path=NumberOfArgs}"/>
+            </Grid>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid Background="{StaticResource DarkBackground}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="40"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="176"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="0" BorderThickness="1,1,1,1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,0" BorderBrush="{StaticResource HighLight}">
+            <WrapPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="36" Height="36" Margin="1,1,1,1" Content="1"/>
+                <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="36" Height="36" Margin="1,1,1,1" Content="2"/>
+                <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="36" Height="36" Margin="1,1,1,1" Content="3"/>
+                <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="36" Height="36" Margin="1,1,1,1" Content="4"/>
+            </WrapPanel>
+        </Border>
+        <Border Grid.Column="1" BorderThickness="0,1,1,1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,0" BorderBrush="{StaticResource HighLight}">
+
+        </Border>
+        <Border Grid.Column="2" BorderThickness="0,1,1,1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,0" BorderBrush="{StaticResource HighLight}">
+            <ListView Name="GenesListView" ItemsSource="{Binding Path=Genes}" ItemTemplateSelector="{Binding Source={StaticResource genesListViewDataTemplateSelector}}" Width="176" Margin="0,0,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+
+            </ListView>
+        </Border>
+
+
     </Grid>
 </Window>
