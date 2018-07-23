@@ -107,8 +107,8 @@ Public Class GeneInfoProvider
         Try
             Dim appPath As String = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase).Remove(0, 6)
             appPath = appPath & Path.DirectorySeparatorChar & "Resources" & Path.DirectorySeparatorChar & "GeneInfos.xml"
-            Dim xmlGenesInfoWriter As New XMLFileHandlerDAO(Of GeneInfos)
-            _geneInfos = xmlGenesInfoWriter.LoadXML(appPath)
+            Dim xmlGenesInfoWriter As New XMLFileReader(Of GeneInfos)(appPath)
+            _geneInfos = xmlGenesInfoWriter.LoadXML()
         Catch ex As Exception
             Debug.WriteLine("An Error ocurre: " & ex.Message)
         End Try

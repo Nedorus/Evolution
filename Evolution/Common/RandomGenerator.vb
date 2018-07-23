@@ -1,7 +1,9 @@
 ﻿Imports System.IO
 Imports System.Security.Cryptography
 Imports System.Text
+Imports System.Diagnostics.CodeAnalysis
 
+<ExcludeFromCodeCoverage()>
 Public Class RandomGenerator
 
     Private Shared privInstance As RandomGenerator

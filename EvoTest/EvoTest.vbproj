@@ -96,6 +96,8 @@
     <Compile Include="Common\RandomStringAndNumberGeneratorTest.vb" />
     <Compile Include="Common\FileNameCleanerTest.vb" />
     <Compile Include="Common\MD5StringHasherTest.vb" />
+    <Compile Include="Common\BindableBaseTest.vb" />
+    <Compile Include="Common\XMLFileReaderTest.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -122,6 +124,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="EvoTest.runsettings" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>

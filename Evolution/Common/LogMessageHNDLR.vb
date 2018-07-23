@@ -1,6 +1,7 @@
 ﻿Imports System.Xml.Serialization
 Imports System.IO
 Imports System.Diagnostics
+Imports System.Diagnostics.CodeAnalysis
 
 Public Enum LogLevels
     VERBOSE = 10
@@ -11,6 +12,8 @@ Public Enum LogLevels
     SILENT = 100
 End Enum
 
+
+<ExcludeFromCodeCoverage()>
 Public Class LogMessageHNDLR
 
     Shared _instance As LogMessageHNDLR
