@@ -93,8 +93,9 @@
     <Import Include="Microsoft.VisualStudio.TestTools.UnitTesting" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\GeneralFunctionsTest.vb" />
+    <Compile Include="Common\RandomStringAndNumberGeneratorTest.vb" />
     <Compile Include="Common\FileNameCleanerTest.vb" />
+    <Compile Include="Common\MD5StringHasherTest.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>

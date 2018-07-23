@@ -122,6 +122,25 @@ Public Class FileNameCleanerTest
 
     End Sub
 
+    <TestMethod()>
+    Public Sub IsFileNameSafeTest()
+        'Arrange
+        Dim safeFileName As String = "safe_filename.exe"
+        Dim unsafeFileName As String = "C:\<unsafe\?filename.exe"
+
+        Dim expectedSafeFileName As Boolean = True
+        Dim expectedUnSafeFileName = False
+
+        'Akt
+        Dim actualSafeFileName As Boolean = FileNameCleaner.IsFileNameSafe(safeFileName)
+        Dim actualUnsafeFileName As Boolean = FileNameCleaner.IsFileNameSafe(unsafeFileName)
+
+        'Assert
+        Assert.AreEqual(expectedSafeFileName, actualSafeFileName)
+        Assert.AreEqual(expectedUnSafeFileName, actualUnsafeFileName)
+
+    End Sub
+
     '"<>|:*?\///
 
     'Dim expectedCleanedPath As String = ""

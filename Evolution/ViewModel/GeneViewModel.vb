@@ -4,10 +4,12 @@
     Private _index As Integer
     Private _geneInfo As GeneInfo
     Private _selectedGeneCodeComboBoxIsopen As Boolean
+    Private _randomStringAndUIDGenerator As RandomStringAndUIDGenerator
 
-    Public Sub New()
+    Public Sub New(ByVal randomStringAndUIDGenerator As RandomStringAndUIDGenerator)
         _index = 0
         _geneInfo = New GeneInfo()
+        _randomStringAndUIDGenerator = randomStringAndUIDGenerator
     End Sub
 
     Public Sub New(ByRef index As Integer, Optional ByRef geneInfo As GeneInfo = Nothing)
@@ -15,7 +17,7 @@
         If geneInfo IsNot Nothing Then
             _geneInfo = GeneInfoProvider.Instance.CloneGeneInfo(geneInfo)
         Else
-            _geneInfo = New GeneInfo(_index, GeneralFunctions.RandomString(4), GeneralFunctions.RandomNumber(1), GeneralFunctions.RandomString(15))
+            _geneInfo = New GeneInfo(_index, _randomStringAndUIDGenerator.RandomString(4), _randomStringAndUIDGenerator.RandomNumber(1), _randomStringAndUIDGenerator.RandomString(15))
         End If
     End Sub
 
