@@ -122,6 +122,7 @@
   <ItemGroup>
     <Folder Include="Common\" />
     <Folder Include="Model\" />
+    <Folder Include="TestREsources\" />
     <Folder Include="ViewModel\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

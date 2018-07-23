@@ -7,12 +7,10 @@ Public Class GeneInfoProvider
 
     Shared _instance As GeneInfoProvider = Nothing
     Dim _geneInfos As List(Of GeneInfo)
-    Dim _filterText As String
 
     Private Sub New()
         _geneInfos = New GeneInfos
         InitializeGenesInfoFromXML()
-        _filterText = ""
     End Sub
 
     ''' <summary>

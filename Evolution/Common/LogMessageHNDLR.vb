@@ -53,8 +53,9 @@ Public Class LogMessageHNDLR
     Public Shared ReadOnly Property Instance() As LogMessageHNDLR
         Get
             If _instance Is Nothing Then
-                _instance = New LogMessageHNDLR("\log\", "debuglog.txt")
-                _instance.LogLevel = LogLevels.DEBUG
+                _instance = New LogMessageHNDLR("\log\", "debuglog.txt") With {
+                    .LogLevel = LogLevels.DEBUG
+                }
             End If
             Return _instance
         End Get
