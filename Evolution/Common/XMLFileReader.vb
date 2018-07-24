@@ -8,12 +8,12 @@ Public Class XMLFileReader(Of T)
 
 #Region "Constructors"
 
-    Public Sub New(ByRef pathToXML)
-        _xmlFileStreamReader = My.Computer.FileSystem.OpenTextFileReader(pathToXML, System.Text.Encoding.UTF8)
-    End Sub
-
     Public Sub New(ByRef xmlFileStreamReader As System.IO.StreamReader)
         _xmlFileStreamReader = xmlFileStreamReader
+    End Sub
+
+    Public Sub New(ByRef pathToXML)
+        _xmlFileStreamReader = My.Computer.FileSystem.OpenTextFileReader(pathToXML, System.Text.Encoding.UTF8)
     End Sub
 
 #End Region
