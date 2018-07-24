@@ -107,6 +107,7 @@
     <Compile Include="Common\RandomStringAndNumberGeneratorTest.vb" />
     <Compile Include="Common\XMLFileReaderTest.vb" />
     <Compile Include="Common\XMLFileWriterTest.vb" />
+    <Compile Include="Model\GeneInfoProviderTest.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -152,7 +153,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Model\" />
     <Folder Include="TestREsources\" />
     <Folder Include="ViewModel\" />
   </ItemGroup>

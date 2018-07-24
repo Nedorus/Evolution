@@ -1,15 +1,23 @@
 ﻿Imports System.Xml.Serialization
 Imports System.IO
+Imports System.IO.Abstractions
+Imports System.Diagnostics.CodeAnalysis
 
 Public Class GeneInfoProvider
 
     Public Const DEFAULT_GENE_VALUE = 0
 
     Shared _instance As GeneInfoProvider = Nothing
+    Dim _appPath As String
     Dim _geneInfos As List(Of GeneInfo)
+    Dim _xmlGenesInfoReader As XMLFileReader(Of GeneInfos)
+
 
     Private Sub New()
         _geneInfos = New GeneInfos
+        _appPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase).Remove(0, 6)
+        _appPath = _appPath & Path.DirectorySeparatorChar & "Resources" & Path.DirectorySeparatorChar & "GeneInfos.xml"
+        _xmlGenesInfoReader = New XMLFileReader(Of GeneInfos)(_appPath)
         InitializeGenesInfoFromXML()
     End Sub
 
@@ -24,6 +32,16 @@ Public Class GeneInfoProvider
             End If
             Return _instance
         End Get
+    End Property
+
+    Public Property PathToGeneInfoXML As String
+        Get
+            Return _appPath
+        End Get
+        Set(value As String)
+            _appPath = value
+            _xmlGenesInfoReader = New XMLFileReader(Of GeneInfos)(_appPath)
+        End Set
     End Property
 
     ''' <summary>
@@ -105,10 +123,7 @@ Public Class GeneInfoProvider
     ''' </summary>
     Private Sub InitializeGenesInfoFromXML()
         Try
-            Dim appPath As String = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase).Remove(0, 6)
-            appPath = appPath & Path.DirectorySeparatorChar & "Resources" & Path.DirectorySeparatorChar & "GeneInfos.xml"
-            Dim xmlGenesInfoWriter As New XMLFileReader(Of GeneInfos)(appPath)
-            _geneInfos = xmlGenesInfoWriter.LoadXML()
+            _geneInfos = _xmlGenesInfoReader.LoadXML()
         Catch ex As Exception
             Debug.WriteLine("An Error ocurre: " & ex.Message)
         End Try

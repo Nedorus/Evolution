@@ -1,6 +1,7 @@
 ﻿Imports System.Xml
 Imports System.Xml.Schema
 Imports System.Xml.Serialization
+Imports System.Diagnostics.CodeAnalysis
 
 Public Class GeneInfo
     Implements IXmlSerializable
@@ -75,6 +76,7 @@ Public Class GeneInfo
         writer.WriteElementString("Description", Description)
     End Sub
 
+    <ExcludeFromCodeCoverage()>
     Public Function GetSchema() As XmlSchema Implements IXmlSerializable.GetSchema
         Return Nothing
     End Function
