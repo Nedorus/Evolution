@@ -31,7 +31,9 @@
               <Exclude>
                 <ModulePath>.*CPPUnitTestFramework.*</ModulePath>
                 <ModulePath>.*Moq.*</ModulePath>
-                <ModulePath>.*evotest.dll.*</ModulePath>
+                <ModulePath>.*evotest\.dll.*</ModulePath>
+                <ModulePath>.*EvoTest.*</ModulePath>
+                <ModulePath>.*Evolution\.My.*.dll.*</ModulePath>
               </Exclude>
             </ModulePaths>
 

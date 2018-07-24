@@ -7,19 +7,40 @@ Imports System.ComponentModel
 
     <TestMethod()> Public Sub RaiseEventTest()
         'Arrange
+        Const UNCHANGED_VALUE As String = "nothing happened"
         Dim subject As New TestBindableBaseExtension()
         Dim observer As New ParentWithListener(subject)
 
         Dim expectedResult As String = "SomeField"
 
         'Akt
+        observer.EventRaised = UNCHANGED_VALUE
+        subject.SomeField = "newVal"
+        Dim actualResult As String = observer.EventRaised
+        'Assert
+        Assert.AreEqual(expectedResult, actualResult)
+    End Sub
+
+    <TestMethod()> Public Sub RaiseEventNoChangeTest()
+        'Arrange
+        Const UNCHANGED_VALUE As String = "nothing happened"
+        Dim subject As New TestBindableBaseExtension()
+        Dim observer As New ParentWithListener(subject)
+
+        Dim expectedResult As String = UNCHANGED_VALUE
+
+        'Akt
+        subject.SomeField = "newVal"
+        observer.EventRaised = UNCHANGED_VALUE
         subject.SomeField = "newVal"
 
+        Dim actualResult As String = observer.EventRaised
+
         'Assert
-        Assert.AreEqual(expectedResult, observer.EventRaised)
-
-
+        Assert.AreEqual(expectedResult, actualResult)
     End Sub
+
+
 
     Private Class TestBindableBaseExtension
         Inherits BindableBase
