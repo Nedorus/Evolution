@@ -5,30 +5,31 @@ Imports Evolution
 Imports System.IO.Abstractions
 Imports System.IO.Abstractions.TestingHelpers
 
+<TestClass()> Public Class XMLFileWriterTest
 
-<TestClass()> Public Class XMLFileReaderTest
-
-    <TestMethod()> Public Sub LoadXMLTest()
+    <TestMethod()>
+    Public Sub SaveXMLTest()
         'Arrange
         Dim pathToMockedXML As String = "C:\xmlDirectory"
         Dim filenameMockedXML As String = "GeneInfos.xml"
         Dim mockedFilesSystem As MockFileSystem = BuildFileSystem(pathToMockedXML, filenameMockedXML)
-        Dim xmlGeneInfoReader As New XMLFileReader(Of GeneInfos)(pathToMockedXML & "\" & filenameMockedXML, mockedFilesSystem)
+        Dim xmlGeneInfoWriter As New XMLFileWriter(Of GeneInfos)(pathToMockedXML & "\" & filenameMockedXML, mockedFilesSystem)
+
+        Dim testGeneInfos As New GeneInfos()
+        Dim testGeneInfo1 As New GeneInfo(0, "NULL", 0, "Nothing happens")
+        Dim testGeneInfo2 As New GeneInfo(1, "ADD", 2, "Mocked description number two")
+        testGeneInfos.Add(testGeneInfo1)
+        testGeneInfos.Add(testGeneInfo2)
+
+        Dim expectedFileContent As String = GetXMLFileContent()
 
         'Akt
-        Dim geneInfos As GeneInfos = xmlGeneInfoReader.LoadXML()
+        xmlGeneInfoWriter.SaveXML(testGeneInfos)
+        Dim actualFileContent As String = mockedFilesSystem.GetFile(pathToMockedXML & "\" & filenameMockedXML).TextContents()
 
         'Assert
-        Assert.AreEqual(2, geneInfos.Count)
-        Assert.AreEqual("NULL", geneInfos(0).Code)
-        Assert.AreEqual(0, geneInfos(0).Value)
-        Assert.AreEqual(0, geneInfos(0).NumberOfArgs)
-        Assert.AreEqual("Nothing happens", geneInfos(0).Description)
-
-        Assert.AreEqual("ADD", geneInfos(1).Code)
-        Assert.AreEqual(1, geneInfos(1).Value)
-        Assert.AreEqual(2, geneInfos(1).NumberOfArgs)
-        Assert.AreEqual("Mocked description number two", geneInfos(1).Description)
+        Debug.WriteLine("Compare: " & String.Compare(expectedFileContent, actualFileContent))
+        Assert.AreEqual(expectedFileContent, actualFileContent)
 
 
     End Sub
@@ -58,5 +59,4 @@ Imports System.IO.Abstractions.TestingHelpers
   </GeneInfo>
 </GeneInfos>"
     End Function
-
 End Class
