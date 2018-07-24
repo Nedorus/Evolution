@@ -1,24 +1,25 @@
 ﻿Imports System.Xml.Serialization
 Imports System.IO
+Imports System.IO.Abstractions
 Imports System.Diagnostics.CodeAnalysis
 
 
 Public Class XMLFileReader(Of T)
-    Private _xmlFileStreamReader As System.IO.StreamReader
+    Private _xmlFileStreamReader As StreamReader
+    Private _fileSystem As IFileSystem
 
 #Region "Constructors"
 
-    Public Sub New(ByRef xmlFileStreamReader As System.IO.StreamReader)
-        _xmlFileStreamReader = xmlFileStreamReader
+    Public Sub New(ByRef pathToXML As String)
+        Me.New(pathToXML, New FileSystem())
     End Sub
 
-    Public Sub New(ByRef pathToXML)
-        _xmlFileStreamReader = My.Computer.FileSystem.OpenTextFileReader(pathToXML, System.Text.Encoding.UTF8)
+    Public Sub New(ByRef pathToXML As String, ByVal fileSystem As IFileSystem)
+        _fileSystem = fileSystem
+        _xmlFileStreamReader = _fileSystem.File.OpenText(pathToXML)
     End Sub
 
 #End Region
-
-
 
     Public Function LoadXML() As T
         Dim returnChapters As T

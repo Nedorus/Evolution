@@ -100,6 +100,7 @@
     <Import Include="Microsoft.VisualStudio.TestTools.UnitTesting" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Helper\FileSystemMockFactory.vb" />
     <Compile Include="Common\RandomStringAndNumberGeneratorTest.vb" />
     <Compile Include="Common\FileNameCleanerTest.vb" />
     <Compile Include="Common\MD5StringHasherTest.vb" />
@@ -131,6 +132,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="EvoTest.runsettings" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
