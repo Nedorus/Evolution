@@ -28,12 +28,12 @@
                 <ModulePath>.*\.exe$</ModulePath>
               </Include>
               <Exclude>
-                <ModulePath>.*CPPUnitTestFramework.*</ModulePath>
-                <ModulePath>.*Moq.*</ModulePath>
-                <ModulePath>.*.dll.*</ModulePath>
-                <ModulePath>.*EvoTest.*</ModulePath>
-                <ModulePath>.*evotest.*</ModulePath>
-                <ModulePath>.*\.My.*</ModulePath>
+                <ModulePath>.*\CPPUnitTestFramework.*</ModulePath>
+                <ModulePath>.\*Moq.\*</ModulePath>
+                <ModulePath>.\*.dll.\*</ModulePath>
+                <ModulePath>.\*EvoTest.\*</ModulePath>
+                <ModulePath>.\*evotest.\*</ModulePath>
+                <ModulePath>.\*\.My.\*</ModulePath>
               </Exclude>
             </ModulePaths>
 
