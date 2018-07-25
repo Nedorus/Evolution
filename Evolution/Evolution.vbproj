@@ -97,7 +97,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Common\FileNameCleaner.vb" />
-    <Compile Include="Common\Interfaces\IStreamReader.vb" />
+    <Compile Include="Common\Interfaces\IGeneInfosFactory.vb" />
     <Compile Include="Common\MD5StringHasher.vb" />
     <Compile Include="Common\XMLFileWriter.vb" />
     <Compile Include="Model\Gene.vb" />
