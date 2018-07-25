@@ -25,7 +25,7 @@
           <CodeCoverage>
             <ModulePaths>
               <Include>
-                <ModulePath>.*\.exe$</ModulePath>
+                <ModulePath>.\*\.exe$</ModulePath>
               </Include>
               <Exclude>
                 <ModulePath>.*\CPPUnitTestFramework.*</ModulePath>
@@ -46,7 +46,7 @@
                 <Attribute>^System.Runtime.CompilerServices.CompilerGeneratedAttribute$</Attribute>
                 <Attribute>^System.CodeDom.Compiler.GeneratedCodeAttribute$</Attribute>
                 <Attribute>^System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute$</Attribute>
-                <Attribute>^.*TestClassAttribute$</Attribute>
+                <Attribute>^.\*TestClassAttribute$</Attribute>
               </Exclude>
             </Attributes>
             
