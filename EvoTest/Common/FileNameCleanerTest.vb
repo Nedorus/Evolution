@@ -1,7 +1,6 @@
 ﻿Imports System.Text
 Imports Microsoft.VisualStudio.TestTools.UnitTesting
 Imports Evolution
-Imports 
 
 <TestClass()>
 Public Class FileNameCleanerTest
@@ -12,7 +11,7 @@ Public Class FileNameCleanerTest
     '''Ruft den Textkontext mit Informationen über
     '''den aktuellen Testlauf sowie Funktionalität für diesen auf oder legt diese fest.
     '''</summary>
-    <exc
+
     Public Property TestContext() As TestContext
         Get
             Return testContextInstance
