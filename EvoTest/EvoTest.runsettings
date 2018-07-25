@@ -30,7 +30,7 @@
               <Exclude>
                 <ModulePath>.*CPPUnitTestFramework.*</ModulePath>
                 <ModulePath>.*Moq.*</ModulePath>
-                <ModulePath>.*evotest\.dll.*</ModulePath>
+                <ModulePath>.*.dll.*</ModulePath>
                 <ModulePath>.*EvoTest.*</ModulePath>
                 <ModulePath>.*evotest.*</ModulePath>
                 <ModulePath>.*\.My.*</ModulePath>
@@ -46,6 +46,8 @@
                 <Attribute>^System.Runtime.CompilerServices.CompilerGeneratedAttribute$</Attribute>
                 <Attribute>^System.CodeDom.Compiler.GeneratedCodeAttribute$</Attribute>
                 <Attribute>^System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute$</Attribute>
+                <Attribute>^System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute$</Attribute>
+                <Attribute>^Microsoft.VisualStudio.TestTools.UnitTesting.TestClassAttribute$</Attribute>
               </Exclude>
             </Attributes>
             
