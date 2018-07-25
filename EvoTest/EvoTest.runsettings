@@ -33,7 +33,8 @@
                 <ModulePath>.*Moq.*</ModulePath>
                 <ModulePath>.*evotest\.dll.*</ModulePath>
                 <ModulePath>.*EvoTest.*</ModulePath>
-                <ModulePath>.*Evolution\.My.*.dll.*</ModulePath>
+                <ModulePath>.*evotest.*</ModulePath>
+                <ModulePath>.*\.My.*</ModulePath>
               </Exclude>
             </ModulePaths>
 
