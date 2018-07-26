@@ -29,11 +29,12 @@ Included items must then not match any entries in the exclude list to remain inc
             <!-- Match assembly file paths: -->  
             <ModulePaths>  
               <Include>  
-                <ModulePath>.*\.dll$</ModulePath>  
+                <!-- <ModulePath>.*\.dll$</ModulePath> -->  
                 <ModulePath>.*\.exe$</ModulePath>  
               </Include>  
               <Exclude>  
-                <ModulePath>.*CPPUnitTestFramework.*</ModulePath>  
+                <ModulePath>.*CPPUnitTestFramework.*</ModulePath>
+                <ModulePath>.*EvoTest.*</ModulePath>
               </Exclude>  
             </ModulePaths>  
   
@@ -42,11 +43,11 @@ Included items must then not match any entries in the exclude list to remain inc
             <Functions>  
               <Exclude>  
                 <Function>^Fabrikam\.UnitTest\..*</Function>           
-                <Function>^std::.*</Function>  
-                <Function>^ATL::.*</Function>  
-                <Function>.*::__GetTestMethodInfo.*</Function>  
-                <Function>^Microsoft::VisualStudio::CppCodeCoverageFramework::.*</Function>  
-                <Function>^Microsoft::VisualStudio::CppUnitTestFramework::.*</Function>  
+                <Function>^std\..*</Function>  
+                <Function>^ATL\..*</Function>  
+                <Function>.*\.__GetTestMethodInfo.*</Function>  
+                <Function>^Microsoft\.VisualStudio\.CppCodeCoverageFramework\..*</Function>  
+                <Function>^Microsoft\.VisualStudio\.CppUnitTestFramework\..*</Function>  
               </Exclude>  
             </Functions>  
   
