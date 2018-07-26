@@ -23,6 +23,8 @@
                 <Attribute>^System.Diagnostics.DebuggerNonUserCodeAttribute$</Attribute>
                 <Attribute>^System.Runtime.CompilerServices.CompilerGeneratedAttribute$</Attribute>
                 <Attribute>^System.CodeDom.Compiler.GeneratedCodeAttribute$</Attribute>
+                <Attribute>^Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute$</Attribute>
+                <Attribute>^Global.Microsoft.VisualBasic.HideModuleName$</Attribute>
                 <Attribute>^System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute$</Attribute>
                 <Attribute>^.\*TestClassAttribute$</Attribute>
               </Exclude>
