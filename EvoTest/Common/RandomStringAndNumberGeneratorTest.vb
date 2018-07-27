@@ -1,7 +1,7 @@
 ﻿Imports System.Text
 Imports Microsoft.VisualStudio.TestTools.UnitTesting
 Imports Evolution
-Imports Moq
+
 
 <TestClass()> Public Class RandomStringAndUIDGeneratorTest
 

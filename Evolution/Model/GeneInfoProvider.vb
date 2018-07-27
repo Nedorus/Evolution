@@ -9,7 +9,7 @@ Public Class GeneInfoProvider
 
     Shared _instance As GeneInfoProvider = Nothing
     Dim _appPath As String
-    Dim _geneInfos As List(Of GeneInfo)
+    Dim _geneInfos As GeneInfos
     Dim _xmlGenesInfoReader As XMLFileReader(Of GeneInfos)
 
 
