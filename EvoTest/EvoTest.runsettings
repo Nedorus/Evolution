@@ -29,7 +29,7 @@ Included items must then not match any entries in the exclude list to remain inc
             <!-- Match assembly file paths: -->  
             <ModulePaths>  
               <Include>  
-                <!-- <ModulePath>.*\.dll$</ModulePath> -->  
+                <ModulePath>.*\.dll$</ModulePath> 
                 <ModulePath>.*\.exe$</ModulePath>  
               </Include>  
               <Exclude>  
@@ -39,7 +39,7 @@ Included items must then not match any entries in the exclude list to remain inc
             </ModulePaths>  
   
             <!-- Match fully qualified names of functions: -->  
-            <!-- (Use "\." to delimit namespaces in C# or Visual Basic, "::" in C++.)  -->  
+            <!-- (Use "\." to delimit namespaces in C# or Visual Basic, "::" in C++.) 
             <Functions>  
               <Exclude>  
                 <Function>^Fabrikam\.UnitTest\..*</Function>           
@@ -49,21 +49,21 @@ Included items must then not match any entries in the exclude list to remain inc
                 <Function>^Microsoft\.VisualStudio\.CppCodeCoverageFramework\..*</Function>  
                 <Function>^Microsoft\.VisualStudio\.CppUnitTestFramework\..*</Function>  
               </Exclude>  
-            </Functions>  
+            </Functions>   -->  
   
-            <!-- Match attributes on any code element: -->  
+            <!-- Match attributes on any code element:  -->
             <Attributes>  
               <Exclude>  
-                <!-- Don't forget "Attribute" at the end of the name -->  
+                <!-- Don't forget "Attribute" at the end of the name 
                 <Attribute>^System\.Diagnostics\.DebuggerHiddenAttribute$</Attribute>  
                 <Attribute>^System\.Diagnostics\.DebuggerNonUserCodeAttribute$</Attribute>  
                 <Attribute>^System\.Runtime\.CompilerServices.CompilerGeneratedAttribute$</Attribute>  
                 <Attribute>^System\.CodeDom\.Compiler.GeneratedCodeAttribute$</Attribute>  
-                <Attribute>^System\.Diagnostics\.CodeAnalysis.ExcludeFromCodeCoverageAttribute$</Attribute>  
+                <Attribute>^System\.Diagnostics\.CodeAnalysis.ExcludeFromCodeCoverageAttribute$</Attribute>  -->  
               </Exclude>  
-            </Attributes>  
+            </Attributes>   
   
-            <!-- Match the path of the source files in which each method is defined: -->  
+            <!-- Match the path of the source files in which each method is defined:  
             <Sources>  
               <Exclude>  
                 <Source>.*\\atlmfc\\.*</Source>  
@@ -72,18 +72,18 @@ Included items must then not match any entries in the exclude list to remain inc
                 <Source>.*\\microsoft sdks\\.*</Source>  
                 <Source>.*\\vc\\include\\.*</Source>  
               </Exclude>  
-            </Sources>  
+            </Sources>  --> 
   
-            <!-- Match the company name property in the assembly: -->  
+            <!-- Match the company name property in the assembly: 
             <CompanyNames>  
               <Exclude>  
                 <CompanyName>.*microsoft.*</CompanyName>  
               </Exclude>  
-            </CompanyNames>  
+            </CompanyNames>   --> 
   
             <!-- Match the public key token of a signed assembly: -->  
             <PublicKeyTokens>  
-              <!-- Exclude Visual Studio extensions: -->  
+              <!-- Exclude Visual Studio extensions:   
               <Exclude>  
                 <PublicKeyToken>^B77A5C561934E089$</PublicKeyToken>  
                 <PublicKeyToken>^B03F5F7F11D50A3A$</PublicKeyToken>  
@@ -92,7 +92,7 @@ Included items must then not match any entries in the exclude list to remain inc
                 <PublicKeyToken>^71E9BCE111E9429C$</PublicKeyToken>  
                 <PublicKeyToken>^8F50407C4E9E73B6$</PublicKeyToken>  
                 <PublicKeyToken>^E361AF139669C375$</PublicKeyToken>  
-              </Exclude>  
+              </Exclude>  -->
             </PublicKeyTokens>  
   
             <!-- We recommend you do not change the following values: -->  
