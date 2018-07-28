@@ -42,7 +42,7 @@ Imports System.Diagnostics.CodeAnalysis
     End Sub
 
 
-    <ExcludeFromCodeCoverage()>
+
     Private Class TestBindableBaseExtension
         Inherits BindableBase
 
