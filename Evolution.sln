@@ -7,6 +7,11 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Evolution", "Evolution\Evol
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "EvoTest", "EvoTest\EvoTest.vbproj", "{6E21E865-E411-4324-8F94-B49BCB91BF9B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{562A2FCF-B818-416E-A16E-FE9AE7F85673}"
+	ProjectSection(SolutionItems) = preProject
+		CodeCoverage.runsettings = CodeCoverage.runsettings
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
