@@ -9,7 +9,7 @@
           <CodeCoverage>
             <ModulePaths>
               <Exclude>
-                <ModulePath>.*evotest.*</ModulePath>
+                <ModulePath>.*</ModulePath>
               </Exclude>
             </ModulePaths>
           </CodeCoverage>
