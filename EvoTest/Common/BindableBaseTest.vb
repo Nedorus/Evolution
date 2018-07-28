@@ -2,6 +2,7 @@
 Imports Microsoft.VisualStudio.TestTools.UnitTesting
 Imports Evolution
 Imports System.ComponentModel
+Imports System.Diagnostics.CodeAnalysis
 
 <TestClass()> Public Class BindableBaseTest
 
@@ -41,7 +42,7 @@ Imports System.ComponentModel
     End Sub
 
 
-
+    <ExcludeFromCodeCoverage()>
     Private Class TestBindableBaseExtension
         Inherits BindableBase
 
