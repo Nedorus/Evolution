@@ -1,7 +1,9 @@
-﻿Imports System.IO.Abstractions
+﻿Imports System.Diagnostics.CodeAnalysis
+Imports System.IO.Abstractions
 Imports System.IO.Abstractions.TestingHelpers
 Imports Evolution
 
+<ExcludeFromCodeCoverage()>
 Public Class FileSystemMockFactory
     Private _mockedFileSystem As MockFileSystem
 
