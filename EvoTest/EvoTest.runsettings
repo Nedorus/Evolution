@@ -24,7 +24,8 @@
         <Configuration>
           <CodeCoverage>
             <ModulePaths>
-              <Include>.*</Include>
+              <ModulePath>.*\.dll$</ModulePath>
+              <ModulePath>.*\.exe$</ModulePath>
               <Exclude>
               </Exclude>
             </ModulePaths>
