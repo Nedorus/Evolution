@@ -10,14 +10,19 @@ Public Class XMLFileWriter(Of T)
     Private _fileSystem As IFileSystem
 
 #Region "Constructors"
-
+    <ExcludeFromCodeCoverage()>
     Public Sub New(ByRef pathToXML As String)
         Me.New(pathToXML, New FileSystem())
     End Sub
 
+    <ExcludeFromCodeCoverage()>
     Public Sub New(ByRef pathToXML As String, ByVal fileSystem As IFileSystem)
         _fileSystem = fileSystem
-        _xmlFileStreamWriter = _fileSystem.File.CreateText(pathToXML)
+        Try
+            _xmlFileStreamWriter = _fileSystem.File.CreateText(pathToXML)
+        Catch ex As System.IO.FileNotFoundException
+            LogMessageHNDLR.Instance.Err("The specified file could not be found! " & ex.Message & ex.Source)
+        End Try
     End Sub
 
 #End Region

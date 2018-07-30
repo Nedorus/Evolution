@@ -40,7 +40,7 @@ Public Class RandomStringAndUIDGenerator
         Return returnString
     End Function
 
-    Public Function RandomNumber(ByVal pLength As Integer) As String
+    Public Function RandomNumberString(ByVal pLength As Integer) As String
         Dim returnString As String = ""
         Dim charRescourceString As String = "0123456789"
 

@@ -29,13 +29,44 @@ Imports System.IO.Abstractions.TestingHelpers
         Assert.AreEqual(1, geneInfos(1).Value)
         Assert.AreEqual(2, geneInfos(1).NumberOfArgs)
         Assert.AreEqual("Mocked description number two", geneInfos(1).Description)
-
-
     End Sub
 
-    Private Function BuildFileSystem(ByVal path As String, ByVal filename As String) As IFileSystem
+    <TestMethod()> Public Sub LoadFileNotFoundXMLTest()
+        'Arrange
+        Dim pathToMockedXML As String = "C:\xmlDirectory"
+        Dim filenameMockedXML As String = "GeneInfos.xml"
+        Dim mockedFilesSystem As MockFileSystem = BuildFileSystem(pathToMockedXML, filenameMockedXML)
+        Dim xmlGeneInfoReader As New XMLFileReader(Of GeneInfos)(pathToMockedXML & "\" & "Some Other FileName", mockedFilesSystem)
+
+        'Akt
+        Dim geneInfos As GeneInfos = xmlGeneInfoReader.LoadXML()
+
+        'Assert
+        Assert.IsNull(geneInfos)
+    End Sub
+
+    <TestMethod()> Public Sub LoadBadXMLTest()
+        'Arrange
+        Dim pathToMockedXML As String = "C:\xmlDirectory"
+        Dim filenameMockedXML As String = "GeneInfos.xml"
+        Dim mockedFilesSystem As MockFileSystem = BuildFileSystem(pathToMockedXML, filenameMockedXML, useBadXML:=True)
+        Dim xmlGeneInfoReader As New XMLFileReader(Of GeneInfos)(pathToMockedXML & "\" & filenameMockedXML, mockedFilesSystem)
+
+        'Akt
+        Dim geneInfos As GeneInfos = xmlGeneInfoReader.LoadXML()
+
+        'Assert
+        Assert.IsNull(geneInfos)
+    End Sub
+
+    Private Function BuildFileSystem(ByVal path As String, ByVal filename As String, Optional ByVal useBadXML As Boolean = False) As IFileSystem
         Dim myFileSystemFactory As New FileSystemMockFactory()
-        myFileSystemFactory.AddTextFile(path, filename, GetXMLFileContent())
+        Select Case useBadXML
+            Case True
+                myFileSystemFactory.AddTextFile(path, filename, GetBadXMLFileContent())
+            Case Else
+                myFileSystemFactory.AddTextFile(path, filename, GetXMLFileContent())
+        End Select
 
         Return myFileSystemFactory.MockedFileSystem
     End Function
@@ -57,6 +88,11 @@ Imports System.IO.Abstractions.TestingHelpers
     <Description>Mocked description number two</Description>
   </GeneInfo>
 </GeneInfos>"
+    End Function
+
+    Private Function GetBadXMLFileContent() As String
+        Return "<?xml version=""1.0"" encoding=""utf-8""?>
+<GeneInfos>THIS IS JUNK!"
     End Function
 
 End Class

@@ -17,7 +17,7 @@
         If geneInfo IsNot Nothing Then
             _geneInfo = GeneInfoProvider.Instance.CloneGeneInfo(geneInfo)
         Else
-            _geneInfo = New GeneInfo(_index, _randomStringAndUIDGenerator.RandomString(4), _randomStringAndUIDGenerator.RandomNumber(1), _randomStringAndUIDGenerator.RandomString(15))
+            _geneInfo = New GeneInfo(_index, _randomStringAndUIDGenerator.RandomString(4), _randomStringAndUIDGenerator.RandomNumberString(1), _randomStringAndUIDGenerator.RandomString(15))
         End If
     End Sub
 

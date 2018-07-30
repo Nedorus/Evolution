@@ -109,6 +109,7 @@
     <Compile Include="Common\XMLFileReaderTest.vb" />
     <Compile Include="Common\XMLFileWriterTest.vb" />
     <Compile Include="Model\GeneInfoProviderTest.vb" />
+    <Compile Include="ViewModel\GeneViewModelTest.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -157,7 +158,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="TestResources\" />
-    <Folder Include="ViewModel\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
