@@ -2,6 +2,7 @@
 Imports System.IO
 Imports System.Diagnostics
 Imports System.Diagnostics.CodeAnalysis
+Imports log4net
 
 Public Enum LogLevels
     VERBOSE = 10
