@@ -6,6 +6,7 @@ Imports System.IO.Abstractions
 Imports System.IO.Abstractions.TestingHelpers
 
 <TestClass()> Public Class XMLFileWriterTest
+    Private ReadOnly log As log4net.ILog = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType)
 
     <TestMethod()>
     Public Sub SaveXMLTest()
@@ -30,8 +31,6 @@ Imports System.IO.Abstractions.TestingHelpers
         'Assert
         Debug.WriteLine("Compare: " & String.Compare(expectedFileContent, actualFileContent))
         Assert.AreEqual(expectedFileContent, actualFileContent)
-
-
     End Sub
 
     Private Function BuildFileSystem(ByVal path As String, ByVal filename As String) As IFileSystem

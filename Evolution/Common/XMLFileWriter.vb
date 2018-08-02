@@ -8,6 +8,8 @@ Imports System.IO.Abstractions
 Public Class XMLFileWriter(Of T)
     Private _xmlFileStreamWriter As StreamWriter
     Private _fileSystem As IFileSystem
+    Private ReadOnly log As log4net.ILog = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType)
+
 
 #Region "Constructors"
     <ExcludeFromCodeCoverage()>
@@ -30,17 +32,11 @@ Public Class XMLFileWriter(Of T)
     Public Function SaveXML(ByVal pObjectToSerialize As T) As Boolean
         Dim returnVal As Boolean = False
         Dim serialize As XmlSerializer = New XmlSerializer(GetType(T))
-        Try
-            '_xmlFileStreamWriter = My.Computer.FileSystem.OpenTextFileWriter(pPathToXML, False)
 
-            'Save the setting to the file
-            serialize.Serialize(_xmlFileStreamWriter, pObjectToSerialize)
-            returnVal = True
-            _xmlFileStreamWriter.Close()
-        Catch ex As Exception
-            LogMessageHNDLR.Instance.Err("Something bad happened: " & ex.Message & ex.Source)
-        End Try
-
+        'Save the setting to the file
+        serialize.Serialize(_xmlFileStreamWriter, pObjectToSerialize)
+        returnVal = True
+        _xmlFileStreamWriter.Close()
         Return returnVal
     End Function
 

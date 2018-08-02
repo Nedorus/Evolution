@@ -1,6 +1,7 @@
 ﻿Imports System.Xml
 Imports System.Xml.Schema
 Imports System.Xml.Serialization
+Imports System.Diagnostics.CodeAnalysis
 
 Public Class GeneInfos
     Inherits List(Of GeneInfo)
@@ -31,6 +32,7 @@ Public Class GeneInfos
         Next
     End Sub
 
+    <ExcludeFromCodeCoverage()>
     Public Function GetSchema() As XmlSchema Implements IXmlSerializable.GetSchema
         Return Nothing
     End Function
