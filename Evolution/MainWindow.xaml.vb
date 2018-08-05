@@ -10,8 +10,6 @@
         InitializeComponent()
 
         ' Fügen Sie Initialisierungen nach dem InitializeComponent()-Aufruf hinzu.
-        _logMessageHandler = LogMessageHNDLR.Instance
-        _logMessageHandler.LogDir = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase).Remove(0, 6) & "\log\"
         _viewModel = New ViewModel()
         _oldSelectedGeneIndex = -1
         Me.DataContext = Me.ViewModel
@@ -29,16 +27,6 @@
         End Set
     End Property
 
-    ''' <summary>
-    ''' 
-    ''' </summary>
-    ''' <returns></returns>
-    Public ReadOnly Property Logger As LogMessageHNDLR
-        Get
-            Return _logMessageHandler
-        End Get
-    End Property
-
     Private Sub GenesListView_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles GenesListView.SelectionChanged
 
         If IsNewSelectedIndexDifferent(TryCast(sender, ListView)) Then
@@ -49,15 +37,15 @@
     End Sub
 
     Private Sub SelectedGeneCodeTextBox_TextChanged(sender As Object, e As TextChangedEventArgs)
-        Debug.WriteLine("Have Event: " & TryCast(sender, TextBox).Text)
+
     End Sub
 
     Private Sub SelectedGeneCodeComboBox_SelectionChanged(sender As Object, e As SelectionChangedEventArgs)
-        If TryCast(sender, ComboBox).SelectedIndex >= 0 Then
-            Debug.WriteLine("Chose {0}.", TryCast(sender, ComboBox).SelectedValue.ToString)
-        Else
-            Debug.WriteLine("Chose nothing.")
-        End If
+        'If TryCast(sender, ComboBox).SelectedIndex >= 0 Then
+        '    Debug.WriteLine("Chose {0}.", TryCast(sender, ComboBox).SelectedValue.ToString)
+        'Else
+        '    Debug.WriteLine("Chose nothing.")
+        'End If
     End Sub
 
     Private Function IsNewSelectedIndexDifferent(ByRef listView As ListView)

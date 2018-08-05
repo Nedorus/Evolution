@@ -1,5 +1,6 @@
 ﻿Imports System
 Imports System.ComponentModel
+Imports System.Diagnostics.CodeAnalysis
 Imports System.Linq.Expressions
 Imports System.Runtime.CompilerServices
 
@@ -15,7 +16,7 @@ Public MustInherit Class BindableBase
         Return True
     End Function
 
-    Protected Sub OnPropertyChanged(<CallerMemberName> ByVal Optional propertyName As String = Nothing)
+    Protected Sub OnPropertyChanged(<CallerMemberName> ByVal propertyName As String)
         RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(propertyName))
     End Sub
 End Class

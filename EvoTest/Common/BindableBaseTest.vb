@@ -19,6 +19,7 @@ Imports System.Diagnostics.CodeAnalysis
         subject.SomeField = "newVal"
         Dim actualResult As String = observer.EventRaised
         'Assert
+        Assert.AreEqual("newVal", subject.SomeField)
         Assert.AreEqual(expectedResult, actualResult)
     End Sub
 
@@ -38,6 +39,7 @@ Imports System.Diagnostics.CodeAnalysis
         Dim actualResult As String = observer.EventRaised
 
         'Assert
+        Assert.AreEqual("newVal", subject.SomeField)
         Assert.AreEqual(expectedResult, actualResult)
     End Sub
 
