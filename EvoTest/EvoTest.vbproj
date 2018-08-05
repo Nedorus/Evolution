@@ -109,6 +109,7 @@
     <Compile Include="Common\Helper\FileSystemMockFactory.vb" />
     <Compile Include="Common\MD5StringHasherTest.vb" />
     <Compile Include="Common\RandomStringAndNumberGeneratorTest.vb" />
+    <Compile Include="Common\ItemsChangedObservableCollectionTest.vb" />
     <Compile Include="Common\XMLFileReaderTest.vb" />
     <Compile Include="Common\XMLFileWriterTest.vb" />
     <Compile Include="Model\GeneInfoProviderTest.vb" />

@@ -110,7 +110,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Common\FileNameCleaner.vb" />
-    <Compile Include="Common\Interfaces\IGeneInfosFactory.vb" />
+    <Compile Include="Common\ItemsChangedObservableCollection.vb" />
     <Compile Include="Common\MD5StringHasher.vb" />
     <Compile Include="Common\XMLFileWriter.vb" />
     <Compile Include="Model\Gene.vb" />
@@ -211,6 +211,8 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Common\Interfaces\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
