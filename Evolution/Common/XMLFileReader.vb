@@ -2,11 +2,13 @@
 Imports System.IO
 Imports System.IO.Abstractions
 Imports System.Diagnostics.CodeAnalysis
+Imports log4net
 
 
 Public Class XMLFileReader(Of T)
     Private _xmlFileStreamReader As StreamReader
     Private _fileSystem As IFileSystem
+    Private ReadOnly log As log4net.ILog = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType)
 
 #Region "Constructors"
     <ExcludeFromCodeCoverage()>
@@ -20,7 +22,7 @@ Public Class XMLFileReader(Of T)
         Try
             _xmlFileStreamReader = _fileSystem.File.OpenText(pathToXML)
         Catch ex As FileNotFoundException
-            LogMessageHNDLR.Instance.Err("The specified file could not be found! " & ex.Message & ex.Source)
+            log.Error("The specified file could not be found! " & ex.Message & ex.Source)
         End Try
     End Sub
 
@@ -34,7 +36,7 @@ Public Class XMLFileReader(Of T)
             returnChapters = CType(serialize.Deserialize(_xmlFileStreamReader), T)
             _xmlFileStreamReader.Close()
         Catch ex As Exception
-            LogMessageHNDLR.Instance.Err("Something bad happened: " & ex.Message & ex.Source)
+            log.Error("Something bad happened: " & ex.Message & ex.Source)
         End Try
 
         Return returnChapters

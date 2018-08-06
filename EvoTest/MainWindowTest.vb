@@ -6,8 +6,9 @@ Imports Evolution
 
     <TestMethod()> Public Sub PropertyViewModelTest()
         'Arrange
+        'Dim mockedVieModel 
         Dim _mainWindow As Evolution.MainWindow = New Evolution.MainWindow()
-        _mainWindow.ViewModel.Genes.Item(0).Code = "HELL"
+        _mainWindow.ViewModel.Genes.Add(New GeneViewModel(New RandomStringAndUIDGenerator(New Random())))
 
         'Akt
         _mainWindow.ViewModel.Genes.Item(0).Code = "HELL"

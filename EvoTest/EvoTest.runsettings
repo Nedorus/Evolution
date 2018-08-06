@@ -57,7 +57,8 @@
                 <Attribute>^System\.Runtime\.CompilerServices.CompilerGeneratedAttribute$</Attribute>  
                 <Attribute>^System\.CodeDom\.Compiler.GeneratedCodeAttribute$</Attribute>  
                 <Attribute>^System\.Diagnostics\.CodeAnalysis.ExcludeFromCodeCoverageAttribute$</Attribute>
-                <Attribute>^^Microsoft\.VisualStudio\.TestTools\.UnitTesting\.TestClassAttribute$</Attribute>
+                <Attribute>^Microsoft\.VisualStudio\.TestTools\.UnitTesting\.TestClassAttribute$</Attribute>
+                <Attribute>^Global\.Microsoft\.VisualBasic\.HideModuleNameAttribute$</Attribute>
               </Exclude>  
             </Attributes> 
   

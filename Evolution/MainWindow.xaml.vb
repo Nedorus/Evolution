@@ -1,7 +1,6 @@
 ﻿Class MainWindow
     Private _viewModel As ViewModel
     Private _genesInfo As GeneInfos
-    Private _logMessageHandler As LogMessageHNDLR
     Private _oldSelectedGeneIndex As Integer
 
     Public Sub New()
@@ -10,12 +9,17 @@
         InitializeComponent()
 
         ' Fügen Sie Initialisierungen nach dem InitializeComponent()-Aufruf hinzu.
-        _viewModel = New ViewModel()
-        _oldSelectedGeneIndex = -1
-        Me.DataContext = Me.ViewModel
-        For Each listViewItem As ListViewItem In Me.GenesListView.Items
-            listViewItem.DataContext = TryCast(Me.FindResource("regularItem"), DataTemplate)
-        Next
+        Setup(New ViewModel())
+
+    End Sub
+
+    Friend Sub New(ByRef viewModel As ViewModel)
+
+        ' Dieser Aufruf ist für den Designer erforderlich.
+        InitializeComponent()
+
+        ' Fügen Sie Initialisierungen nach dem InitializeComponent()-Aufruf hinzu.
+        Setup(viewModel)
     End Sub
 
     Public Property ViewModel As ViewModel
@@ -57,5 +61,18 @@
             _oldSelectedGeneIndex = listView.SelectedIndex
         End If
 
+    End Sub
+
+    Private Sub Setup(viewModel As ViewModel)
+        If viewModel IsNot Nothing Then
+            _viewModel = viewModel
+        Else
+            _viewModel = New ViewModel
+        End If
+        _oldSelectedGeneIndex = -1
+        Me.DataContext = Me.ViewModel
+        For Each listViewItem As ListViewItem In Me.GenesListView.Items
+            listViewItem.DataContext = TryCast(Me.FindResource("regularItem"), DataTemplate)
+        Next
     End Sub
 End Class

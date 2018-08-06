@@ -20,19 +20,12 @@
         End Set
     End Property
 
-    Public ReadOnly Property GeneInfoProvider As GeneInfoProvider
-        Get
-            Return GeneInfoProvider.Instance
-        End Get
-    End Property
-
-    Public Property SelectedGeneCodeComboBoxIsopen As Boolean
+    Public Property SelectedGeneCodeComboBoxIsOpen As Boolean
         Get
             Return _selectedGeneCodeComboBoxIsopen
         End Get
         Set(value As Boolean)
-            MyBase.SetProperty(Of Boolean)(_selectedGeneCodeComboBoxIsopen, value, "SelectedGeneCodeComboBoxIsopen")
-            Debug.WriteLine("SelectedGeneCodeComboBoxIsopen is open: {0}", _selectedGeneCodeComboBoxIsopen)
+            MyBase.SetProperty(Of Boolean)(_selectedGeneCodeComboBoxIsopen, value, "SelectedGeneCodeComboBoxIsOpen")
         End Set
     End Property
 
@@ -43,7 +36,7 @@
     '    Set(value As String)
     '        MyBase.SetProperty(Of String)(_searchText, value, "SearchText")
     '        Debug.WriteLine("Current value in ComboBox is {0} " & Me._searchText)
-    '        Me.SelectedGeneCodeComboBoxIsopen = True
+    '        Me.SelectedGeneCodeComboBoxIsOpen = True
     '        MyBase.OnPropertyChanged("FilteredCodeList")
     '    End Set
     'End Property

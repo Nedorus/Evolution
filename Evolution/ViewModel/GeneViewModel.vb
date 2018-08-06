@@ -71,8 +71,8 @@
             Return _selectedGeneCodeComboBoxIsopen
         End Get
         Set(value As Boolean)
-            MyBase.SetProperty(Of Boolean)(_selectedGeneCodeComboBoxIsopen, value, "SelectedGeneCodeComboBoxIsopen")
-            Debug.WriteLine("SelectedGeneCodeComboBoxIsopen is open: {0}", _selectedGeneCodeComboBoxIsopen)
+            MyBase.SetProperty(Of Boolean)(_selectedGeneCodeComboBoxIsopen, value, "SelectedGeneCodeComboBoxIsOpen")
+            Debug.WriteLine("SelectedGeneCodeComboBoxIsOpen is open: {0}", _selectedGeneCodeComboBoxIsopen)
         End Set
     End Property
 

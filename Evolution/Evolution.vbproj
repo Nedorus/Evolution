@@ -132,7 +132,6 @@
     <Compile Include="Common\BindableBase.vb" />
     <Compile Include="Common\RandomStringAndUIDGenerator.vb" />
     <Compile Include="Common\GlobalVariables.vb" />
-    <Compile Include="Common\LogMessageHNDLR.vb" />
     <Compile Include="Common\RandomGenerator.vb" />
     <Compile Include="Common\XMLFileReader.vb" />
     <Compile Include="MainWindow.xaml.vb">
@@ -195,9 +194,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\GeneInfos.xml">
+    <Content Include="Resources\GeneInfos.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">

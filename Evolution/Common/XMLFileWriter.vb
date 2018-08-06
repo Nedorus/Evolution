@@ -2,6 +2,7 @@
 Imports System.IO
 Imports System.Diagnostics.CodeAnalysis
 Imports System.IO.Abstractions
+Imports log4net
 
 
 
@@ -23,7 +24,7 @@ Public Class XMLFileWriter(Of T)
         Try
             _xmlFileStreamWriter = _fileSystem.File.CreateText(pathToXML)
         Catch ex As System.IO.FileNotFoundException
-            LogMessageHNDLR.Instance.Err("The specified file could not be found! " & ex.Message & ex.Source)
+            log.Error("The specified file could not be found! " & ex.Message & ex.Source)
         End Try
     End Sub
 
