@@ -131,7 +131,6 @@
     </Compile>
     <Compile Include="Common\BindableBase.vb" />
     <Compile Include="Common\RandomStringAndUIDGenerator.vb" />
-    <Compile Include="Common\GlobalVariables.vb" />
     <Compile Include="Common\RandomGenerator.vb" />
     <Compile Include="Common\XMLFileReader.vb" />
     <Compile Include="MainWindow.xaml.vb">
