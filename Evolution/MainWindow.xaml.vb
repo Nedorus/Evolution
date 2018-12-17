@@ -13,6 +13,7 @@
 
     End Sub
 
+
     Friend Sub New(ByRef viewModel As ViewModel)
 
         ' Dieser Aufruf ist für den Designer erforderlich.

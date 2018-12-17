@@ -3,11 +3,11 @@ Imports System.IO
 Imports System.IO.Abstractions
 Imports System.Diagnostics.CodeAnalysis
 
-Public Class GeneInfoProvider
+Public Class GeneInfoFactory
 
     Public Const DEFAULT_GENE_VALUE = 0
 
-    Shared _instance As GeneInfoProvider = Nothing
+    Shared _instance As GeneInfoFactory = Nothing
     Dim _appPath As String
     Dim _geneInfos As GeneInfos
     Dim _xmlGenesInfoReader As XMLFileReader(Of GeneInfos)
@@ -22,13 +22,13 @@ Public Class GeneInfoProvider
     End Sub
 
     ''' <summary>
-    ''' Resturns an instance of GeneInfoProvider according to the Singleton Pattern
+    ''' Resturns an instance of GeneInfoFactory according to the Singleton Pattern
     ''' </summary>
-    ''' <returns>Instance of GeneInfoProvider</returns>
-    Public Shared ReadOnly Property Instance As GeneInfoProvider
+    ''' <returns>Instance of GeneInfoFactory</returns>
+    Public Shared ReadOnly Property Instance As GeneInfoFactory
         Get
             If _instance Is Nothing Then
-                _instance = New GeneInfoProvider
+                _instance = New GeneInfoFactory
             End If
             Return _instance
         End Get
@@ -47,9 +47,9 @@ Public Class GeneInfoProvider
     ''' <summary>
     ''' Returns new GeneInfo Object with a value based on the given GeneValue and Code, NumberOfArgs and Description matching the value given, 
     ''' </summary>
-    ''' <param name="geneValue">An Integer used a a base to create the new GeneInfo Object. Values of 0-255 are allowed, otherwise the default Object for value 0 is returned.</param>
+    ''' <param name="geneValue">An Integer used as a base to create the new GeneInfo Object. Values of 0-255 are allowed, otherwise the default Object for value 0 is returned.</param>
     ''' <returns>A new instance of GeneInfo based </returns>
-    Public Function GetGeneInfoFromGeneValue(ByVal geneValue As Integer) As GeneInfo
+    Public Function GetGeneInfoByGeneValue(ByVal geneValue As Integer) As GeneInfo
         Dim geneInfoFound = From geneInfo As GeneInfo In _geneInfos
                             Where geneInfo.Value = geneValue
 
@@ -69,7 +69,7 @@ Public Class GeneInfoProvider
     ''' </summary>
     ''' <param name="geneCode">A string which is matched against Code of defined GeneInfo.</param>
     ''' <returns>A new instance of geneInfo</returns>
-    Public Function GetGeneInfoFromGeneCode(ByVal geneCode As String) As GeneInfo
+    Public Function GetGeneInfoByGeneCode(ByVal geneCode As String) As GeneInfo
         Dim geneInfoFound = From geneInfo As GeneInfo In _geneInfos
                             Where geneInfo.Code = geneCode
 

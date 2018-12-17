@@ -15,7 +15,7 @@
     Public Sub New(ByRef index As Integer, Optional ByRef geneInfo As GeneInfo = Nothing)
         _index = index
         If geneInfo IsNot Nothing Then
-            _geneInfo = GeneInfoProvider.Instance.CloneGeneInfo(geneInfo)
+            _geneInfo = GeneInfoFactory.Instance.CloneGeneInfo(geneInfo)
         Else
             _geneInfo = New GeneInfo(_index, _randomStringAndUIDGenerator.RandomString(4), _randomStringAndUIDGenerator.RandomNumberString(1), _randomStringAndUIDGenerator.RandomString(15))
         End If
@@ -78,7 +78,7 @@
 
     Public ReadOnly Property FilteredCodeList As List(Of String)
         Get
-            Return GeneInfoProvider.Instance.GetAllMatchingCodeNames(_geneInfo.Code)
+            Return GeneInfoFactory.Instance.GetAllMatchingCodeNames(_geneInfo.Code)
         End Get
     End Property
 

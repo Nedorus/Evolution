@@ -113,9 +113,12 @@
     <Compile Include="Common\ItemsChangedObservableCollection.vb" />
     <Compile Include="Common\MD5StringHasher.vb" />
     <Compile Include="Common\XMLFileWriter.vb" />
+    <Compile Include="Model\ChangeableData.vb" />
+    <Compile Include="Model\Modifier.vb" />
+    <Compile Include="Model\Creature.vb" />
     <Compile Include="Model\Gene.vb" />
     <Compile Include="Model\GeneInfo.vb" />
-    <Compile Include="Model\GeneInfoProvider.vb" />
+    <Compile Include="Model\GeneInfoFactory.vb" />
     <Compile Include="Model\GeneInfos.vb" />
     <Compile Include="ViewModel\GenesListViewDataTemplateSelector.vb" />
     <Compile Include="ViewModel\GenesViewModel.vb" />
@@ -193,8 +196,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\ChangeableData.xml" />
     <Content Include="Resources\GeneInfos.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>

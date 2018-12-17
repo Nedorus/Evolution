@@ -10,6 +10,7 @@ Public Class GeneInfo
     Private _geneCode As String
     Private _geneNumberOfArgs As Integer
     Private _geneDescription As String
+    Private _geneAction As List(Of Modifier)
 
     Public Sub New()
 
@@ -20,6 +21,7 @@ Public Class GeneInfo
         _geneCode = geneCode
         _geneNumberOfArgs = geneNumberOfArgs
         _geneDescription = geneDescription
+        _geneAction = New List(Of Modifier)
     End Sub
 
     Public Property Value As Integer
