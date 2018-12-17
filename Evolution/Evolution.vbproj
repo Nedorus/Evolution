@@ -113,7 +113,7 @@
     <Compile Include="Common\ItemsChangedObservableCollection.vb" />
     <Compile Include="Common\MD5StringHasher.vb" />
     <Compile Include="Common\XMLFileWriter.vb" />
-    <Compile Include="Model\ChangeableData.vb" />
+    <Compile Include="Model\CreatureDataDefinitions.vb" />
     <Compile Include="Model\Modifier.vb" />
     <Compile Include="Model\Creature.vb" />
     <Compile Include="Model\Gene.vb" />
@@ -196,7 +196,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\ChangeableData.xml" />
+    <Resource Include="Resources\CreatureDataDefinitions.xml" />
     <Content Include="Resources\GeneInfos.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>

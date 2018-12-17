@@ -3,7 +3,7 @@ Imports System.Xml
 Imports System.Xml.Schema
 Imports System.Xml.Serialization
 
-Public Class ChangeableData
+Public Class CreatureDataDefinitions
     Implements IXmlSerializable
 
     Private _creatureData As List(Of String)
@@ -14,7 +14,7 @@ Public Class ChangeableData
         _changeOperations = New List(Of String)
     End Sub
 
-    Public Property CreatureDatadefinition As List(Of String)
+    Public Property CreatureDataDefinition As List(Of String)
         Get
             Return _creatureData
         End Get
@@ -32,6 +32,9 @@ Public Class ChangeableData
         End Set
     End Property
 
+
+#Region "IXMLSerializable"
+
     Public Sub ReadXml(reader As XmlReader) Implements IXmlSerializable.ReadXml
 
         Dim was_empty As Boolean = reader.IsEmptyElement
@@ -39,7 +42,7 @@ Public Class ChangeableData
         If Not was_empty Then
             reader.Read()
             Do While reader.NodeType <> Xml.XmlNodeType.EndElement
-                Me.CreatureDatadefinition.Add(reader.ReadElementContentAsString)
+                Me.CreatureDataDefinition.Add(reader.ReadElementContentAsString)
                 reader.MoveToContent()
             Loop
             reader.ReadEndElement()
@@ -53,15 +56,21 @@ Public Class ChangeableData
     End Sub
 
     Public Sub WriteXml(writer As XmlWriter) Implements IXmlSerializable.WriteXml
-        'For Each currCreatureDataItem In Me.CreatureDatadefinition
-        '    writer.WriteStartElement("CreatureDataItem")
-        '    currCreatureDataItem.WriteXml(writer)
-        '    writer.WriteEndElement()
-        'Next
+        writer.WriteStartElement("CreatureDataDefinition")
+        For Each currCreatureDataItem In Me.CreatureDataDefinition
+            writer.WriteElementString("CreatureDataItem", currCreatureDataItem.ToString)
+        Next
+        writer.WriteEndElement()
+        writer.WriteStartElement("ChangeOperations")
+        For Each currChangeOperator In Me.ChangeOperations
+            writer.WriteElementString("ChangeOperator", currChangeOperator.ToString)
+        Next
+        writer.WriteEndElement()
     End Sub
 
     <ExcludeFromCodeCoverage()>
     Public Function GetSchema() As XmlSchema Implements IXmlSerializable.GetSchema
         Return Nothing
     End Function
+#End Region
 End Class

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ChangeableData>
+  <CreatureDataDefinition>
+    <CreatureDataItem>GeneCode</CreatureDataItem>
+    <CreatureDataItem>ProgramCounter</CreatureDataItem>
+    <CreatureDataItem>EnergyType1</CreatureDataItem>
+    <CreatureDataItem> XPosition</CreatureDataItem>
+    <CreatureDataItem>YPosition</CreatureDataItem>
+  </CreatureDataDefinition>
+  <ChangeOperations>
+    <ChangeOperator>Add</ChangeOperator>
+    <ChangeOperator>Subtract</ChangeOperator>
+  </ChangeOperations>
+</ChangeableData>

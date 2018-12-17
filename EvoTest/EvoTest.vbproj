@@ -113,11 +113,10 @@
     <Compile Include="Common\MD5StringHasherTest.vb" />
     <Compile Include="Common\RandomStringAndNumberGeneratorTest.vb" />
     <Compile Include="Common\ItemsChangedObservableCollectionTest.vb" />
-    <Compile Include="Common\XMLFileReaderTest.vb" />
-    <Compile Include="Common\XMLFileWriterTest.vb" />
+    <Compile Include="Model\GeneInfosTest.vb" />
     <Compile Include="Model\GeneInfoProviderTest.vb" />
     <Compile Include="MainWindowTest.vb" />
-    <Compile Include="Model\ChangebleDataTest.vb" />
+    <Compile Include="Model\CreatureDataDefinitionsTest.vb" />
     <Compile Include="ViewModel\GeneViewModelTest.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">

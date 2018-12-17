@@ -6,7 +6,7 @@ Imports System.IO.Abstractions
 Imports System.IO.Abstractions.TestingHelpers
 
 
-<TestClass()> Public Class XMLFileReaderTest
+<TestClass()> Public Class GeneInfosTest
     Private Enum XMLTypeSelector
         Good
         Bad
@@ -18,10 +18,10 @@ Imports System.IO.Abstractions.TestingHelpers
         Dim pathToMockedXML As String = "C:\xmlDirectory"
         Dim filenameMockedXML As String = "GeneInfos.xml"
         Dim mockedFilesSystem As MockFileSystem = BuildFileSystem(pathToMockedXML, filenameMockedXML, selectedXMLType:=XMLTypeSelector.Good)
-        Dim xmlGeneInfoReader As New XMLFileReader(Of GeneInfos)(pathToMockedXML & "\" & filenameMockedXML, mockedFilesSystem)
+        Dim xmlGeneInfoReader As New XMLFileReader(Of Evolution.GeneInfos)(pathToMockedXML & "\" & filenameMockedXML, mockedFilesSystem)
 
         'Akt
-        Dim geneInfos As GeneInfos = xmlGeneInfoReader.LoadXML()
+        Dim geneInfos As Evolution.GeneInfos = xmlGeneInfoReader.LoadXML()
 
         'Assert
         Assert.AreEqual(2, geneInfos.Count)
@@ -41,10 +41,10 @@ Imports System.IO.Abstractions.TestingHelpers
         Dim pathToMockedXML As String = "C:\xmlDirectory"
         Dim filenameMockedXML As String = "GeneInfos.xml"
         Dim mockedFilesSystem As MockFileSystem = BuildFileSystem(pathToMockedXML, filenameMockedXML, selectedXMLType:=XMLTypeSelector.Good)
-        Dim xmlGeneInfoReader As New XMLFileReader(Of GeneInfos)(pathToMockedXML & "\" & "Some Other FileName", mockedFilesSystem)
+        Dim xmlGeneInfoReader As New XMLFileReader(Of Evolution.GeneInfos)(pathToMockedXML & "\" & "Some Other FileName", mockedFilesSystem)
 
         'Akt
-        Dim geneInfos As GeneInfos = xmlGeneInfoReader.LoadXML()
+        Dim geneInfos As Evolution.GeneInfos = xmlGeneInfoReader.LoadXML()
 
         'Assert
         Assert.IsNull(geneInfos)
@@ -55,10 +55,10 @@ Imports System.IO.Abstractions.TestingHelpers
         Dim pathToMockedXML As String = "C:\xmlDirectory"
         Dim filenameMockedXML As String = "GeneInfos.xml"
         Dim mockedFilesSystem As MockFileSystem = BuildFileSystem(pathToMockedXML, filenameMockedXML, selectedXMLType:=XMLTypeSelector.Bad)
-        Dim xmlGeneInfoReader As New XMLFileReader(Of GeneInfos)(pathToMockedXML & "\" & filenameMockedXML, mockedFilesSystem)
+        Dim xmlGeneInfoReader As New XMLFileReader(Of Evolution.GeneInfos)(pathToMockedXML & "\" & filenameMockedXML, mockedFilesSystem)
 
         'Akt
-        Dim geneInfos As GeneInfos = xmlGeneInfoReader.LoadXML()
+        Dim geneInfos As Evolution.GeneInfos = xmlGeneInfoReader.LoadXML()
 
         'Assert
         Assert.IsNull(geneInfos)
@@ -69,14 +69,39 @@ Imports System.IO.Abstractions.TestingHelpers
         Dim pathToMockedXML As String = "C:\xmlDirectory"
         Dim filenameMockedXML As String = "GeneInfos.xml"
         Dim mockedFilesSystem As MockFileSystem = BuildFileSystem(pathToMockedXML, filenameMockedXML, selectedXMLType:=XMLTypeSelector.Empty)
-        Dim xmlGeneInfoReader As New XMLFileReader(Of GeneInfos)(pathToMockedXML & "\" & filenameMockedXML, mockedFilesSystem)
+        Dim xmlGeneInfoReader As New XMLFileReader(Of Evolution.GeneInfos)(pathToMockedXML & "\" & filenameMockedXML, mockedFilesSystem)
 
         'Akt
-        Dim geneInfos As GeneInfos = xmlGeneInfoReader.LoadXML()
+        Dim geneInfos As Evolution.GeneInfos = xmlGeneInfoReader.LoadXML()
 
         'Assert
         Assert.AreEqual(0, geneInfos.Count)
 
+    End Sub
+
+    <TestMethod()>
+    Public Sub SaveXMLTest()
+        'Arrange
+        Dim pathToMockedXML As String = "C:\xmlDirectory"
+        Dim filenameMockedXML As String = "GeneInfos.xml"
+        Dim mockedFilesSystem As MockFileSystem = BuildFileSystem(pathToMockedXML, filenameMockedXML, selectedXMLType:=XMLTypeSelector.Good)
+        Dim xmlGeneInfoWriter As New XMLFileWriter(Of Evolution.GeneInfos)(pathToMockedXML & "\" & filenameMockedXML, mockedFilesSystem)
+
+        Dim testGeneInfos As New Evolution.GeneInfos()
+        Dim testGeneInfo1 As New GeneInfo(0, "NULL", 0, "Nothing happens")
+        Dim testGeneInfo2 As New GeneInfo(1, "ADD", 2, "Mocked description number two")
+        testGeneInfos.Add(testGeneInfo1)
+        testGeneInfos.Add(testGeneInfo2)
+
+        Dim expectedFileContent As String = GetXMLFileContent()
+
+        'Akt
+        xmlGeneInfoWriter.SaveXML(testGeneInfos)
+        Dim actualFileContent As String = mockedFilesSystem.GetFile(pathToMockedXML & "\" & filenameMockedXML).TextContents()
+
+        'Assert
+        Debug.WriteLine("Compare: " & String.Compare(expectedFileContent, actualFileContent))
+        Assert.AreEqual(expectedFileContent, actualFileContent)
     End Sub
 
     Private Function BuildFileSystem(ByVal path As String, ByVal filename As String, Optional ByVal selectedXMLType As XMLTypeSelector = XMLTypeSelector.Good) As IFileSystem
@@ -92,7 +117,6 @@ Imports System.IO.Abstractions.TestingHelpers
 
         Return myFileSystemFactory.MockedFileSystem
     End Function
-
 
     Private Function GetXMLFileContent() As String
         Return "<?xml version=""1.0"" encoding=""utf-8""?>

@@ -3,6 +3,8 @@ Imports System.IO
 Imports System.IO.Abstractions
 Imports System.Diagnostics.CodeAnalysis
 
+Imports log4net
+
 Public Class GeneInfoFactory
 
     Public Const DEFAULT_GENE_VALUE = 0
@@ -122,12 +124,7 @@ Public Class GeneInfoFactory
     ''' Deserializes a GeneInfos XML resource into the _geneInfos field 
     ''' </summary>
     Private Sub InitializeGenesInfoFromXML()
-        Try
-            _geneInfos = _xmlGenesInfoReader.LoadXML()
-        Catch ex As Exception
-            Debug.WriteLine("An Error ocurre: " & ex.Message)
-        End Try
-
+        _geneInfos = _xmlGenesInfoReader.LoadXML()
     End Sub
 
 #End Region
