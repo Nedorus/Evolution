@@ -2,9 +2,11 @@
 <ChangeableData>
   <CreatureDataDefinition>
     <CreatureDataItem>GeneCode</CreatureDataItem>
+    <CreatureDataItem>GeneCodeRelative</CreatureDataItem>
     <CreatureDataItem>ProgramCounter</CreatureDataItem>
+    <CreatureDataItem>ProgramCounterRelative</CreatureDataItem>
     <CreatureDataItem>EnergyType1</CreatureDataItem>
-    <CreatureDataItem> XPosition</CreatureDataItem>
+    <CreatureDataItem>XPosition</CreatureDataItem>
     <CreatureDataItem>YPosition</CreatureDataItem>
   </CreatureDataDefinition>
   <ChangeOperations>

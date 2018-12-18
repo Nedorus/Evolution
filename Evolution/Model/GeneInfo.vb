@@ -10,10 +10,10 @@ Public Class GeneInfo
     Private _geneCode As String
     Private _geneNumberOfArgs As Integer
     Private _geneDescription As String
-    Private _geneAction As List(Of Modifier)
+    Private _modifiers As List(Of IModifier)
 
     Public Sub New()
-
+        _modifiers = New List(Of IModifier)
     End Sub
 
     Public Sub New(geneValue As Integer, geneCode As String, geneNumberOfArgs As Integer, geneDescription As String)
@@ -21,7 +21,7 @@ Public Class GeneInfo
         _geneCode = geneCode
         _geneNumberOfArgs = geneNumberOfArgs
         _geneDescription = geneDescription
-        _geneAction = New List(Of Modifier)
+        _modifiers = New List(Of IModifier)
     End Sub
 
     Public Property Value As Integer
@@ -60,22 +60,54 @@ Public Class GeneInfo
         End Set
     End Property
 
+    Public Property Modifiers As List(Of IModifier)
+        Get
+            Return _modifiers
+        End Get
+        Set(value As List(Of IModifier))
+            _modifiers = value
+        End Set
+    End Property
+
 #Region "IXMLSerializable"
 
     Public Sub ReadXml(reader As XmlReader) Implements IXmlSerializable.ReadXml
+
+        Dim modifiers_serializer As New XmlSerializer(GetType(Modifier))
+
         reader.ReadStartElement()
         reader.MoveToContent()
         Me.Value = reader.ReadElementContentAsInt
         Me.Code = reader.ReadElementContentAsString
         Me.NumberOfArgs = reader.ReadElementContentAsInt
         Me.Description = reader.ReadElementContentAsString
+        Dim was_empty As Boolean = reader.IsEmptyElement
+        reader.ReadStartElement("Modifiers")
+        If Not was_empty Then
+            Do While reader.NodeType <> Xml.XmlNodeType.EndElement
+                Dim modifier As IModifier = DirectCast(modifiers_serializer.Deserialize(reader), Modifier)
+                reader.ReadEndElement()
+                Me.Modifiers.Add(modifier)
+                reader.MoveToContent()
+            Loop
+            reader.ReadEndElement()
+        End If
     End Sub
 
     Public Sub WriteXml(writer As XmlWriter) Implements IXmlSerializable.WriteXml
+
         writer.WriteElementString("Value", Value.ToString)
         writer.WriteElementString("Code", Code)
         writer.WriteElementString("NumberOfArgs", NumberOfArgs.ToString)
         writer.WriteElementString("Description", Description)
+        writer.WriteStartElement("Modifiers")
+
+        For Each currModifier In Me.Modifiers
+            writer.WriteStartElement("Modifier")
+            currModifier.WriteXml(writer)
+            writer.WriteEndElement()
+        Next
+        writer.WriteEndElement()
     End Sub
 
     <ExcludeFromCodeCoverage()>

@@ -110,16 +110,19 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Common\FileNameCleaner.vb" />
+    <Compile Include="Common\Interfaces\ICreatureDataDefinitions.vb" />
     <Compile Include="Common\ItemsChangedObservableCollection.vb" />
     <Compile Include="Common\MD5StringHasher.vb" />
     <Compile Include="Common\XMLFileWriter.vb" />
     <Compile Include="Model\CreatureDataDefinitions.vb" />
-    <Compile Include="Model\Modifier.vb" />
+    <Compile Include="Model\DynamicCreature.vb" />
+    <Compile Include="Common\Interfaces\IModifier.vb" />
     <Compile Include="Model\Creature.vb" />
     <Compile Include="Model\Gene.vb" />
     <Compile Include="Model\GeneInfo.vb" />
     <Compile Include="Model\GeneInfoFactory.vb" />
     <Compile Include="Model\GeneInfos.vb" />
+    <Compile Include="Model\Modifier.vb" />
     <Compile Include="ViewModel\GenesListViewDataTemplateSelector.vb" />
     <Compile Include="ViewModel\GenesViewModel.vb" />
     <Compile Include="ViewModel\GeneViewModel.vb" />
@@ -196,7 +199,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\CreatureDataDefinitions.xml" />
+    <Content Include="Resources\CreatureDataDefinitions.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\GeneInfos.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
@@ -214,8 +219,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Common\Interfaces\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

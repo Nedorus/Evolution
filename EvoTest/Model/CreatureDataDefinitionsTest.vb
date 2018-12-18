@@ -6,17 +6,14 @@ Imports System.IO.Abstractions
 Imports System.IO.Abstractions.TestingHelpers
 
 <TestClass()> Public Class CreatureDataDefinitionsTest
-    Private Enum XMLTypeSelector
-        Good
-        Bad
-        Empty
-    End Enum
+
+    Dim xmlTestDataProvider As XMLTestDataProvider = New XMLTestDataProvider()
 
     <TestMethod()> Public Sub LoadXmlTest()
         'Arrange
         Dim pathToMockedXML As String = "C:\xmlDirectory"
         Dim filenameMockedXML As String = "ChangeableData.xml"
-        Dim mockedFilesSystem As MockFileSystem = BuildFileSystem(pathToMockedXML, filenameMockedXML, selectedXMLType:=XMLTypeSelector.Good)
+        Dim mockedFilesSystem As MockFileSystem = xmlTestDataProvider.BuildFileSystem(pathToMockedXML, filenameMockedXML, selectedXMLType:=XMLTestDataProvider.TestDataKey.CreatureDataDefinitions)
         Dim xmlGeneInfoReader As New XMLFileReader(Of CreatureDataDefinitions)(pathToMockedXML & "\" & filenameMockedXML, mockedFilesSystem)
 
         'Akt
@@ -32,7 +29,7 @@ Imports System.IO.Abstractions.TestingHelpers
         'Arrange
         Dim pathToMockedXML As String = "C:\xmlDirectory"
         Dim filenameMockedXML As String = "CreatureDataDefinitions.xml"
-        Dim mockedFilesSystem As MockFileSystem = BuildFileSystem(pathToMockedXML, filenameMockedXML, selectedXMLType:=XMLTypeSelector.Good)
+        Dim mockedFilesSystem As MockFileSystem = xmlTestDataProvider.BuildFileSystem(pathToMockedXML, filenameMockedXML, selectedXMLType:=XMLTestDataProvider.TestDataKey.CreatureDataDefinitions)
         Dim xmlCreatureDataDefinitionsWriter As New XMLFileWriter(Of Evolution.CreatureDataDefinitions)(pathToMockedXML & "\" & filenameMockedXML, mockedFilesSystem)
         Dim creatureDataDefinitions As CreatureDataDefinitions = New CreatureDataDefinitions()
         creatureDataDefinitions.CreatureDataDefinition.Add("GeneCode")
@@ -43,7 +40,7 @@ Imports System.IO.Abstractions.TestingHelpers
         creatureDataDefinitions.ChangeOperations.Add("Add")
         creatureDataDefinitions.ChangeOperations.Add("Subtract")
 
-        Dim expectedFileContent As String = GetXMLFileContent()
+        Dim expectedFileContent As String = xmlTestDataProvider.GetXMLFileContent(XMLTestDataProvider.TestDataKey.CreatureDataDefinitions)
 
         'Act
         xmlCreatureDataDefinitionsWriter.SaveXML(creatureDataDefinitions)
@@ -54,46 +51,5 @@ Imports System.IO.Abstractions.TestingHelpers
         Assert.AreEqual(expectedFileContent, actualFileContent)
 
     End Sub
-
-    Private Function BuildFileSystem(ByVal path As String, ByVal filename As String, Optional ByVal selectedXMLType As XMLTypeSelector = XMLTypeSelector.Good) As IFileSystem
-        Dim myFileSystemFactory As New FileSystemMockFactory()
-        Select Case selectedXMLType
-            Case XMLTypeSelector.Good
-                myFileSystemFactory.AddTextFile(path, filename, GetXMLFileContent())
-            Case XMLTypeSelector.Bad
-                myFileSystemFactory.AddTextFile(path, filename, GetBadXMLFileContent())
-            Case XMLTypeSelector.Empty
-                myFileSystemFactory.AddTextFile(path, filename, GetEmptyXMLFileContent())
-        End Select
-
-        Return myFileSystemFactory.MockedFileSystem
-    End Function
-
-    Private Function GetXMLFileContent() As String
-        Return "<?xml version=""1.0"" encoding=""utf-8""?>
-<CreatureDataDefinitions>
-  <CreatureDataDefinition>
-    <CreatureDataItem>GeneCode</CreatureDataItem>
-    <CreatureDataItem>ProgramCounter</CreatureDataItem>
-    <CreatureDataItem>EnergyType1</CreatureDataItem>
-    <CreatureDataItem>XPosition</CreatureDataItem>
-    <CreatureDataItem>YPosition</CreatureDataItem>
-  </CreatureDataDefinition>
-  <ChangeOperations>
-    <ChangeOperator>Add</ChangeOperator>
-    <ChangeOperator>Subtract</ChangeOperator>
-  </ChangeOperations>
-</CreatureDataDefinitions>"
-    End Function
-
-    Private Function GetBadXMLFileContent() As String
-        Return "<?xml version=""1.0"" encoding=""utf-8""?>
-<ChangeableData>THIS IS JUNK!"
-    End Function
-
-    Private Function GetEmptyXMLFileContent() As String
-        Return "<?xml version=""1.0"" encoding=""utf-8""?>
-<ChangeableData/>"
-    End Function
 
 End Class

@@ -117,6 +117,8 @@
     <Compile Include="Model\GeneInfoProviderTest.vb" />
     <Compile Include="MainWindowTest.vb" />
     <Compile Include="Model\CreatureDataDefinitionsTest.vb" />
+    <Compile Include="Model\GeneInfoFactoryTest.vb" />
+    <Compile Include="TestResources\XMLTestDataProvider.vb" />
     <Compile Include="ViewModel\GeneViewModelTest.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -165,9 +167,7 @@
       <Name>Evolution</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="TestResources\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

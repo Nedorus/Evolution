@@ -36,6 +36,12 @@ Public Class GeneInfoFactory
         End Get
     End Property
 
+    Public ReadOnly Property GeneInfos As GeneInfos
+        Get
+            Return _geneInfos
+        End Get
+    End Property
+
     Public Property PathToGeneInfoXML As String
         Get
             Return _appPath

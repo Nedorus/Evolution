@@ -4,7 +4,7 @@ Imports System.Xml.Schema
 Imports System.Xml.Serialization
 
 Public Class CreatureDataDefinitions
-    Implements IXmlSerializable
+    Implements ICreatureDataDefinitions, IXmlSerializable
 
     Private _creatureData As List(Of String)
     Private _changeOperations As List(Of String)
@@ -14,7 +14,7 @@ Public Class CreatureDataDefinitions
         _changeOperations = New List(Of String)
     End Sub
 
-    Public Property CreatureDataDefinition As List(Of String)
+    Public Property CreatureDataDefinition As List(Of String) Implements ICreatureDataDefinitions.CreatureDataDefinition
         Get
             Return _creatureData
         End Get
@@ -23,7 +23,7 @@ Public Class CreatureDataDefinitions
         End Set
     End Property
 
-    Public Property ChangeOperations As List(Of String)
+    Public Property ChangeOperations As List(Of String) Implements ICreatureDataDefinitions.ChangeOperations
         Get
             Return _changeOperations
         End Get
@@ -73,4 +73,5 @@ Public Class CreatureDataDefinitions
         Return Nothing
     End Function
 #End Region
+
 End Class

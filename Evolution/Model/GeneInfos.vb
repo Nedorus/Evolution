@@ -36,4 +36,5 @@ Public Class GeneInfos
     Public Function GetSchema() As XmlSchema Implements IXmlSerializable.GetSchema
         Return Nothing
     End Function
+
 End Class

@@ -5,47 +5,68 @@
     <Code>NULL</Code>
     <NumberOfArgs>0</NumberOfArgs>
     <Description>Nothing happens</Description>
+    <Modifiers>
+      <Modifier>
+        <ChangeOperator>Add</ChangeOperator>
+        <Target>EnergyType1</Target>
+        <FirstArg>GeneCode</FirstArg>
+        <SecondArg>XPosition</SecondArg>
+      </Modifier>
+      <Modifier>
+        <ChangeOperator>Subtract</ChangeOperator>
+        <Target>GeneCodeRelative</Target>
+        <FirstArg>ProgramCounterRelative</FirstArg>
+        <SecondArg>YPosition</SecondArg>
+      </Modifier>
+    </Modifiers>
   </GeneInfo>
   <GeneInfo>
     <Value>1</Value>
     <Code>ADD</Code>
     <NumberOfArgs>2</NumberOfArgs>
     <Description>Adds the value of the first arg to the value in the address referred to by the second arg.</Description>
+    <Modifiers />
   </GeneInfo>
   <GeneInfo>
     <Value>2</Value>
     <Code>SUB</Code>
     <NumberOfArgs>2</NumberOfArgs>
     <Description>Subtracts the value of the first arg from the value in the address referred to by the second arg.</Description>
+    <Modifiers />
   </GeneInfo>
   <GeneInfo>
     <Value>3</Value>
     <Code>EAT</Code>
     <NumberOfArgs>2</NumberOfArgs>
     <Description>Consumes an amount of rescource refered to by the first arg of type refered to by the second arg</Description>
+    <Modifiers />
   </GeneInfo>
   <GeneInfo>
     <Value>4</Value>
     <Code>MOVE</Code>
     <NumberOfArgs>2</NumberOfArgs>
     <Description>Increases the creatures x-location by first arg and y-location by second arg.</Description>
+    <Modifiers />
   </GeneInfo>
   <GeneInfo>
     <Value>5</Value>
     <Code>WALK</Code>
     <NumberOfArgs>2</NumberOfArgs>
     <Description>Moves the creature in direction of first arg mod 8 by distance of second arg.</Description>
+    <Modifiers />
   </GeneInfo>
   <GeneInfo>
     <Value>6</Value>
     <Code>JMP</Code>
     <NumberOfArgs>1</NumberOfArgs>
     <Description>Sets the creatures gene counter to first arg.</Description>
+    <Modifiers />
   </GeneInfo>
   <GeneInfo>
     <Value>7</Value>
     <Code>JMPREL</Code>
     <NumberOfArgs>1</NumberOfArgs>
     <Description>Sets the creatures gene counter to the value referenced by first arg.</Description>
+    <Modifiers />
   </GeneInfo>
 </GeneInfos>
