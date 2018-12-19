@@ -1,4 +1,6 @@
-﻿Public Class Creature
+﻿Imports System.Diagnostics.CodeAnalysis
+
+Public Class Creature
     Private _gene As Gene
     Private _geneCounter As Integer
     Private _Position As Point
@@ -19,6 +21,7 @@
         End If
     End Sub
 
+    <ExcludeFromCodeCoverage()>
     Public Property Gene As Gene
         Get
             Return _gene
@@ -28,6 +31,7 @@
         End Set
     End Property
 
+    <ExcludeFromCodeCoverage()>
     Public Property GeneCounter As Integer
         Get
             Return _geneCounter
@@ -37,6 +41,7 @@
         End Set
     End Property
 
+    <ExcludeFromCodeCoverage()>
     Public Property Position As Point
         Get
             Return _Position

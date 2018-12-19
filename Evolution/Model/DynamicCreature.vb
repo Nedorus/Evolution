@@ -1,13 +1,10 @@
 ﻿Public Class DynamicCreature
     Inherits Dictionary(Of String, Integer)
 
-
-    Private _creatureDataDefinition As ICreatureDataDefinitions
     Private _gene As Gene
 
-    Public Sub New(creatureDataDefinition As ICreatureDataDefinitions)
-        _creatureDataDefinition = creatureDataDefinition
-        For Each dataDefintion In _creatureDataDefinition.CreatureDataDefinition
+    Public Sub New(creatureDataDefinitions As ICreatureDataDefinitions)
+        For Each dataDefintion In creatureDataDefinitions.CreatureDataDefinition
             Me.Add(dataDefintion, 0)
         Next
     End Sub

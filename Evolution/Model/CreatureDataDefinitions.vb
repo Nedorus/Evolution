@@ -14,6 +14,7 @@ Public Class CreatureDataDefinitions
         _changeOperations = New List(Of String)
     End Sub
 
+    <ExcludeFromCodeCoverage()>
     Public Property CreatureDataDefinition As List(Of String) Implements ICreatureDataDefinitions.CreatureDataDefinition
         Get
             Return _creatureData
@@ -23,6 +24,7 @@ Public Class CreatureDataDefinitions
         End Set
     End Property
 
+    <ExcludeFromCodeCoverage()>
     Public Property ChangeOperations As List(Of String) Implements ICreatureDataDefinitions.ChangeOperations
         Get
             Return _changeOperations
