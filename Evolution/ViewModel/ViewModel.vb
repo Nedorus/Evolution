@@ -3,7 +3,7 @@ Imports System.Diagnostics.CodeAnalysis
 
 Public Class ViewModel
     Inherits BindableBase
-    Private _genes As GenesViewModel
+    Private ReadOnly _genes As GenesViewModel
     Private _selectedGeneCodeComboBoxIsopen As Boolean
 
     Public Sub New()
@@ -14,13 +14,13 @@ Public Class ViewModel
 
 
     <ExcludeFromCodeCoverage()>
-    Public Property Genes As GenesViewModel
+    Public ReadOnly Property Genes As GenesViewModel
         Get
             Return _genes
         End Get
-        Set(value As GenesViewModel)
-            MyBase.SetProperty(Of GenesViewModel)(_genes, value, "Genes")
-        End Set
+        'Set(value As GenesViewModel)
+        '    MyBase.SetProperty(Of GenesViewModel)(_genes, value, "Genes")
+        'End Set
     End Property
 
     <ExcludeFromCodeCoverage()>

@@ -27,13 +27,13 @@ Public Class ItemsChangedObservableCollection(Of T As INotifyPropertyChanged)
         MyBase.OnCollectionChanged(e)
     End Sub
 
-    Protected Sub RegisterPropertyChanged(items As IList(Of T))
+    Public Sub RegisterPropertyChanged(items As IList(Of T))
         For Each curritem In items
             AddHandler curritem.PropertyChanged, AddressOf ItemPropertyChanged
         Next
     End Sub
 
-    Protected Sub UnRegisterPropertyChanged(items As IList(Of T))
+    Public Sub UnRegisterPropertyChanged(items As IList(Of T))
         For Each curritem In items
             RemoveHandler curritem.PropertyChanged, AddressOf ItemPropertyChanged
         Next

@@ -5,7 +5,7 @@
 
     Public Overrides Function SelectTemplate(item As Object, container As DependencyObject) As DataTemplate
 
-        Dim returnDataTemplate As DataTemplate = Nothing
+
         Dim currentItem As GeneViewModel = TryCast(item, GeneViewModel)
 
         parentListView = GetParentByType(TryCast(container, FrameworkElement), GetType(ListView))

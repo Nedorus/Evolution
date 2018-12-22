@@ -10,7 +10,7 @@ Public MustInherit Class BindableBase
 
     Public Event PropertyChanged As PropertyChangedEventHandler Implements INotifyPropertyChanged.PropertyChanged
 
-    Protected Function SetProperty(Of T)(ByRef storage As T, ByVal value As T, <CallerMemberName> ByVal Optional propertyName As String = Nothing) As Boolean
+    Public Function SetProperty(Of T)(ByRef storage As T, ByVal value As T, <CallerMemberName> ByVal Optional propertyName As String = Nothing) As Boolean
         Dim returnVal As Boolean = False
         If Object.Equals(storage, value) Then
             returnVal = False
@@ -22,7 +22,7 @@ Public MustInherit Class BindableBase
         Return returnVal
     End Function
 
-    Protected Sub OnPropertyChanged(<CallerMemberName> ByVal propertyName As String)
+    Public Sub OnPropertyChanged(<CallerMemberName> ByVal propertyName As String)
         RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(propertyName))
     End Sub
 End Class

@@ -46,11 +46,7 @@
     End Sub
 
     Private Sub SelectedGeneCodeComboBox_SelectionChanged(sender As Object, e As SelectionChangedEventArgs)
-        'If TryCast(sender, ComboBox).SelectedIndex >= 0 Then
-        '    Debug.WriteLine("Chose {0}.", TryCast(sender, ComboBox).SelectedValue.ToString)
-        'Else
-        '    Debug.WriteLine("Chose nothing.")
-        'End If
+
     End Sub
 
     Private Function IsNewSelectedIndexDifferent(ByRef listView As ListView)

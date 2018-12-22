@@ -6,10 +6,10 @@ Imports System.Xml.Serialization
 Public Interface IModifier
     Inherits IXmlSerializable
 
-    Property ChangeOperator As String
-    Property Target As String
-    Property FirstArg As String
-    Property SecondArg As String
+    Property ChangeOperator As ICreatureDataDefinitions.ChangeOperator
+    Property Target As IModifierAddress
+    Property FirstArg As IModifierAddress
+    Property SecondArg As IModifierAddress
 
 
 

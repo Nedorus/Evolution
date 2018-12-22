@@ -4,88 +4,83 @@ Imports System.IO.Abstractions
 Imports System.Diagnostics.CodeAnalysis
 
 Imports log4net
+Imports Evolution
+Imports System.Collections.ObjectModel
 
-Public Class GeneInfoFactory
+Public Class GeneInfoProvider
+    Implements IGeneInfoProvider
 
     Public Const DEFAULT_GENE_VALUE = 0
 
-    Shared _instance As GeneInfoFactory = Nothing
     Dim _appPath As String
     Dim _geneInfos As GeneInfos
     Dim _xmlGenesInfoReader As XMLFileReader(Of GeneInfos)
 
 
-    Private Sub New()
+    Public Sub New()
         _geneInfos = New GeneInfos
-        _appPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase).Remove(0, 6)
-        _appPath = _appPath & Path.DirectorySeparatorChar & "Resources" & Path.DirectorySeparatorChar & "GeneInfos.xml"
-        _xmlGenesInfoReader = New XMLFileReader(Of GeneInfos)(_appPath)
-        InitializeGenesInfoFromXML()
+        '_appPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase).Remove(0, 6)
+        '_appPath = _appPath & Path.DirectorySeparatorChar & "Resources" & Path.DirectorySeparatorChar & "GeneInfos.xml"
+        '_xmlGenesInfoReader = New XMLFileReader(Of GeneInfos)(_appPath)
+        'InitializeGenesInfoFromXML()
     End Sub
 
-    ''' <summary>
-    ''' Resturns an instance of GeneInfoFactory according to the Singleton Pattern
-    ''' </summary>
-    ''' <returns>Instance of GeneInfoFactory</returns>
-    Public Shared ReadOnly Property Instance As GeneInfoFactory
-        Get
-            If _instance Is Nothing Then
-                _instance = New GeneInfoFactory
-            End If
-            Return _instance
-        End Get
-    End Property
+    Public Sub New(geneInfos As GeneInfos)
+        _geneInfos = geneInfos
+    End Sub
 
-    Public ReadOnly Property GeneInfos As GeneInfos
+    Public ReadOnly Property GeneInfos As GeneInfos Implements IGeneInfoProvider.GeneInfos
         Get
             Return _geneInfos
         End Get
     End Property
 
-    Public Property PathToGeneInfoXML As String
+    Public ReadOnly Property PathToGeneInfoXML As String
         Get
             Return _appPath
         End Get
-        Set(value As String)
-            _appPath = value
-            _xmlGenesInfoReader = New XMLFileReader(Of GeneInfos)(_appPath)
-        End Set
     End Property
 
+    Public Sub ReloadGeneInfosFromSource(ByRef pathToXML As String)
+        _appPath = pathToXML
+        _xmlGenesInfoReader = New XMLFileReader(Of GeneInfos)(_appPath)
+        InitializeGenesInfoFromXML()
+    End Sub
+
     ''' <summary>
-    ''' Returns new GeneInfo Object with a value based on the given GeneValue and Code, NumberOfArgs and Description matching the value given, 
+    ''' Returns GeneInfo Object with a value based on the given GeneValue and Code, NumberOfArgs and Description matching the value given, 
     ''' </summary>
     ''' <param name="geneValue">An Integer used as a base to create the new GeneInfo Object. Values of 0-255 are allowed, otherwise the default Object for value 0 is returned.</param>
     ''' <returns>A new instance of GeneInfo based </returns>
-    Public Function GetGeneInfoByGeneValue(ByVal geneValue As Integer) As GeneInfo
+    Public Function GetGeneInfoByGeneValue(ByVal geneValue As Integer) As GeneInfo Implements IGeneInfoProvider.GetGeneInfoByGeneValue
         Dim geneInfoFound = From geneInfo As GeneInfo In _geneInfos
                             Where geneInfo.Value = geneValue
 
 
         Dim returnGeneInfo As GeneInfo
         If geneInfoFound.Count > 0 Then
-            returnGeneInfo = CloneGeneInfo(geneInfoFound.ElementAt(0))
+            returnGeneInfo = geneInfoFound.ElementAt(0)
         Else
-            returnGeneInfo = CloneGeneInfo(_geneInfos.Item(DEFAULT_GENE_VALUE))
+            returnGeneInfo = _geneInfos.Item(DEFAULT_GENE_VALUE)
         End If
         Return returnGeneInfo
 
     End Function
 
     ''' <summary>
-    ''' Returns a new instance of type GeneInfo with properies based on the given Code
+    ''' Returns GeneInfo Object with properies based on the given geneCode
     ''' </summary>
     ''' <param name="geneCode">A string which is matched against Code of defined GeneInfo.</param>
     ''' <returns>A new instance of geneInfo</returns>
-    Public Function GetGeneInfoByGeneCode(ByVal geneCode As String) As GeneInfo
+    Public Function GetGeneInfoByGeneCode(ByVal geneCode As String) As GeneInfo Implements IGeneInfoProvider.GetGeneInfoByGeneCode
         Dim geneInfoFound = From geneInfo As GeneInfo In _geneInfos
                             Where geneInfo.Code = geneCode
 
         Dim returnGeneInfos As GeneInfo
         If geneInfoFound.Count > 0 Then
-            returnGeneInfos = CloneGeneInfo(geneInfoFound.ElementAt(0))
+            returnGeneInfos = geneInfoFound.ElementAt(0)
         Else
-            returnGeneInfos = CloneGeneInfo(_geneInfos.Item(DEFAULT_GENE_VALUE))
+            returnGeneInfos = _geneInfos.Item(DEFAULT_GENE_VALUE)
         End If
         Return returnGeneInfos
     End Function
@@ -96,8 +91,8 @@ Public Class GeneInfoFactory
     ''' </summary>
     ''' <param name="filterString"></param>
     ''' <returns>List of String</returns>
-    Public Function GetAllMatchingCodeNames(Optional ByVal filterString As String = "") As List(Of String)
-        Dim returnNames As New List(Of String)
+    Public Function GetAllMatchingCodeNames(Optional ByVal filterString As String = "") As Collection(Of String) Implements IGeneInfoProvider.GetAllMatchingCodeNames
+        Dim returnNames As New Collection(Of String)
         Dim filteredNames = From geneInfos As GeneInfo In _geneInfos
                             Where geneInfos.Code.ToLower.StartsWith(filterString.ToLower)
                             Order By geneInfos.Value
@@ -114,13 +109,14 @@ Public Class GeneInfoFactory
     ''' </summary>
     ''' <param name="geneInfoToClone">A GeneInfo object to be cloned.</param>
     ''' <returns>Returns a new GeneInfo object.</returns>
-    Public Function CloneGeneInfo(ByRef geneInfoToClone As GeneInfo) As GeneInfo
+    Public Function CloneGeneInfo(ByRef geneInfoToClone As GeneInfo) As GeneInfo Implements IGeneInfoProvider.CloneGeneInfo
         Dim returnGeneInfo As New GeneInfo
         If geneInfoToClone IsNot Nothing Then
             returnGeneInfo.Value = geneInfoToClone.Value
             returnGeneInfo.Code = geneInfoToClone.Code
             returnGeneInfo.NumberOfArgs = geneInfoToClone.NumberOfArgs
             returnGeneInfo.Description = geneInfoToClone.Description
+            returnGeneInfo.Modifiers = geneInfoToClone.Modifiers
         End If
         Return returnGeneInfo
     End Function

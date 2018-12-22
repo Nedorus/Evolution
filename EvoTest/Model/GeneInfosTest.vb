@@ -27,20 +27,20 @@ Imports System.IO.Abstractions.TestingHelpers
         Assert.AreEqual(0, geneInfos(0).NumberOfArgs)
         Assert.AreEqual("Nothing happens", geneInfos(0).Description)
         Assert.AreEqual(2, geneInfos(0).Modifiers.Count)
-        Assert.AreEqual("Subtract", geneInfos(0).Modifiers(1).ChangeOperator)
-        Assert.AreEqual("GeneCodeRelative", geneInfos(0).Modifiers(1).Target)
-        Assert.AreEqual("ProgramCounterRelative", geneInfos(0).Modifiers(1).FirstArg)
-        Assert.AreEqual("YPosition", geneInfos(0).Modifiers(1).SecondArg)
+        Assert.AreEqual(ICreatureDataDefinitions.ChangeOperator.Subtract, geneInfos(0).Modifiers(1).ChangeOperator)
+        Assert.AreEqual(ICreatureDataDefinitions.CreatureData.GeneCode, geneInfos(0).Modifiers(1).Target.ReferenceString)
+        Assert.AreEqual(ICreatureDataDefinitions.CreatureData.GeneCounter, geneInfos(0).Modifiers(1).FirstArg.ReferenceString)
+        Assert.AreEqual(ICreatureDataDefinitions.CreatureData.YPosition, geneInfos(0).Modifiers(1).SecondArg.ReferenceString)
 
         Assert.AreEqual("ADD", geneInfos(1).Code)
         Assert.AreEqual(1, geneInfos(1).Value)
         Assert.AreEqual(2, geneInfos(1).NumberOfArgs)
         Assert.AreEqual("Mocked description number two", geneInfos(1).Description)
         Assert.AreEqual(1, geneInfos(1).Modifiers.Count)
-        Assert.AreEqual("", geneInfos(1).Modifiers(0).ChangeOperator)
-        Assert.AreEqual("", geneInfos(1).Modifiers(0).Target)
-        Assert.AreEqual("", geneInfos(1).Modifiers(0).FirstArg)
-        Assert.AreEqual("", geneInfos(1).Modifiers(0).SecondArg)
+        Assert.AreEqual(ICreatureDataDefinitions.ChangeOperator.Undefined, geneInfos(1).Modifiers(0).ChangeOperator)
+        Assert.AreEqual(ICreatureDataDefinitions.CreatureData.Undefined, geneInfos(1).Modifiers(0).Target.ReferenceString)
+        Assert.AreEqual(ICreatureDataDefinitions.CreatureData.Undefined, geneInfos(1).Modifiers(0).FirstArg.ReferenceString)
+        Assert.AreEqual(ICreatureDataDefinitions.CreatureData.Undefined, geneInfos(1).Modifiers(0).SecondArg.ReferenceString)
     End Sub
 
     <TestMethod()> Public Sub LoadFileNotFoundXMLTest()
@@ -96,8 +96,14 @@ Imports System.IO.Abstractions.TestingHelpers
 
         Dim geneInfos As New Evolution.GeneInfos()
         Dim geneInfo1 As New GeneInfo(0, "NULL", 0, "Nothing happens")
-        geneInfo1.Modifiers.Add(New Modifier("Add", "EnergyType1", "GeneCode", "XPosition"))
-        geneInfo1.Modifiers.Add(New Modifier("Subtract", "GeneCodeRelative", "ProgramCounterRelative", "YPosition"))
+        geneInfo1.Modifiers.Add(New Modifier(ICreatureDataDefinitions.ChangeOperator.Add,
+                                             New ModifierAddress(IModifierAddress.ReferenceTypeValue.Relative, 0, ICreatureDataDefinitions.CreatureData.EnergyType1),
+                                             New ModifierAddress(IModifierAddress.ReferenceTypeValue.Relative, 2, ICreatureDataDefinitions.CreatureData.GeneCode),
+                                             New ModifierAddress(IModifierAddress.ReferenceTypeValue.Relative, 3, ICreatureDataDefinitions.CreatureData.XPosition)))
+        geneInfo1.Modifiers.Add(New Modifier(ICreatureDataDefinitions.ChangeOperator.Subtract,
+                                             New ModifierAddress(IModifierAddress.ReferenceTypeValue.Relative, 0, ICreatureDataDefinitions.CreatureData.GeneCode),
+                                             New ModifierAddress(IModifierAddress.ReferenceTypeValue.Relative, 5, ICreatureDataDefinitions.CreatureData.GeneCounter),
+                                             New ModifierAddress(IModifierAddress.ReferenceTypeValue.Relative, 7, ICreatureDataDefinitions.CreatureData.YPosition)))
         Dim geneInfo2 As New GeneInfo(1, "ADD", 2, "Mocked description number two")
         geneInfo2.Modifiers.Add(New Modifier())
         geneInfos.Add(geneInfo1)
@@ -110,8 +116,9 @@ Imports System.IO.Abstractions.TestingHelpers
         Dim actualFileContent As String = mockedFilesSystem.GetFile(pathToMockedXML & "\" & filenameMockedXML).TextContents()
 
         'Assert
-        Debug.WriteLine("Compare: " & String.Compare(expectedFileContent, actualFileContent))
+        Assert.AreEqual(ICreatureDataDefinitions.ChangeOperator.Undefined, geneInfo2.Modifiers(0).ChangeOperator)
         Assert.AreEqual(expectedFileContent, actualFileContent)
+
     End Sub
 
 End Class

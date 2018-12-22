@@ -1,21 +1,32 @@
-﻿Public Class GeneViewModel
+﻿Imports System.Collections.ObjectModel
+
+Public Class GeneViewModel
     Inherits BindableBase
 
     Private _index As Integer
     Private _geneInfo As GeneInfo
     Private _selectedGeneCodeComboBoxIsopen As Boolean
-    Private _randomStringAndUIDGenerator As RandomStringAndUIDGenerator
+    Private _geneInfoProvider As GeneInfoProvider
+    Private _randomStringAndUIDGenerator As RandomStringAndUidGenerator
 
-    Public Sub New(ByVal randomStringAndUIDGenerator As RandomStringAndUIDGenerator)
+    Public Sub New(ByVal randomStringAndUidGenerator As RandomStringAndUidGenerator)
+        _geneInfoProvider = New GeneInfoProvider()
         _index = 0
         _geneInfo = New GeneInfo()
-        _randomStringAndUIDGenerator = randomStringAndUIDGenerator
+        _randomStringAndUIDGenerator = randomStringAndUidGenerator
     End Sub
 
-    Public Sub New(ByRef index As Integer, Optional ByRef geneInfo As GeneInfo = Nothing)
+    Public Sub New(ByVal index As Integer)
+        _geneInfoProvider = New GeneInfoProvider()
         _index = index
+        _geneInfo = New GeneInfo(_index, _randomStringAndUIDGenerator.RandomString(4), _randomStringAndUIDGenerator.RandomNumberString(1), _randomStringAndUIDGenerator.RandomString(15))
+    End Sub
+
+    Public Sub New(ByVal index As Integer, ByVal geneInfo As GeneInfo)
+        _index = index
+        _geneInfoProvider = New GeneInfoProvider()
         If geneInfo IsNot Nothing Then
-            _geneInfo = GeneInfoFactory.Instance.CloneGeneInfo(geneInfo)
+            _geneInfo = _geneInfoProvider.CloneGeneInfo(geneInfo)
         Else
             _geneInfo = New GeneInfo(_index, _randomStringAndUIDGenerator.RandomString(4), _randomStringAndUIDGenerator.RandomNumberString(1), _randomStringAndUIDGenerator.RandomString(15))
         End If
@@ -72,13 +83,12 @@
         End Get
         Set(value As Boolean)
             MyBase.SetProperty(Of Boolean)(_selectedGeneCodeComboBoxIsopen, value, "SelectedGeneCodeComboBoxIsOpen")
-            Debug.WriteLine("SelectedGeneCodeComboBoxIsOpen is open: {0}", _selectedGeneCodeComboBoxIsopen)
         End Set
     End Property
 
-    Public ReadOnly Property FilteredCodeList As List(Of String)
+    Public ReadOnly Property FilteredCodeList As Collection(Of String)
         Get
-            Return GeneInfoFactory.Instance.GetAllMatchingCodeNames(_geneInfo.Code)
+            Return _geneInfoProvider.GetAllMatchingCodeNames(_geneInfo.Code)
         End Get
     End Property
 

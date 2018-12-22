@@ -1,10 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ChangeableData>
+<CreatureDataDefinitions>
   <CreatureDataDefinition>
     <CreatureDataItem>GeneCode</CreatureDataItem>
-    <CreatureDataItem>GeneCodeRelative</CreatureDataItem>
-    <CreatureDataItem>ProgramCounter</CreatureDataItem>
-    <CreatureDataItem>ProgramCounterRelative</CreatureDataItem>
+    <CreatureDataItem>GeneCounter</CreatureDataItem>
     <CreatureDataItem>EnergyType1</CreatureDataItem>
     <CreatureDataItem>XPosition</CreatureDataItem>
     <CreatureDataItem>YPosition</CreatureDataItem>
@@ -13,4 +11,4 @@
     <ChangeOperator>Add</ChangeOperator>
     <ChangeOperator>Subtract</ChangeOperator>
   </ChangeOperations>
-</ChangeableData>
+</CreatureDataDefinitions>

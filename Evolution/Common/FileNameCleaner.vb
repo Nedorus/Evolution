@@ -26,19 +26,22 @@ Public Class FileNameCleaner
         Dim returnVal As Boolean = True
         'as Path.GetInvalidPathChars() is a true Subset of Path.GetInvalidFileNameChars
         'only this is needed
-        For Each currChar In Path.GetInvalidFileNameChars
-            If pText.Contains(CType(currChar, String)) Then
+        Dim index As Integer = 0
+        Dim length As Integer = Path.GetInvalidFileNameChars.Count
+        While returnVal AndAlso index < length
+            If pText.Contains(CType(Path.GetInvalidFileNameChars(index), String)) Then
                 returnVal = False
-                Exit For
             End If
-        Next
+            index += 1
+        End While
 
         Return returnVal
+
     End Function
 
     Private Shared Function GetBadCharakters(ByVal useOnlyPathBadChars As Boolean) As Char()
 
-        Dim badChars() As Char
+        Dim badChars As Char()
 
         If useOnlyPathBadChars Then
             badChars = Path.GetInvalidPathChars()

@@ -7,7 +7,7 @@ Imports Evolution
 
     <TestMethod()> Public Sub RandomUIDTest()
         'Arrange
-        Dim randomGenerator As RandomStringAndUIDGenerator = New RandomStringAndUIDGenerator(New Random())
+        Dim randomGenerator As RandomStringAndUidGenerator = New RandomStringAndUidGenerator(New Random())
         Dim uidLength10 As Integer = 10
         Dim uidlength25 As Integer = 25
 
@@ -26,7 +26,7 @@ Imports Evolution
 
     <TestMethod()> Public Sub RandomStringTest()
         'Arrange
-        Dim randomGenerator As RandomStringAndUIDGenerator = New RandomStringAndUIDGenerator(New Random())
+        Dim randomGenerator As RandomStringAndUidGenerator = New RandomStringAndUidGenerator(New Random())
         Dim stringLength10 As Integer = 10
         Dim stringLength25 As Integer = 25
 
@@ -45,7 +45,7 @@ Imports Evolution
 
     <TestMethod()> Public Sub RandomNumberStringTest()
         'Arrange
-        Dim randomGenerator As RandomStringAndUIDGenerator = New RandomStringAndUIDGenerator(New Random())
+        Dim randomGenerator As RandomStringAndUidGenerator = New RandomStringAndUidGenerator(New Random())
         Dim numberSringLength10 As Integer = 10
         Dim numberStringtringLength25 As Integer = 25
 

@@ -118,7 +118,9 @@
     <Compile Include="MainWindowTest.vb" />
     <Compile Include="Model\CreatureDataDefinitionsTest.vb" />
     <Compile Include="Model\GeneInfoFactoryTest.vb" />
-    <Compile Include="Model\DynamicCreatureTest.vb" />
+    <Compile Include="Model\GeneExcuterTest.vb" />
+    <Compile Include="Model\GeneTest.vb" />
+    <Compile Include="Model\CreatureTest.vb" />
     <Compile Include="TestResources\XMLTestDataProvider.vb" />
     <Compile Include="ViewModel\GeneViewModelTest.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />

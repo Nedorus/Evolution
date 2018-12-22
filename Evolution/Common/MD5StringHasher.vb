@@ -10,7 +10,7 @@ Public Class MD5StringHasher
     End Sub
 
     Public Function HashUsingMD5(ByVal pString As String) As String
-        Dim returnString As String = ""
+        Dim returnString As New System.Text.StringBuilder
 
         Dim byteData As Byte()
         Dim byteHash As Byte()
@@ -21,10 +21,10 @@ Public Class MD5StringHasher
         For i As Integer = 0 To byteHash.Length - 1
             tmpString = Hex(byteHash(i))
             If Len(tmpString) = 1 Then tmpString = "0" & tmpString
-            returnString += tmpString
+            returnString.Append(tmpString)
         Next
 
-        Return returnString.ToLower()
+        Return returnString.ToString().ToLower()
     End Function
 
 End Class

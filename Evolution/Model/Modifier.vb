@@ -7,16 +7,19 @@ Imports Evolution
 Public Class Modifier
     Implements IModifier
 
-    Private _changeOperator As String
-    Private _target As String
-    Private _firstArg As String
-    Private _secondArg As String
+    Private _changeOperator As ICreatureDataDefinitions.ChangeOperator
+    Private _target As IModifierAddress
+    Private _firstArg As IModifierAddress
+    Private _secondArg As IModifierAddress
 
     Public Sub New()
-
+        _changeOperator = ICreatureDataDefinitions.ChangeOperator.Undefined
+        _target = New ModifierAddress()
+        _firstArg = New ModifierAddress()
+        _secondArg = New ModifierAddress()
     End Sub
 
-    Public Sub New(changeOperator As String, target As String, firstArg As String, secondArg As String)
+    Public Sub New(changeOperator As ICreatureDataDefinitions.ChangeOperator, target As IModifierAddress, firstArg As IModifierAddress, secondArg As IModifierAddress)
         _changeOperator = changeOperator
         _target = target
         _firstArg = firstArg
@@ -24,56 +27,80 @@ Public Class Modifier
     End Sub
 
 
-    Public Property ChangeOperator As String Implements IModifier.ChangeOperator
+    Public Property ChangeOperator As ICreatureDataDefinitions.ChangeOperator Implements IModifier.ChangeOperator
         Get
             Return _changeOperator
         End Get
-        Set(value As String)
+        Set(value As ICreatureDataDefinitions.ChangeOperator)
             _changeOperator = value
         End Set
     End Property
 
-    Public Property Target As String Implements IModifier.Target
+    Public Property Target As IModifierAddress Implements IModifier.Target
         Get
             Return _target
         End Get
-        Set(value As String)
+        Set(value As IModifierAddress)
             _target = value
         End Set
     End Property
 
-    Public Property FirstArg As String Implements IModifier.FirstArg
+    Public Property FirstArg As IModifierAddress Implements IModifier.FirstArg
         Get
             Return _firstArg
         End Get
-        Set(value As String)
+        Set(value As IModifierAddress)
             _firstArg = value
         End Set
     End Property
 
-    Public Property SecondArg As String Implements IModifier.SecondArg
+    Public Property SecondArg As IModifierAddress Implements IModifier.SecondArg
         Get
             Return _secondArg
         End Get
-        Set(value As String)
+        Set(value As IModifierAddress)
             _secondArg = value
         End Set
     End Property
 
     Public Sub ReadXml(reader As XmlReader) Implements IXmlSerializable.ReadXml
+
+        Dim modifierAddress_serializer As New XmlSerializer(GetType(ModifierAddress))
+
         reader.ReadStartElement()
         reader.MoveToContent()
-        Me.ChangeOperator = reader.ReadElementContentAsString
-        Me.Target = reader.ReadElementContentAsString
-        Me.FirstArg = reader.ReadElementContentAsString
-        Me.SecondArg = reader.ReadElementContentAsString
+        Dim was_empty As Boolean = reader.IsEmptyElement
+        If Not was_empty Then
+            Me.ChangeOperator = DirectCast([Enum].Parse(GetType(ICreatureDataDefinitions.ChangeOperator), reader.ReadElementContentAsString), ICreatureDataDefinitions.ChangeOperator)
+        Else
+            Me.ChangeOperator = ICreatureDataDefinitions.ChangeOperator.Undefined
+            reader.ReadElementContentAsString()
+        End If
+
+        'Me.Target = reader.ReadElementContentAsString
+        Me.Target = DirectCast(modifierAddress_serializer.Deserialize(reader), ModifierAddress)
+        reader.ReadEndElement()
+
+        'Me.FirstArg = reader.ReadElementContentAsString
+        Me.FirstArg = DirectCast(modifierAddress_serializer.Deserialize(reader), ModifierAddress)
+        reader.ReadEndElement()
+
+        'Me.SecondArg = reader.ReadElementContentAsString
+        Me.SecondArg = DirectCast(modifierAddress_serializer.Deserialize(reader), ModifierAddress)
+        reader.ReadEndElement()
+
+
     End Sub
 
     Public Sub WriteXml(writer As XmlWriter) Implements IXmlSerializable.WriteXml
-        writer.WriteElementString("ChangeOperator", ChangeOperator)
-        writer.WriteElementString("Target", Target)
-        writer.WriteElementString("FirstArg", FirstArg)
-        writer.WriteElementString("SecondArg", SecondArg)
+        writer.WriteStartElement("Modifier")
+        writer.WriteElementString("ChangeOperator", [Enum].GetName(GetType(ICreatureDataDefinitions.ChangeOperator), Me.ChangeOperator))
+
+        Target.WriteXml(writer)
+        FirstArg.WriteXml(writer)
+        SecondArg.WriteXml(writer)
+
+        writer.WriteEndElement()
     End Sub
 
     <ExcludeFromCodeCoverage()>

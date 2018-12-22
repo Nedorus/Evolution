@@ -26,9 +26,7 @@ Public Class GeneInfos
 
     Public Sub WriteXml(writer As XmlWriter) Implements IXmlSerializable.WriteXml
         For Each currGeneInfo In Me
-            writer.WriteStartElement("GeneInfo")
             currGeneInfo.WriteXml(writer)
-            writer.WriteEndElement()
         Next
     End Sub
 

@@ -95,18 +95,19 @@ Public Class GeneInfo
     End Sub
 
     Public Sub WriteXml(writer As XmlWriter) Implements IXmlSerializable.WriteXml
+        writer.WriteStartElement("GeneInfo")
 
         writer.WriteElementString("Value", Value.ToString)
         writer.WriteElementString("Code", Code)
         writer.WriteElementString("NumberOfArgs", NumberOfArgs.ToString)
         writer.WriteElementString("Description", Description)
-        writer.WriteStartElement("Modifiers")
 
+        writer.WriteStartElement("Modifiers")
         For Each currModifier In Me.Modifiers
-            writer.WriteStartElement("Modifier")
             currModifier.WriteXml(writer)
-            writer.WriteEndElement()
         Next
+        writer.WriteEndElement()
+
         writer.WriteEndElement()
     End Sub
 
