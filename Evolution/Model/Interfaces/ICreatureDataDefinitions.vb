@@ -9,12 +9,12 @@
         YPosition
     End Enum
 
-    Enum ChangeOperator
-        Undefined
-        Add
-        Subtract
-    End Enum
+    'Enum ChangeOperator
+    '    Undefined
+    '    Add
+    '    Subtract
+    'End Enum
 
-    Function GetChangeOperations() As List(Of ChangeOperator)
+    Function GetChangeOperations() As List(Of IModifier.ModifierOperator)
     Function GetCreatureDataDefinition() As List(Of CreatureData)
 End Interface

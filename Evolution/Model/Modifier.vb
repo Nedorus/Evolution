@@ -7,19 +7,19 @@ Imports Evolution
 Public Class Modifier
     Implements IModifier
 
-    Private _changeOperator As ICreatureDataDefinitions.ChangeOperator
+    Private _changeOperator As IModifier.ModifierOperator
     Private _target As IModifierAddress
     Private _firstArg As IModifierAddress
     Private _secondArg As IModifierAddress
 
     Public Sub New()
-        _changeOperator = ICreatureDataDefinitions.ChangeOperator.Undefined
+        _changeOperator = IModifier.ModifierOperator.Undefined
         _target = New ModifierAddress()
         _firstArg = New ModifierAddress()
         _secondArg = New ModifierAddress()
     End Sub
 
-    Public Sub New(changeOperator As ICreatureDataDefinitions.ChangeOperator, target As IModifierAddress, firstArg As IModifierAddress, secondArg As IModifierAddress)
+    Public Sub New(changeOperator As IModifier.ModifierOperator, target As IModifierAddress, firstArg As IModifierAddress, secondArg As IModifierAddress)
         _changeOperator = changeOperator
         _target = target
         _firstArg = firstArg
@@ -27,11 +27,11 @@ Public Class Modifier
     End Sub
 
 
-    Public Property ChangeOperator As ICreatureDataDefinitions.ChangeOperator Implements IModifier.ChangeOperator
+    Public Property ChangeOperator As IModifier.ModifierOperator Implements IModifier.ChangeOperator
         Get
             Return _changeOperator
         End Get
-        Set(value As ICreatureDataDefinitions.ChangeOperator)
+        Set(value As IModifier.ModifierOperator)
             _changeOperator = value
         End Set
     End Property
@@ -71,9 +71,9 @@ Public Class Modifier
         reader.MoveToContent()
         Dim was_empty As Boolean = reader.IsEmptyElement
         If Not was_empty Then
-            Me.ChangeOperator = DirectCast([Enum].Parse(GetType(ICreatureDataDefinitions.ChangeOperator), reader.ReadElementContentAsString), ICreatureDataDefinitions.ChangeOperator)
+            Me.ChangeOperator = DirectCast([Enum].Parse(GetType(IModifier.ModifierOperator), reader.ReadElementContentAsString), IModifier.ModifierOperator)
         Else
-            Me.ChangeOperator = ICreatureDataDefinitions.ChangeOperator.Undefined
+            Me.ChangeOperator = IModifier.ModifierOperator.Undefined
             reader.ReadElementContentAsString()
         End If
 
@@ -94,7 +94,7 @@ Public Class Modifier
 
     Public Sub WriteXml(writer As XmlWriter) Implements IXmlSerializable.WriteXml
         writer.WriteStartElement("Modifier")
-        writer.WriteElementString("ChangeOperator", [Enum].GetName(GetType(ICreatureDataDefinitions.ChangeOperator), Me.ChangeOperator))
+        writer.WriteElementString("ChangeOperator", [Enum].GetName(GetType(IModifier.ModifierOperator), Me.ChangeOperator))
 
         Target.WriteXml(writer)
         FirstArg.WriteXml(writer)

@@ -108,9 +108,9 @@ Public Class GeneExcuter
         Dim returnVal As Integer
 
         Select Case _currModifier.ChangeOperator
-            Case ICreatureDataDefinitions.ChangeOperator.Add
+            Case IModifier.ModifierOperator.Add
                 returnVal = firstArgValue + secondArgValue
-            Case ICreatureDataDefinitions.ChangeOperator.Subtract
+            Case IModifier.ModifierOperator.Subtract
                 returnVal = firstArgValue - secondArgValue
             Case Else
                 returnVal = 0

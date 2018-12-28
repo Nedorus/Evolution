@@ -6,7 +6,13 @@ Imports System.Xml.Serialization
 Public Interface IModifier
     Inherits IXmlSerializable
 
-    Property ChangeOperator As ICreatureDataDefinitions.ChangeOperator
+    Enum ModifierOperator
+        Undefined
+        Add
+        Subtract
+    End Enum
+
+    Property ChangeOperator As IModifier.ModifierOperator
     Property Target As IModifierAddress
     Property FirstArg As IModifierAddress
     Property SecondArg As IModifierAddress
