@@ -97,7 +97,7 @@ Imports System.IO.Abstractions.TestingHelpers
         Dim geneInfos As New Evolution.GeneInfos()
         Dim geneInfo1 As New GeneInfo(0, "NULL", 0, "Nothing happens")
         geneInfo1.Modifiers.Add(New Modifier(IModifier.ModifierOperator.Add,
-                                             New ModifierAddress(IModifierAddress.ReferenceTypeValue.Relative, 0, ICreatureDataDefinitions.CreatureData.EnergyType1),
+                                             New ModifierAddress(IModifierAddress.ReferenceTypeValue.Relative, 0, ICreatureDataDefinitions.CreatureData.Sunlight),
                                              New ModifierAddress(IModifierAddress.ReferenceTypeValue.Relative, 2, ICreatureDataDefinitions.CreatureData.GeneCode),
                                              New ModifierAddress(IModifierAddress.ReferenceTypeValue.Relative, 3, ICreatureDataDefinitions.CreatureData.XPosition)))
         geneInfo1.Modifiers.Add(New Modifier(IModifier.ModifierOperator.Subtract,

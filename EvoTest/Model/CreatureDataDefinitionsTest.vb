@@ -19,8 +19,10 @@ Imports System.Xml
         'Akt
 
         'Assert
-        Assert.AreEqual(expectedCreatureDataCount, creatureDataDefinitions.GetCreatureDataDefinition().Count, String.Format("CreatureData should be {0} but was {1}.", expectedCreatureDataCount, creatureDataDefinitions.GetCreatureDataDefinition().Count))
-        Assert.AreEqual(expectedChangeOperatorCount, creatureDataDefinitions.GetChangeOperations().Count, String.Format("ChangeOperations should be {0} but was {1}.", expectedChangeOperatorCount, creatureDataDefinitions.GetChangeOperations().Count))
+        Assert.IsTrue(creatureDataDefinitions.GetCreatureDataDefinition().Contains(ICreatureDataDefinitions.CreatureData.GeneCounter))
+        Assert.IsTrue(creatureDataDefinitions.GetCreatureDataDefinition().Contains(ICreatureDataDefinitions.CreatureData.GeneCode))
+        Assert.IsTrue(creatureDataDefinitions.GetCreatureDataDefinition().Contains(ICreatureDataDefinitions.CreatureData.Undefined))
+        Assert.AreEqual(expectedChangeOperatorCount, creatureDataDefinitions.GetModifierOperators().Count, String.Format("ChangeOperations should be {0} but was {1}.", expectedChangeOperatorCount, creatureDataDefinitions.GetModifierOperators().Count))
 
     End Sub
 

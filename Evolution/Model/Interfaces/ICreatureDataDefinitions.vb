@@ -4,17 +4,16 @@
         Undefined
         GeneCode
         GeneCounter
-        EnergyType1
+        Sunlight
+        Mineral
+        Oxygen
+        Carbon
+        CarbonDioxide
         XPosition
         YPosition
     End Enum
 
-    'Enum ChangeOperator
-    '    Undefined
-    '    Add
-    '    Subtract
-    'End Enum
-
-    Function GetChangeOperations() As List(Of IModifier.ModifierOperator)
+    Function GetModifierOperators() As List(Of IModifier.ModifierOperator)
+    Function GetReferenceTypeValues() As List(Of IModifierAddress.ReferenceTypeValue)
     Function GetCreatureDataDefinition() As List(Of CreatureData)
 End Interface

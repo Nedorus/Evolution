@@ -22,7 +22,7 @@ Imports Moq
 
         Dim creature As New Creature()
         creature(ICreatureDataDefinitions.CreatureData.GeneCounter) = 0
-        creature(ICreatureDataDefinitions.CreatureData.EnergyType1) = 0
+        creature(ICreatureDataDefinitions.CreatureData.Carbon) = 0
         creature.Gene(0) = 0
         creature.Gene(1) = 1
         creature.Gene(2) = 3
@@ -35,11 +35,11 @@ Imports Moq
         geneExecuter.ExecuteCurrentGeneCode(creature)
 
         'Assert
-        Assert.AreEqual(ICreatureDataDefinitions.CreatureData.EnergyType1, geneInfoProvider.GetGeneInfoByGeneValue(0).Modifiers(0).Target.ReferenceString)
-        Assert.AreEqual(ICreatureDataDefinitions.CreatureData.EnergyType1, geneInfoProvider.GetGeneInfoByGeneValue(0).Modifiers(0).FirstArg.ReferenceString)
+        Assert.AreEqual(ICreatureDataDefinitions.CreatureData.Sunlight, geneInfoProvider.GetGeneInfoByGeneValue(0).Modifiers(0).Target.ReferenceString)
+        Assert.AreEqual(ICreatureDataDefinitions.CreatureData.Sunlight, geneInfoProvider.GetGeneInfoByGeneValue(0).Modifiers(0).FirstArg.ReferenceString)
         Assert.AreEqual(5, geneInfoProvider.GetGeneInfoByGeneValue(0).Modifiers(0).SecondArg.ReferenceInteger)
         Assert.AreEqual(1, creature(ICreatureDataDefinitions.CreatureData.GeneCounter))
-        Assert.AreEqual(5, creature(ICreatureDataDefinitions.CreatureData.EnergyType1))
+        Assert.AreEqual(5, creature(ICreatureDataDefinitions.CreatureData.Sunlight))
 
     End Sub
 
@@ -56,7 +56,7 @@ Imports Moq
 
         Dim creature As New Creature()
         creature(ICreatureDataDefinitions.CreatureData.GeneCounter) = 1
-        creature(ICreatureDataDefinitions.CreatureData.EnergyType1) = 0
+        creature(ICreatureDataDefinitions.CreatureData.Sunlight) = 0
         creature.Gene(0) = 0
         creature.Gene(1) = 1
         creature.Gene(2) = 3
@@ -69,11 +69,11 @@ Imports Moq
         geneExecuter.ExecuteCurrentGeneCode(creature)
 
         'Assert
-        Assert.AreEqual(ICreatureDataDefinitions.CreatureData.EnergyType1, geneInfoProvider.GetGeneInfoByGeneValue(1).Modifiers(0).Target.ReferenceString)
-        Assert.AreEqual(ICreatureDataDefinitions.CreatureData.EnergyType1, geneInfoProvider.GetGeneInfoByGeneValue(1).Modifiers(0).FirstArg.ReferenceString)
+        Assert.AreEqual(ICreatureDataDefinitions.CreatureData.Sunlight, geneInfoProvider.GetGeneInfoByGeneValue(1).Modifiers(0).Target.ReferenceString)
+        Assert.AreEqual(ICreatureDataDefinitions.CreatureData.Sunlight, geneInfoProvider.GetGeneInfoByGeneValue(1).Modifiers(0).FirstArg.ReferenceString)
         Assert.AreEqual(ICreatureDataDefinitions.CreatureData.GeneCode, geneInfoProvider.GetGeneInfoByGeneValue(1).Modifiers(0).SecondArg.ReferenceString)
         Assert.AreEqual(3, creature(ICreatureDataDefinitions.CreatureData.GeneCounter))
-        Assert.AreEqual(-3, creature(ICreatureDataDefinitions.CreatureData.EnergyType1))
+        Assert.AreEqual(-3, creature(ICreatureDataDefinitions.CreatureData.Sunlight))
 
     End Sub
 
@@ -92,7 +92,7 @@ Imports Moq
 
         Dim creature As New Creature()
         creature(ICreatureDataDefinitions.CreatureData.GeneCounter) = 3
-        creature(ICreatureDataDefinitions.CreatureData.EnergyType1) = 0
+        creature(ICreatureDataDefinitions.CreatureData.Sunlight) = 0
         creature.Gene(0) = 0
         creature.Gene(1) = 1
         creature.Gene(2) = 3
@@ -127,18 +127,18 @@ Imports Moq
 
         Dim creature As New Creature()
         creature(ICreatureDataDefinitions.CreatureData.GeneCounter) = 0
-        creature(ICreatureDataDefinitions.CreatureData.EnergyType1) = 3
+        creature(ICreatureDataDefinitions.CreatureData.Sunlight) = 3
         creature.Gene(0) = 0
         creature.Gene(1) = 4
 
         'Act
-        creature.Remove(ICreatureDataDefinitions.CreatureData.EnergyType1)
+        creature.Remove(ICreatureDataDefinitions.CreatureData.Sunlight)
         geneExecuter.ExecuteCurrentGeneCode(creature)
 
         'Assert
         Assert.AreEqual(4, creature.Count)
-        Assert.IsTrue(creature.ContainsKey(ICreatureDataDefinitions.CreatureData.EnergyType1))
-        Assert.AreEqual(9, creature(ICreatureDataDefinitions.CreatureData.EnergyType1))
+        Assert.IsTrue(creature.ContainsKey(ICreatureDataDefinitions.CreatureData.Sunlight))
+        Assert.AreEqual(9, creature(ICreatureDataDefinitions.CreatureData.Sunlight))
 
     End Sub
 
@@ -156,17 +156,17 @@ Imports Moq
 
         Dim creature As New Creature()
         creature(ICreatureDataDefinitions.CreatureData.GeneCounter) = 0
-        creature(ICreatureDataDefinitions.CreatureData.EnergyType1) = 3
+        creature(ICreatureDataDefinitions.CreatureData.Sunlight) = 3
         creature.Gene(0) = 0
         creature.Gene(1) = 4
 
         'Act
-        creature.Remove(ICreatureDataDefinitions.CreatureData.EnergyType1)
+        creature.Remove(ICreatureDataDefinitions.CreatureData.Sunlight)
         geneExecuter.ExecuteCurrentGeneCode(creature)
 
         'Assert
         Assert.AreEqual(4, creature.Count)
-        Assert.IsTrue(creature.ContainsKey(ICreatureDataDefinitions.CreatureData.EnergyType1))
+        Assert.IsTrue(creature.ContainsKey(ICreatureDataDefinitions.CreatureData.Sunlight))
         Assert.AreEqual(5, creature.Gene(4))
 
     End Sub
@@ -189,7 +189,7 @@ Imports Moq
         geneExecuter.ExecuteCurrentGeneCode(creature)
 
         'Assert
-        Assert.AreEqual(3, creature(ICreatureDataDefinitions.CreatureData.EnergyType1))
+        Assert.AreEqual(3, creature(ICreatureDataDefinitions.CreatureData.Sunlight))
 
     End Sub
 
@@ -232,7 +232,7 @@ Imports Moq
         Dim creature As New Creature()
         creature.Gene(0) = 2
         Dim targetAddress As Integer = 3
-        creature(ICreatureDataDefinitions.CreatureData.EnergyType1) = targetAddress
+        creature(ICreatureDataDefinitions.CreatureData.Sunlight) = targetAddress
 
         'Act
         geneExecuter.ExecuteCurrentGeneCode(creature)
@@ -306,7 +306,7 @@ Imports Moq
         Dim geneExecuter As New GeneExcuter(geneInfoProvider)
 
         Dim creature As New Creature()
-        creature(ICreatureDataDefinitions.CreatureData.EnergyType1) = 11
+        creature(ICreatureDataDefinitions.CreatureData.Sunlight) = 11
         creature.Gene(0) = 5
         creature.Gene(1) = 12
 
@@ -314,7 +314,7 @@ Imports Moq
         geneExecuter.ExecuteCurrentGeneCode(creature)
 
         'Assert
-        Assert.AreEqual(23, creature(ICreatureDataDefinitions.CreatureData.EnergyType1))
+        Assert.AreEqual(23, creature(ICreatureDataDefinitions.CreatureData.Sunlight))
 
     End Sub
 
@@ -333,7 +333,7 @@ Imports Moq
         Dim creature As New Creature()
         Dim firstArgAddr As Integer = 10
         Dim secondArgAddr As Integer = 20
-        creature(ICreatureDataDefinitions.CreatureData.EnergyType1) = firstArgAddr
+        creature(ICreatureDataDefinitions.CreatureData.Sunlight) = firstArgAddr
         creature.Gene(0) = 6
         creature.Gene(1) = secondArgAddr
         creature.Gene(firstArgAddr) = 13
@@ -344,7 +344,7 @@ Imports Moq
         geneExecuter.ExecuteCurrentGeneCode(creature)
 
         'Assert
-        Assert.AreEqual(27, creature(ICreatureDataDefinitions.CreatureData.EnergyType1))
+        Assert.AreEqual(27, creature(ICreatureDataDefinitions.CreatureData.Sunlight))
 
     End Sub
 
@@ -361,7 +361,7 @@ Imports Moq
         Dim geneExecuter As New GeneExcuter(geneInfoProvider)
 
         Dim creature As New Creature()
-        creature(ICreatureDataDefinitions.CreatureData.EnergyType1) = 0
+        creature(ICreatureDataDefinitions.CreatureData.Sunlight) = 0
         creature.Gene(0) = 7
 
 
@@ -370,7 +370,7 @@ Imports Moq
 
         'Assert
         Assert.AreEqual(4, creature.Count)
-        Assert.AreEqual(0, creature(ICreatureDataDefinitions.CreatureData.EnergyType1))
+        Assert.AreEqual(0, creature(ICreatureDataDefinitions.CreatureData.Sunlight))
         Assert.AreEqual(1, creature(ICreatureDataDefinitions.CreatureData.GeneCounter))
         Assert.AreEqual(0, creature(ICreatureDataDefinitions.CreatureData.XPosition))
         Assert.AreEqual(0, creature(ICreatureDataDefinitions.CreatureData.YPosition))

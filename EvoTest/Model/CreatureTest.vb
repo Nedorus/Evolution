@@ -15,7 +15,7 @@ Imports Moq
 
         'Act
         creature(ICreatureDataDefinitions.CreatureData.GeneCounter) = 2
-        creature(ICreatureDataDefinitions.CreatureData.EnergyType1) = 3
+        creature(ICreatureDataDefinitions.CreatureData.Sunlight) = 3
         creature.Gene(0) = 5
         creature.Gene(1) = 7
 
@@ -26,15 +26,15 @@ Imports Moq
         Assert.IsFalse(creature.ContainsKey(ICreatureDataDefinitions.CreatureData.GeneCode))
         'GeneCounter
         Assert.IsTrue(creature.ContainsKey(ICreatureDataDefinitions.CreatureData.GeneCounter))
-        'EnergyType1
-        Assert.IsTrue(creature.ContainsKey(ICreatureDataDefinitions.CreatureData.EnergyType1))
+        'Sunlight
+        Assert.IsTrue(creature.ContainsKey(ICreatureDataDefinitions.CreatureData.Sunlight))
         'XPosition
         Assert.IsTrue(creature.ContainsKey(ICreatureDataDefinitions.CreatureData.XPosition))
         'YPosition
         Assert.IsTrue(creature.ContainsKey(ICreatureDataDefinitions.CreatureData.YPosition))
         Assert.AreEqual(expectedLength, creature.Count)
         Assert.AreEqual(2, creature(ICreatureDataDefinitions.CreatureData.GeneCounter))
-        Assert.AreEqual(3, creature(ICreatureDataDefinitions.CreatureData.EnergyType1))
+        Assert.AreEqual(3, creature(ICreatureDataDefinitions.CreatureData.Sunlight))
         Assert.AreEqual(5, creature.Gene(0))
         Assert.AreEqual(7, creature.Gene(1))
 

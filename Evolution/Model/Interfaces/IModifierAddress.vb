@@ -9,6 +9,7 @@ Public Interface IModifierAddress
         Absolute
         Relative
         Indirect
+        Environment
     End Enum
 
     Property ReferenceType As ReferenceTypeValue

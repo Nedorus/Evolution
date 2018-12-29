@@ -34,7 +34,7 @@ Public Class XMLTestDataProvider
         <ModifierAddress>
           <ReferenceType>Relative</ReferenceType>
           <ReferenceInteger>0</ReferenceInteger>
-          <ReferenceString>EnergyType1</ReferenceString>
+          <ReferenceString>Sunlight</ReferenceString>
         </ModifierAddress>
         <ModifierAddress>
           <ReferenceType>Relative</ReferenceType>
@@ -100,19 +100,19 @@ Public Class XMLTestDataProvider
     <Value>0</Value>
     <Code>Add5Energy</Code>
     <NumberOfArgs>0</NumberOfArgs>
-    <Description>Add 5 EnergyType1 and store it in EnergyType1</Description>
+    <Description>Add 5 Sunlight and store it in Sunlight</Description>
     <Modifiers>
       <Modifier>
         <ChangeOperator>Add</ChangeOperator>
         <ModifierAddress>
           <ReferenceType>Relative</ReferenceType>
           <ReferenceInteger>0</ReferenceInteger>
-          <ReferenceString>EnergyType1</ReferenceString>
+          <ReferenceString>Sunlight</ReferenceString>
         </ModifierAddress>
         <ModifierAddress>
           <ReferenceType>Relative</ReferenceType>
           <ReferenceInteger>0</ReferenceInteger>
-          <ReferenceString>EnergyType1</ReferenceString>
+          <ReferenceString>Sunlight</ReferenceString>
         </ModifierAddress>
         <ModifierAddress>
           <ReferenceType>Absolute</ReferenceType>
@@ -126,19 +126,19 @@ Public Class XMLTestDataProvider
     <Value>1</Value>
     <Code>SubtractgeneCodeFromEnergy</Code>
     <NumberOfArgs>1</NumberOfArgs>
-    <Description>Subtract what you find in the GeneCode from EnergyType1 and store it in EnergyType1</Description>
+    <Description>Subtract what you find in the GeneCode from Sunlight and store it in Sunlight</Description>
     <Modifiers>
       <Modifier>
         <ChangeOperator>Subtract</ChangeOperator>
         <ModifierAddress>
           <ReferenceType>Relative</ReferenceType>
           <ReferenceInteger>0</ReferenceInteger>
-          <ReferenceString>EnergyType1</ReferenceString>
+          <ReferenceString>Sunlight</ReferenceString>
         </ModifierAddress>
         <ModifierAddress>
           <ReferenceType>Relative</ReferenceType>
           <ReferenceInteger>0</ReferenceInteger>
-          <ReferenceString>EnergyType1</ReferenceString>
+          <ReferenceString>Sunlight</ReferenceString>
         </ModifierAddress>
         <ModifierAddress>
           <ReferenceType>Relative</ReferenceType>
@@ -184,7 +184,7 @@ Public Class XMLTestDataProvider
   <CreatureDataDefinition>
     <CreatureDataItem>GeneCode</CreatureDataItem>
     <CreatureDataItem>GeneCounter</CreatureDataItem>
-    <CreatureDataItem>EnergyType1</CreatureDataItem>
+    <CreatureDataItem>Sunlight</CreatureDataItem>
     <CreatureDataItem>XPosition</CreatureDataItem>
     <CreatureDataItem>YPosition</CreatureDataItem>
   </CreatureDataDefinition>
@@ -203,14 +203,14 @@ Public Class XMLTestDataProvider
     <Value>0</Value>
     <Code>Add5Energy</Code>
     <NumberOfArgs>0</NumberOfArgs>
-    <Description>Add 5 to EnergyType1 and store it in EnergyType1</Description>
+    <Description>Add 5 to Sunlight and store it in Sunlight</Description>
     <Modifiers>
       <Modifier>
         <ChangeOperator>Add</ChangeOperator>
         <ModifierAddress>
           <ReferenceType>Relative</ReferenceType>
           <ReferenceInteger>0</ReferenceInteger>
-          <ReferenceString>EnergyType1</ReferenceString>
+          <ReferenceString>Sunlight</ReferenceString>
         </ModifierAddress>
         <ModifierAddress>
           <ReferenceType>Relative</ReferenceType>
@@ -232,7 +232,7 @@ Public Class XMLTestDataProvider
     <Value>0</Value>
     <Code>Add5PlausEnergyStoreInGeneCode</Code>
     <NumberOfArgs>0</NumberOfArgs>
-    <Description>Add 5 to EnergyType1 and store it in GeneCode</Description>
+    <Description>Add 5 to Sunlight and store it in GeneCode</Description>
     <Modifiers>
       <Modifier>
         <ChangeOperator>Add</ChangeOperator>
@@ -244,7 +244,7 @@ Public Class XMLTestDataProvider
         <ModifierAddress>
           <ReferenceType>Relative</ReferenceType>
           <ReferenceInteger>0</ReferenceInteger>
-          <ReferenceString>EnergyType1</ReferenceString>
+          <ReferenceString>Sunlight</ReferenceString>
         </ModifierAddress>
         <ModifierAddress>
           <ReferenceType>Absolute</ReferenceType>
@@ -261,14 +261,14 @@ Public Class XMLTestDataProvider
     <Value>0</Value>
     <Code>GeneInfoStoreRelativeExtra</Code>
     <NumberOfArgs>0</NumberOfArgs>
-    <Description>Store in EnergyType1</Description>
+    <Description>Store in Sunlight</Description>
     <Modifiers>
       <Modifier>
         <ChangeOperator>Add</ChangeOperator>
         <ModifierAddress>
           <ReferenceType>Relative</ReferenceType>
           <ReferenceInteger>0</ReferenceInteger>
-          <ReferenceString>EnergyType1</ReferenceString>
+          <ReferenceString>Sunlight</ReferenceString>
         </ModifierAddress>
         <ModifierAddress>
           <ReferenceType>Absolute</ReferenceType>
@@ -313,14 +313,14 @@ Public Class XMLTestDataProvider
     <Value>2</Value>
     <Code>GeneInfoStoreIndirectExtra</Code>
     <NumberOfArgs>0</NumberOfArgs>
-    <Description>Store in Address refered to by EnergyType1</Description>
+    <Description>Store in Address refered to by Sunlight</Description>
     <Modifiers>
       <Modifier>
         <ChangeOperator>Add</ChangeOperator>
         <ModifierAddress>
           <ReferenceType>Indirect</ReferenceType>
           <ReferenceInteger>0</ReferenceInteger>
-          <ReferenceString>EnergyType1</ReferenceString>
+          <ReferenceString>Sunlight</ReferenceString>
         </ModifierAddress>
         <ModifierAddress>
           <ReferenceType>Absolute</ReferenceType>
@@ -391,19 +391,19 @@ Public Class XMLTestDataProvider
     <Value>5</Value>
     <Code>GeneInfoReadRelative</Code>
     <NumberOfArgs>0</NumberOfArgs>
-    <Description>Reads values relative from EnergyType1 and GeneCode</Description>
+    <Description>Reads values relative from Sunlight and GeneCode</Description>
     <Modifiers>
       <Modifier>
         <ChangeOperator>Add</ChangeOperator>
         <ModifierAddress>
           <ReferenceType>Relative</ReferenceType>
           <ReferenceInteger>0</ReferenceInteger>
-          <ReferenceString>EnergyType1</ReferenceString>
+          <ReferenceString>Sunlight</ReferenceString>
         </ModifierAddress>
         <ModifierAddress>
           <ReferenceType>Relative</ReferenceType>
           <ReferenceInteger>11</ReferenceInteger>
-          <ReferenceString>EnergyType1</ReferenceString>
+          <ReferenceString>Sunlight</ReferenceString>
         </ModifierAddress>
         <ModifierAddress>
           <ReferenceType>Relative</ReferenceType>
@@ -417,19 +417,19 @@ Public Class XMLTestDataProvider
     <Value>6</Value>
     <Code>GeneInfoReadIndirect</Code>
     <NumberOfArgs>0</NumberOfArgs>
-    <Description>Reads values indirect from EnergyType1 and GeneCode</Description>
+    <Description>Reads values indirect from Sunlight and GeneCode</Description>
     <Modifiers>
       <Modifier>
         <ChangeOperator>Add</ChangeOperator>
         <ModifierAddress>
           <ReferenceType>Relative</ReferenceType>
           <ReferenceInteger>0</ReferenceInteger>
-          <ReferenceString>EnergyType1</ReferenceString>
+          <ReferenceString>Sunlight</ReferenceString>
         </ModifierAddress>
         <ModifierAddress>
           <ReferenceType>Indirect</ReferenceType>
           <ReferenceInteger>13</ReferenceInteger>
-          <ReferenceString>EnergyType1</ReferenceString>
+          <ReferenceString>Sunlight</ReferenceString>
         </ModifierAddress>
         <ModifierAddress>
           <ReferenceType>Indirect</ReferenceType>
