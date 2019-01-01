@@ -17,6 +17,8 @@ Public Class CreatureDataDefinitions
 
         _modifierOperators = New List(Of IModifier.ModifierOperator)
         _modifierOperators.AddRange([Enum].GetValues(GetType(IModifier.ModifierOperator)))
+
+        _referenceValues = New List(Of IModifierAddress.ReferenceTypeValue)
         _referenceValues.AddRange([Enum].GetValues(GetType(IModifierAddress.ReferenceTypeValue)))
     End Sub
 

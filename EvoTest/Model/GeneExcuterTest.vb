@@ -136,7 +136,7 @@ Imports Moq
         geneExecuter.ExecuteCurrentGeneCode(creature)
 
         'Assert
-        Assert.AreEqual(4, creature.Count)
+        Assert.AreEqual(8, creature.Count)
         Assert.IsTrue(creature.ContainsKey(ICreatureDataDefinitions.CreatureData.Sunlight))
         Assert.AreEqual(9, creature(ICreatureDataDefinitions.CreatureData.Sunlight))
 
@@ -165,8 +165,9 @@ Imports Moq
         geneExecuter.ExecuteCurrentGeneCode(creature)
 
         'Assert
-        Assert.AreEqual(4, creature.Count)
-        Assert.IsTrue(creature.ContainsKey(ICreatureDataDefinitions.CreatureData.Sunlight))
+        Assert.IsTrue(creature.ContainsKey(ICreatureDataDefinitions.CreatureData.GeneCounter))
+        Assert.IsTrue(creature.ContainsKey(ICreatureDataDefinitions.CreatureData.XPosition))
+        Assert.IsTrue(creature.ContainsKey(ICreatureDataDefinitions.CreatureData.YPosition))
         Assert.AreEqual(5, creature.Gene(4))
 
     End Sub
@@ -369,7 +370,7 @@ Imports Moq
         geneExecuter.ExecuteCurrentGeneCode(creature)
 
         'Assert
-        Assert.AreEqual(4, creature.Count)
+        Assert.AreEqual(8, creature.Count)
         Assert.AreEqual(0, creature(ICreatureDataDefinitions.CreatureData.Sunlight))
         Assert.AreEqual(1, creature(ICreatureDataDefinitions.CreatureData.GeneCounter))
         Assert.AreEqual(0, creature(ICreatureDataDefinitions.CreatureData.XPosition))
