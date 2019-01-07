@@ -10,6 +10,7 @@ Public Interface IModifierAddress
         Relative
         Indirect
         Environment
+        Creature
     End Enum
 
     Property ReferenceType As ReferenceTypeValue
