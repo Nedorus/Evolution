@@ -121,6 +121,7 @@
     <Compile Include="Model\GeneExcuterTest.vb" />
     <Compile Include="Model\GeneTest.vb" />
     <Compile Include="Model\CreatureTest.vb" />
+    <Compile Include="Model\ModifierAddress\ModifierAddressFactoryImplTest.vb" />
     <Compile Include="TestResources\XMLTestDataProvider.vb" />
     <Compile Include="ViewModel\GeneViewModelTest.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />

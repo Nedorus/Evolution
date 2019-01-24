@@ -23,7 +23,7 @@ Imports Moq
         'Assert
         Assert.AreEqual(3, geneInfoFactory.GeneInfos.Count)
         Assert.AreEqual(1, geneInfoFactory.GeneInfos(0).Modifiers.Count)
-        Assert.AreEqual(ICreatureDataDefinitions.CreatureData.Undefined, geneInfoFactory.GeneInfos(0).Modifiers(0).SecondArg.ReferenceString)
+        Assert.AreEqual(ICreatureDataDefinitions.CreatureData.Undefined, geneInfoFactory.GeneInfos(0).Modifiers(0).SecondArg.ReferenceCreatureData)
         Assert.AreEqual(IModifierAddress.ReferenceTypeValue.Absolute, geneInfoFactory.GeneInfos(0).Modifiers(0).SecondArg.ReferenceType)
         Assert.AreEqual(1, geneInfoFactory.GeneInfos(1).Value)
         Assert.AreEqual(3, geneInfoFactory.GeneInfos(2).NumberOfArgs)

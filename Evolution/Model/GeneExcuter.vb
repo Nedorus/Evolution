@@ -14,7 +14,7 @@ Public Class GeneExcuter
 
     Public Sub ExecuteCurrentGeneCode(ByRef creature As Creature)
         _creature = creature
-        _currGeneCounter = creature(ICreatureDataDefinitions.CreatureData.GeneCounter)
+        _currGeneCounter = _creature(ICreatureDataDefinitions.CreatureData.GeneCounter)
         _geneInfo = _geneInfoProvider.GetGeneInfoByGeneValue(_creature.Gene(_currGeneCounter))
         For Each modifier As IModifier In _geneInfo.Modifiers
             _currModifier = modifier
@@ -36,22 +36,22 @@ Public Class GeneExcuter
 
     Private Function GetValueByReferenceType(ByRef modifierAddress As IModifierAddress) As Integer
 
-        Dim returnval As Integer = 0
+        'Dim returnval As Integer = 0
 
-        Select Case modifierAddress.ReferenceType
-            Case IModifierAddress.ReferenceTypeValue.Absolute
-                returnval = modifierAddress.ReferenceInteger
-            Case IModifierAddress.ReferenceTypeValue.Relative
-                returnval = GetValueFromCreatureByReferenceString(modifierAddress)
-            Case IModifierAddress.ReferenceTypeValue.Indirect
-                Dim index As Integer = GetValueFromCreatureByReferenceString(modifierAddress)
-                returnval = GetValueFromCreatureGene(index)
-            Case Else
-                returnval = 0
-        End Select
+        'Select Case modifierAddress.ReferenceType
+        '    Case IModifierAddress.ReferenceTypeValue.Absolute
+        '        returnval = modifierAddress.ReferenceInteger
+        '    Case IModifierAddress.ReferenceTypeValue.Relative
+        '        returnval = GetValueFromCreatureByReferenceString(modifierAddress)
+        '    Case IModifierAddress.ReferenceTypeValue.Indirect
+        '        Dim index As Integer = GetValueFromCreatureByReferenceString(modifierAddress)
+        '        returnval = GetValueFromCreatureGene(index)
+        '    Case Else
+        '        returnval = 0
+        'End Select
 
-        Return returnval
-
+        'Return returnval
+        Return modifierAddress.GetValueByReferenceType(_creature)
     End Function
 
     Private Sub SetTargetValueByReferenceType(newTargetValue As Integer)
@@ -70,28 +70,29 @@ Public Class GeneExcuter
 
     ' TODO: Refactor this!
     Private Sub SetValueInCreatureByReferenceString(newTargetValue As Integer)
-        If _creature.ContainsKey(_currModifier.Target.ReferenceString) Then
-            _creature(_currModifier.Target.ReferenceString) = newTargetValue
-        ElseIf _currModifier.Target.ReferenceString = ICreatureDataDefinitions.CreatureData.GeneCode Then
+        If _creature.ContainsKey(_currModifier.Target.ReferenceCreatureData) Then
+            _creature(_currModifier.Target.ReferenceCreatureData) = newTargetValue
+        ElseIf _currModifier.Target.ReferenceCreatureData = ICreatureDataDefinitions.CreatureData.GeneCode Then
             _currGeneCounter += 1
             SetValueFromCreatureGene(_currGeneCounter, newTargetValue)
-        ElseIf _currModifier.Target.ReferenceString <> ICreatureDataDefinitions.CreatureData.Undefined Then
-            _creature.Add(_currModifier.Target.ReferenceString, newTargetValue)
+        ElseIf _currModifier.Target.ReferenceCreatureData <> ICreatureDataDefinitions.CreatureData.Undefined Then
+            _creature.Add(_currModifier.Target.ReferenceCreatureData, newTargetValue)
         End If
     End Sub
 
     Private Function GetValueFromCreatureByReferenceString(ByRef arg As IModifierAddress) As Integer
         Dim returnVal As Integer = 0
-        If _creature.ContainsKey(arg.ReferenceString) Then
-            returnVal = _creature(arg.ReferenceString)
-        ElseIf arg.ReferenceString = ICreatureDataDefinitions.CreatureData.GeneCode Then
+        If _creature.ContainsKey(arg.ReferenceCreatureData) Then
+            returnVal = _creature(arg.ReferenceCreatureData)
+        ElseIf arg.ReferenceCreatureData = ICreatureDataDefinitions.CreatureData.GeneCode Then
             _currGeneCounter += 1
             returnVal = GetValueFromCreatureGene(_currGeneCounter)
-        ElseIf arg.ReferenceString <> ICreatureDataDefinitions.CreatureData.Undefined Then
-            _creature.Add(arg.ReferenceString, 0)
-            returnVal = _creature(arg.ReferenceString)
+        ElseIf arg.ReferenceCreatureData <> ICreatureDataDefinitions.CreatureData.Undefined Then
+            _creature.Add(arg.ReferenceCreatureData, 0)
+            returnVal = _creature(arg.ReferenceCreatureData)
         End If
         Return returnVal
+
     End Function
 
     Private Sub SetValueFromCreatureGene(index As Integer, newTargetValue As Integer)

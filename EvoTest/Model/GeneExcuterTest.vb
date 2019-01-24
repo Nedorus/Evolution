@@ -35,8 +35,8 @@ Imports Moq
         geneExecuter.ExecuteCurrentGeneCode(creature)
 
         'Assert
-        Assert.AreEqual(ICreatureDataDefinitions.CreatureData.Sunlight, geneInfoProvider.GetGeneInfoByGeneValue(0).Modifiers(0).Target.ReferenceString)
-        Assert.AreEqual(ICreatureDataDefinitions.CreatureData.Sunlight, geneInfoProvider.GetGeneInfoByGeneValue(0).Modifiers(0).FirstArg.ReferenceString)
+        Assert.AreEqual(ICreatureDataDefinitions.CreatureData.Sunlight, geneInfoProvider.GetGeneInfoByGeneValue(0).Modifiers(0).Target.ReferenceCreatureData)
+        Assert.AreEqual(ICreatureDataDefinitions.CreatureData.Sunlight, geneInfoProvider.GetGeneInfoByGeneValue(0).Modifiers(0).FirstArg.ReferenceCreatureData)
         Assert.AreEqual(5, geneInfoProvider.GetGeneInfoByGeneValue(0).Modifiers(0).SecondArg.ReferenceInteger)
         Assert.AreEqual(1, creature(ICreatureDataDefinitions.CreatureData.GeneCounter))
         Assert.AreEqual(5, creature(ICreatureDataDefinitions.CreatureData.Sunlight))
@@ -69,9 +69,9 @@ Imports Moq
         geneExecuter.ExecuteCurrentGeneCode(creature)
 
         'Assert
-        Assert.AreEqual(ICreatureDataDefinitions.CreatureData.Sunlight, geneInfoProvider.GetGeneInfoByGeneValue(1).Modifiers(0).Target.ReferenceString)
-        Assert.AreEqual(ICreatureDataDefinitions.CreatureData.Sunlight, geneInfoProvider.GetGeneInfoByGeneValue(1).Modifiers(0).FirstArg.ReferenceString)
-        Assert.AreEqual(ICreatureDataDefinitions.CreatureData.GeneCode, geneInfoProvider.GetGeneInfoByGeneValue(1).Modifiers(0).SecondArg.ReferenceString)
+        Assert.AreEqual(ICreatureDataDefinitions.CreatureData.Sunlight, geneInfoProvider.GetGeneInfoByGeneValue(1).Modifiers(0).Target.ReferenceCreatureData)
+        Assert.AreEqual(ICreatureDataDefinitions.CreatureData.Sunlight, geneInfoProvider.GetGeneInfoByGeneValue(1).Modifiers(0).FirstArg.ReferenceCreatureData)
+        Assert.AreEqual(ICreatureDataDefinitions.CreatureData.GeneCode, geneInfoProvider.GetGeneInfoByGeneValue(1).Modifiers(0).SecondArg.ReferenceCreatureData)
         Assert.AreEqual(3, creature(ICreatureDataDefinitions.CreatureData.GeneCounter))
         Assert.AreEqual(-3, creature(ICreatureDataDefinitions.CreatureData.Sunlight))
 
@@ -105,9 +105,9 @@ Imports Moq
         geneExecuter.ExecuteCurrentGeneCode(creature)
 
         'Assert
-        Assert.AreEqual(ICreatureDataDefinitions.CreatureData.GeneCode, geneInfoProvider.GetGeneInfoByGeneValue(2).Modifiers(0).Target.ReferenceString)
-        Assert.AreEqual(ICreatureDataDefinitions.CreatureData.GeneCode, geneInfoProvider.GetGeneInfoByGeneValue(2).Modifiers(0).FirstArg.ReferenceString)
-        Assert.AreEqual(ICreatureDataDefinitions.CreatureData.GeneCode, geneInfoProvider.GetGeneInfoByGeneValue(2).Modifiers(0).SecondArg.ReferenceString)
+        Assert.AreEqual(ICreatureDataDefinitions.CreatureData.GeneCode, geneInfoProvider.GetGeneInfoByGeneValue(2).Modifiers(0).Target.ReferenceCreatureData)
+        Assert.AreEqual(ICreatureDataDefinitions.CreatureData.GeneCode, geneInfoProvider.GetGeneInfoByGeneValue(2).Modifiers(0).FirstArg.ReferenceCreatureData)
+        Assert.AreEqual(ICreatureDataDefinitions.CreatureData.GeneCode, geneInfoProvider.GetGeneInfoByGeneValue(2).Modifiers(0).SecondArg.ReferenceCreatureData)
         Assert.AreEqual(7, creature(ICreatureDataDefinitions.CreatureData.GeneCounter))
         Assert.AreEqual(3, creature.Gene(9))
 

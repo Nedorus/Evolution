@@ -31,39 +31,39 @@ Public Class XMLTestDataProvider
     <Modifiers>
       <Modifier>
         <ChangeOperator>Add</ChangeOperator>
-        <ModifierAddress>
+        <ModifierAddressAbsolute>
           <ReferenceType>Relative</ReferenceType>
           <ReferenceInteger>0</ReferenceInteger>
-          <ReferenceString>Sunlight</ReferenceString>
-        </ModifierAddress>
-        <ModifierAddress>
+          <ReferenceCreatureData>Sunlight</ReferenceCreatureData>
+        </ModifierAddressAbsolute>
+        <ModifierAddressAbsolute>
           <ReferenceType>Relative</ReferenceType>
           <ReferenceInteger>2</ReferenceInteger>
-          <ReferenceString>GeneCode</ReferenceString>
-        </ModifierAddress>
-        <ModifierAddress>
+          <ReferenceCreatureData>GeneCode</ReferenceCreatureData>
+        </ModifierAddressAbsolute>
+        <ModifierAddressAbsolute>
           <ReferenceType>Relative</ReferenceType>
           <ReferenceInteger>3</ReferenceInteger>
-          <ReferenceString>XPosition</ReferenceString>
-        </ModifierAddress>
+          <ReferenceCreatureData>XPosition</ReferenceCreatureData>
+        </ModifierAddressAbsolute>
       </Modifier>
       <Modifier>
         <ChangeOperator>Subtract</ChangeOperator>
-        <ModifierAddress>
+        <ModifierAddressAbsolute>
           <ReferenceType>Relative</ReferenceType>
           <ReferenceInteger>0</ReferenceInteger>
-          <ReferenceString>GeneCode</ReferenceString>
-        </ModifierAddress>
-        <ModifierAddress>
+          <ReferenceCreatureData>GeneCode</ReferenceCreatureData>
+        </ModifierAddressAbsolute>
+        <ModifierAddressAbsolute>
           <ReferenceType>Relative</ReferenceType>
           <ReferenceInteger>5</ReferenceInteger>
-          <ReferenceString>GeneCounter</ReferenceString>
-        </ModifierAddress>
-        <ModifierAddress>
+          <ReferenceCreatureData>GeneCounter</ReferenceCreatureData>
+        </ModifierAddressAbsolute>
+        <ModifierAddressAbsolute>
           <ReferenceType>Relative</ReferenceType>
           <ReferenceInteger>7</ReferenceInteger>
-          <ReferenceString>YPosition</ReferenceString>
-        </ModifierAddress>
+          <ReferenceCreatureData>YPosition</ReferenceCreatureData>
+        </ModifierAddressAbsolute>
       </Modifier>
     </Modifiers>
   </GeneInfo>
@@ -75,21 +75,21 @@ Public Class XMLTestDataProvider
     <Modifiers>
       <Modifier>
         <ChangeOperator>Undefined</ChangeOperator>
-        <ModifierAddress>
+        <ModifierAddressAbsolute>
           <ReferenceType>Undefined</ReferenceType>
           <ReferenceInteger>0</ReferenceInteger>
-          <ReferenceString>Undefined</ReferenceString>
-        </ModifierAddress>
-        <ModifierAddress>
+          <ReferenceCreatureData>Undefined</ReferenceCreatureData>
+        </ModifierAddressAbsolute>
+        <ModifierAddressAbsolute>
           <ReferenceType>Undefined</ReferenceType>
           <ReferenceInteger>0</ReferenceInteger>
-          <ReferenceString>Undefined</ReferenceString>
-        </ModifierAddress>
-        <ModifierAddress>
+          <ReferenceCreatureData>Undefined</ReferenceCreatureData>
+        </ModifierAddressAbsolute>
+        <ModifierAddressAbsolute>
           <ReferenceType>Undefined</ReferenceType>
           <ReferenceInteger>0</ReferenceInteger>
-          <ReferenceString>Undefined</ReferenceString>
-        </ModifierAddress>
+          <ReferenceCreatureData>Undefined</ReferenceCreatureData>
+        </ModifierAddressAbsolute>
       </Modifier>
     </Modifiers>
   </GeneInfo>
@@ -104,21 +104,21 @@ Public Class XMLTestDataProvider
     <Modifiers>
       <Modifier>
         <ChangeOperator>Add</ChangeOperator>
-        <ModifierAddress>
+        <ModifierAddressAbsolute>
           <ReferenceType>Relative</ReferenceType>
           <ReferenceInteger>0</ReferenceInteger>
-          <ReferenceString>Sunlight</ReferenceString>
-        </ModifierAddress>
-        <ModifierAddress>
+          <ReferenceCreatureData>Sunlight</ReferenceCreatureData>
+        </ModifierAddressAbsolute>
+        <ModifierAddressAbsolute>
           <ReferenceType>Relative</ReferenceType>
           <ReferenceInteger>0</ReferenceInteger>
-          <ReferenceString>Sunlight</ReferenceString>
-        </ModifierAddress>
-        <ModifierAddress>
+          <ReferenceCreatureData>Sunlight</ReferenceCreatureData>
+        </ModifierAddressAbsolute>
+        <ModifierAddressAbsolute>
           <ReferenceType>Absolute</ReferenceType>
           <ReferenceInteger>5</ReferenceInteger>
-          <ReferenceString />
-        </ModifierAddress>
+          <ReferenceCreatureData />
+        </ModifierAddressAbsolute>
       </Modifier>
     </Modifiers>
   </GeneInfo>
@@ -130,21 +130,21 @@ Public Class XMLTestDataProvider
     <Modifiers>
       <Modifier>
         <ChangeOperator>Subtract</ChangeOperator>
-        <ModifierAddress>
+        <ModifierAddressAbsolute>
           <ReferenceType>Relative</ReferenceType>
           <ReferenceInteger>0</ReferenceInteger>
-          <ReferenceString>Sunlight</ReferenceString>
-        </ModifierAddress>
-        <ModifierAddress>
+          <ReferenceCreatureData>Sunlight</ReferenceCreatureData>
+        </ModifierAddressAbsolute>
+        <ModifierAddressAbsolute>
           <ReferenceType>Relative</ReferenceType>
           <ReferenceInteger>0</ReferenceInteger>
-          <ReferenceString>Sunlight</ReferenceString>
-        </ModifierAddress>
-        <ModifierAddress>
+          <ReferenceCreatureData>Sunlight</ReferenceCreatureData>
+        </ModifierAddressAbsolute>
+        <ModifierAddressAbsolute>
           <ReferenceType>Relative</ReferenceType>
           <ReferenceInteger>0</ReferenceInteger>
-          <ReferenceString>GeneCode</ReferenceString>
-        </ModifierAddress>
+          <ReferenceCreatureData>GeneCode</ReferenceCreatureData>
+        </ModifierAddressAbsolute>
       </Modifier>
     </Modifiers>
   </GeneInfo>
@@ -156,21 +156,21 @@ Public Class XMLTestDataProvider
     <Modifiers>
       <Modifier>
         <ChangeOperator>Add</ChangeOperator>
-        <ModifierAddress>
+        <ModifierAddressAbsolute>
           <ReferenceType>Indirect</ReferenceType>
           <ReferenceInteger>0</ReferenceInteger>
-          <ReferenceString>GeneCode</ReferenceString>
-        </ModifierAddress>
-        <ModifierAddress>
+          <ReferenceCreatureData>GeneCode</ReferenceCreatureData>
+        </ModifierAddressAbsolute>
+        <ModifierAddressAbsolute>
           <ReferenceType>Indirect</ReferenceType>
           <ReferenceInteger>0</ReferenceInteger>
-          <ReferenceString>GeneCode</ReferenceString>
-        </ModifierAddress>
-        <ModifierAddress>
+          <ReferenceCreatureData>GeneCode</ReferenceCreatureData>
+        </ModifierAddressAbsolute>
+        <ModifierAddressAbsolute>
           <ReferenceType>Relative</ReferenceType>
           <ReferenceInteger>0</ReferenceInteger>
-          <ReferenceString>GeneCode</ReferenceString>
-        </ModifierAddress>
+          <ReferenceCreatureData>GeneCode</ReferenceCreatureData>
+        </ModifierAddressAbsolute>
       </Modifier>
     </Modifiers>
   </GeneInfo>
@@ -207,21 +207,21 @@ Public Class XMLTestDataProvider
     <Modifiers>
       <Modifier>
         <ChangeOperator>Add</ChangeOperator>
-        <ModifierAddress>
+        <ModifierAddressAbsolute>
           <ReferenceType>Relative</ReferenceType>
           <ReferenceInteger>0</ReferenceInteger>
-          <ReferenceString>Sunlight</ReferenceString>
-        </ModifierAddress>
-        <ModifierAddress>
+          <ReferenceCreatureData>Sunlight</ReferenceCreatureData>
+        </ModifierAddressAbsolute>
+        <ModifierAddressAbsolute>
           <ReferenceType>Relative</ReferenceType>
           <ReferenceInteger>0</ReferenceInteger>
-          <ReferenceString>GeneCode</ReferenceString>
-        </ModifierAddress>
-        <ModifierAddress>
+          <ReferenceCreatureData>GeneCode</ReferenceCreatureData>
+        </ModifierAddressAbsolute>
+        <ModifierAddressAbsolute>
           <ReferenceType>Absolute</ReferenceType>
           <ReferenceInteger>5</ReferenceInteger>
-          <ReferenceString>Undefined</ReferenceString>
-        </ModifierAddress>
+          <ReferenceCreatureData>Undefined</ReferenceCreatureData>
+        </ModifierAddressAbsolute>
       </Modifier>
     </Modifiers>
   </GeneInfo>
@@ -236,21 +236,21 @@ Public Class XMLTestDataProvider
     <Modifiers>
       <Modifier>
         <ChangeOperator>Add</ChangeOperator>
-        <ModifierAddress>
+        <ModifierAddressAbsolute>
           <ReferenceType>Indirect</ReferenceType>
           <ReferenceInteger>0</ReferenceInteger>
-          <ReferenceString>GeneCode</ReferenceString>
-        </ModifierAddress>
-        <ModifierAddress>
+          <ReferenceCreatureData>GeneCode</ReferenceCreatureData>
+        </ModifierAddressAbsolute>
+        <ModifierAddressAbsolute>
           <ReferenceType>Relative</ReferenceType>
           <ReferenceInteger>0</ReferenceInteger>
-          <ReferenceString>Sunlight</ReferenceString>
-        </ModifierAddress>
-        <ModifierAddress>
+          <ReferenceCreatureData>Sunlight</ReferenceCreatureData>
+        </ModifierAddressAbsolute>
+        <ModifierAddressAbsolute>
           <ReferenceType>Absolute</ReferenceType>
           <ReferenceInteger>5</ReferenceInteger>
-          <ReferenceString>Undefined</ReferenceString>
-        </ModifierAddress>
+          <ReferenceCreatureData>Undefined</ReferenceCreatureData>
+        </ModifierAddressAbsolute>
       </Modifier>
     </Modifiers>
   </GeneInfo>
@@ -265,21 +265,21 @@ Public Class XMLTestDataProvider
     <Modifiers>
       <Modifier>
         <ChangeOperator>Add</ChangeOperator>
-        <ModifierAddress>
+        <ModifierAddressAbsolute>
           <ReferenceType>Relative</ReferenceType>
           <ReferenceInteger>0</ReferenceInteger>
-          <ReferenceString>Sunlight</ReferenceString>
-        </ModifierAddress>
-        <ModifierAddress>
+          <ReferenceCreatureData>Sunlight</ReferenceCreatureData>
+        </ModifierAddressAbsolute>
+        <ModifierAddressAbsolute>
           <ReferenceType>Absolute</ReferenceType>
           <ReferenceInteger>1</ReferenceInteger>
-          <ReferenceString>Undefined</ReferenceString>
-        </ModifierAddress>
-        <ModifierAddress>
+          <ReferenceCreatureData>Undefined</ReferenceCreatureData>
+        </ModifierAddressAbsolute>
+        <ModifierAddressAbsolute>
           <ReferenceType>Absolute</ReferenceType>
           <ReferenceInteger>2</ReferenceInteger>
-          <ReferenceString>Undefined</ReferenceString>
-        </ModifierAddress>
+          <ReferenceCreatureData>Undefined</ReferenceCreatureData>
+        </ModifierAddressAbsolute>
       </Modifier>
     </Modifiers>
   </GeneInfo>
@@ -291,21 +291,21 @@ Public Class XMLTestDataProvider
     <Modifiers>
       <Modifier>
         <ChangeOperator>Add</ChangeOperator>
-        <ModifierAddress>
+        <ModifierAddressAbsolute>
           <ReferenceType>Relative</ReferenceType>
           <ReferenceInteger>0</ReferenceInteger>
-          <ReferenceString>GeneCode</ReferenceString>
-        </ModifierAddress>
-        <ModifierAddress>
+          <ReferenceCreatureData>GeneCode</ReferenceCreatureData>
+        </ModifierAddressAbsolute>
+        <ModifierAddressAbsolute>
           <ReferenceType>Absolute</ReferenceType>
           <ReferenceInteger>3</ReferenceInteger>
-          <ReferenceString>Undefined</ReferenceString>
-        </ModifierAddress>
-        <ModifierAddress>
+          <ReferenceCreatureData>Undefined</ReferenceCreatureData>
+        </ModifierAddressAbsolute>
+        <ModifierAddressAbsolute>
           <ReferenceType>Absolute</ReferenceType>
           <ReferenceInteger>4</ReferenceInteger>
-          <ReferenceString>Undefined</ReferenceString>
-        </ModifierAddress>
+          <ReferenceCreatureData>Undefined</ReferenceCreatureData>
+        </ModifierAddressAbsolute>
       </Modifier>
     </Modifiers>
   </GeneInfo>
@@ -317,21 +317,21 @@ Public Class XMLTestDataProvider
     <Modifiers>
       <Modifier>
         <ChangeOperator>Add</ChangeOperator>
-        <ModifierAddress>
+        <ModifierAddressAbsolute>
           <ReferenceType>Indirect</ReferenceType>
           <ReferenceInteger>0</ReferenceInteger>
-          <ReferenceString>Sunlight</ReferenceString>
-        </ModifierAddress>
-        <ModifierAddress>
+          <ReferenceCreatureData>Sunlight</ReferenceCreatureData>
+        </ModifierAddressAbsolute>
+        <ModifierAddressAbsolute>
           <ReferenceType>Absolute</ReferenceType>
           <ReferenceInteger>5</ReferenceInteger>
-          <ReferenceString>Undefined</ReferenceString>
-        </ModifierAddress>
-        <ModifierAddress>
+          <ReferenceCreatureData>Undefined</ReferenceCreatureData>
+        </ModifierAddressAbsolute>
+        <ModifierAddressAbsolute>
           <ReferenceType>Absolute</ReferenceType>
           <ReferenceInteger>6</ReferenceInteger>
-          <ReferenceString>Undefined</ReferenceString>
-        </ModifierAddress>
+          <ReferenceCreatureData>Undefined</ReferenceCreatureData>
+        </ModifierAddressAbsolute>
       </Modifier>
     </Modifiers>
   </GeneInfo>
@@ -343,21 +343,21 @@ Public Class XMLTestDataProvider
     <Modifiers>
       <Modifier>
         <ChangeOperator>Add</ChangeOperator>
-        <ModifierAddress>
+        <ModifierAddressAbsolute>
           <ReferenceType>Indirect</ReferenceType>
           <ReferenceInteger>0</ReferenceInteger>
-          <ReferenceString>GeneCode</ReferenceString>
-        </ModifierAddress>
-        <ModifierAddress>
+          <ReferenceCreatureData>GeneCode</ReferenceCreatureData>
+        </ModifierAddressAbsolute>
+        <ModifierAddressAbsolute>
           <ReferenceType>Absolute</ReferenceType>
           <ReferenceInteger>7</ReferenceInteger>
-          <ReferenceString>Undefined</ReferenceString>
-        </ModifierAddress>
-        <ModifierAddress>
+          <ReferenceCreatureData>Undefined</ReferenceCreatureData>
+        </ModifierAddressAbsolute>
+        <ModifierAddressAbsolute>
           <ReferenceType>Absolute</ReferenceType>
           <ReferenceInteger>8</ReferenceInteger>
-          <ReferenceString>Undefined</ReferenceString>
-        </ModifierAddress>
+          <ReferenceCreatureData>Undefined</ReferenceCreatureData>
+        </ModifierAddressAbsolute>
       </Modifier>
     </Modifiers>
   </GeneInfo>
@@ -369,21 +369,21 @@ Public Class XMLTestDataProvider
     <Modifiers>
       <Modifier>
         <ChangeOperator>Add</ChangeOperator>
-        <ModifierAddress>
+        <ModifierAddressAbsolute>
           <ReferenceType>Absolute</ReferenceType>
           <ReferenceInteger>0</ReferenceInteger>
-          <ReferenceString>Undefined</ReferenceString>
-        </ModifierAddress>
-        <ModifierAddress>
+          <ReferenceCreatureData>Undefined</ReferenceCreatureData>
+        </ModifierAddressAbsolute>
+        <ModifierAddressAbsolute>
           <ReferenceType>Absolute</ReferenceType>
           <ReferenceInteger>9</ReferenceInteger>
-          <ReferenceString>Undefined</ReferenceString>
-        </ModifierAddress>
-        <ModifierAddress>
+          <ReferenceCreatureData>Undefined</ReferenceCreatureData>
+        </ModifierAddressAbsolute>
+        <ModifierAddressAbsolute>
           <ReferenceType>Absolute</ReferenceType>
           <ReferenceInteger>10</ReferenceInteger>
-          <ReferenceString>Undefined</ReferenceString>
-        </ModifierAddress>
+          <ReferenceCreatureData>Undefined</ReferenceCreatureData>
+        </ModifierAddressAbsolute>
       </Modifier>
     </Modifiers>
   </GeneInfo>
@@ -395,21 +395,21 @@ Public Class XMLTestDataProvider
     <Modifiers>
       <Modifier>
         <ChangeOperator>Add</ChangeOperator>
-        <ModifierAddress>
+        <ModifierAddressAbsolute>
           <ReferenceType>Relative</ReferenceType>
           <ReferenceInteger>0</ReferenceInteger>
-          <ReferenceString>Sunlight</ReferenceString>
-        </ModifierAddress>
-        <ModifierAddress>
+          <ReferenceCreatureData>Sunlight</ReferenceCreatureData>
+        </ModifierAddressAbsolute>
+        <ModifierAddressAbsolute>
           <ReferenceType>Relative</ReferenceType>
           <ReferenceInteger>11</ReferenceInteger>
-          <ReferenceString>Sunlight</ReferenceString>
-        </ModifierAddress>
-        <ModifierAddress>
+          <ReferenceCreatureData>Sunlight</ReferenceCreatureData>
+        </ModifierAddressAbsolute>
+        <ModifierAddressAbsolute>
           <ReferenceType>Relative</ReferenceType>
           <ReferenceInteger>12</ReferenceInteger>
-          <ReferenceString>GeneCode</ReferenceString>
-        </ModifierAddress>
+          <ReferenceCreatureData>GeneCode</ReferenceCreatureData>
+        </ModifierAddressAbsolute>
       </Modifier>
     </Modifiers>
   </GeneInfo>
@@ -421,21 +421,21 @@ Public Class XMLTestDataProvider
     <Modifiers>
       <Modifier>
         <ChangeOperator>Add</ChangeOperator>
-        <ModifierAddress>
+        <ModifierAddressAbsolute>
           <ReferenceType>Relative</ReferenceType>
           <ReferenceInteger>0</ReferenceInteger>
-          <ReferenceString>Sunlight</ReferenceString>
-        </ModifierAddress>
-        <ModifierAddress>
+          <ReferenceCreatureData>Sunlight</ReferenceCreatureData>
+        </ModifierAddressAbsolute>
+        <ModifierAddressAbsolute>
           <ReferenceType>Indirect</ReferenceType>
           <ReferenceInteger>13</ReferenceInteger>
-          <ReferenceString>Sunlight</ReferenceString>
-        </ModifierAddress>
-        <ModifierAddress>
+          <ReferenceCreatureData>Sunlight</ReferenceCreatureData>
+        </ModifierAddressAbsolute>
+        <ModifierAddressAbsolute>
           <ReferenceType>Indirect</ReferenceType>
           <ReferenceInteger>14</ReferenceInteger>
-          <ReferenceString>GeneCode</ReferenceString>
-        </ModifierAddress>
+          <ReferenceCreatureData>GeneCode</ReferenceCreatureData>
+        </ModifierAddressAbsolute>
       </Modifier>
     </Modifiers>
   </GeneInfo>
@@ -447,21 +447,21 @@ Public Class XMLTestDataProvider
     <Modifiers>
       <Modifier>
         <ChangeOperator>Add</ChangeOperator>
-        <ModifierAddress>
+        <ModifierAddressAbsolute>
           <ReferenceType>Undefined</ReferenceType>
           <ReferenceInteger>0</ReferenceInteger>
-          <ReferenceString>Undefined</ReferenceString>
-        </ModifierAddress>
-        <ModifierAddress>
+          <ReferenceCreatureData>Undefined</ReferenceCreatureData>
+        </ModifierAddressAbsolute>
+        <ModifierAddressAbsolute>
           <ReferenceType>Absolute</ReferenceType>
           <ReferenceInteger>3</ReferenceInteger>
-          <ReferenceString>Undefined</ReferenceString>
-        </ModifierAddress>
-        <ModifierAddress>
+          <ReferenceCreatureData>Undefined</ReferenceCreatureData>
+        </ModifierAddressAbsolute>
+        <ModifierAddressAbsolute>
           <ReferenceType>Absolute</ReferenceType>
           <ReferenceInteger>4</ReferenceInteger>
-          <ReferenceString>Undefined</ReferenceString>
-        </ModifierAddress>
+          <ReferenceCreatureData>Undefined</ReferenceCreatureData>
+        </ModifierAddressAbsolute>
       </Modifier>
     </Modifiers>
   </GeneInfo>

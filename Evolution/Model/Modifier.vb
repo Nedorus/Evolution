@@ -14,9 +14,9 @@ Public Class Modifier
 
     Public Sub New()
         _changeOperator = IModifier.ModifierOperator.Undefined
-        _target = New ModifierAddress()
-        _firstArg = New ModifierAddress()
-        _secondArg = New ModifierAddress()
+        _target = New ModifierAddressAbsolute()
+        _firstArg = New ModifierAddressAbsolute()
+        _secondArg = New ModifierAddressAbsolute()
     End Sub
 
     Public Sub New(changeOperator As IModifier.ModifierOperator, target As IModifierAddress, firstArg As IModifierAddress, secondArg As IModifierAddress)
@@ -65,7 +65,7 @@ Public Class Modifier
 
     Public Sub ReadXml(reader As XmlReader) Implements IXmlSerializable.ReadXml
 
-        Dim modifierAddress_serializer As New XmlSerializer(GetType(ModifierAddress))
+        Dim modifierAddress_serializer As New XmlSerializer(GetType(ModifierAddressAbsolute))
 
         reader.ReadStartElement()
         reader.MoveToContent()
@@ -78,15 +78,15 @@ Public Class Modifier
         End If
 
         'Me.Target = reader.ReadElementContentAsString
-        Me.Target = DirectCast(modifierAddress_serializer.Deserialize(reader), ModifierAddress)
+        Me.Target = DirectCast(modifierAddress_serializer.Deserialize(reader), ModifierAddressAbsolute)
         reader.ReadEndElement()
 
         'Me.FirstArg = reader.ReadElementContentAsString
-        Me.FirstArg = DirectCast(modifierAddress_serializer.Deserialize(reader), ModifierAddress)
+        Me.FirstArg = DirectCast(modifierAddress_serializer.Deserialize(reader), ModifierAddressAbsolute)
         reader.ReadEndElement()
 
         'Me.SecondArg = reader.ReadElementContentAsString
-        Me.SecondArg = DirectCast(modifierAddress_serializer.Deserialize(reader), ModifierAddress)
+        Me.SecondArg = DirectCast(modifierAddress_serializer.Deserialize(reader), ModifierAddressAbsolute)
         reader.ReadEndElement()
 
 

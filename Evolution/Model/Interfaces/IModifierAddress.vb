@@ -10,11 +10,12 @@ Public Interface IModifierAddress
         Relative
         Indirect
         Environment
-        Creature
+        OtherCreature
     End Enum
 
-    Property ReferenceType As ReferenceTypeValue
+    ReadOnly Property ReferenceType As ReferenceTypeValue
     Property ReferenceInteger As Integer
-    Property ReferenceString As ICreatureDataDefinitions.CreatureData
+    Property ReferenceCreatureData As ICreatureDataDefinitions.CreatureData
+    Function GetValueByReferenceType(ByRef creature As Creature) As Integer
 
 End Interface

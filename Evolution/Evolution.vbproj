@@ -127,7 +127,15 @@
     <Compile Include="Model\GeneInfos.vb" />
     <Compile Include="Model\Interfaces\IModifierAddress.vb" />
     <Compile Include="Model\Modifier.vb" />
-    <Compile Include="Model\ModifierAddress.vb" />
+    <Compile Include="Model\Interfaces\IModifierAddressFactory.vb" />
+    <Compile Include="Model\ModifierAddress\ModifierAddressAbsolute.vb" />
+    <Compile Include="Model\ModifierAddress\ModifierAddressBaseImpl.vb" />
+    <Compile Include="Model\ModifierAddress\ModifierAddressEnvironment.vb" />
+    <Compile Include="Model\ModifierAddress\ModifierAddressFactoryImpl.vb" />
+    <Compile Include="Model\ModifierAddress\ModifierAddressIndirect.vb" />
+    <Compile Include="Model\ModifierAddress\ModifierAddressOtherCreature.vb" />
+    <Compile Include="Model\ModifierAddress\ModifierAddressRelative.vb" />
+    <Compile Include="Model\ModifierAddress\ModifierAddressUndefined.vb" />
     <Compile Include="ViewModel\GenesListViewDataTemplateSelector.vb" />
     <Compile Include="ViewModel\GenesViewModel.vb" />
     <Compile Include="ViewModel\GeneViewModel.vb" />

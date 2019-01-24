@@ -28,9 +28,9 @@ Imports System.IO.Abstractions.TestingHelpers
         Assert.AreEqual("Nothing happens", geneInfos(0).Description)
         Assert.AreEqual(2, geneInfos(0).Modifiers.Count)
         Assert.AreEqual(IModifier.ModifierOperator.Subtract, geneInfos(0).Modifiers(1).ChangeOperator)
-        Assert.AreEqual(ICreatureDataDefinitions.CreatureData.GeneCode, geneInfos(0).Modifiers(1).Target.ReferenceString)
-        Assert.AreEqual(ICreatureDataDefinitions.CreatureData.GeneCounter, geneInfos(0).Modifiers(1).FirstArg.ReferenceString)
-        Assert.AreEqual(ICreatureDataDefinitions.CreatureData.YPosition, geneInfos(0).Modifiers(1).SecondArg.ReferenceString)
+        Assert.AreEqual(ICreatureDataDefinitions.CreatureData.GeneCode, geneInfos(0).Modifiers(1).Target.ReferenceCreatureData)
+        Assert.AreEqual(ICreatureDataDefinitions.CreatureData.GeneCounter, geneInfos(0).Modifiers(1).FirstArg.ReferenceCreatureData)
+        Assert.AreEqual(ICreatureDataDefinitions.CreatureData.YPosition, geneInfos(0).Modifiers(1).SecondArg.ReferenceCreatureData)
 
         Assert.AreEqual("ADD", geneInfos(1).Code)
         Assert.AreEqual(1, geneInfos(1).Value)
@@ -38,9 +38,9 @@ Imports System.IO.Abstractions.TestingHelpers
         Assert.AreEqual("Mocked description number two", geneInfos(1).Description)
         Assert.AreEqual(1, geneInfos(1).Modifiers.Count)
         Assert.AreEqual(IModifier.ModifierOperator.Undefined, geneInfos(1).Modifiers(0).ChangeOperator)
-        Assert.AreEqual(ICreatureDataDefinitions.CreatureData.Undefined, geneInfos(1).Modifiers(0).Target.ReferenceString)
-        Assert.AreEqual(ICreatureDataDefinitions.CreatureData.Undefined, geneInfos(1).Modifiers(0).FirstArg.ReferenceString)
-        Assert.AreEqual(ICreatureDataDefinitions.CreatureData.Undefined, geneInfos(1).Modifiers(0).SecondArg.ReferenceString)
+        Assert.AreEqual(ICreatureDataDefinitions.CreatureData.Undefined, geneInfos(1).Modifiers(0).Target.ReferenceCreatureData)
+        Assert.AreEqual(ICreatureDataDefinitions.CreatureData.Undefined, geneInfos(1).Modifiers(0).FirstArg.ReferenceCreatureData)
+        Assert.AreEqual(ICreatureDataDefinitions.CreatureData.Undefined, geneInfos(1).Modifiers(0).SecondArg.ReferenceCreatureData)
     End Sub
 
     <TestMethod()> Public Sub LoadFileNotFoundXMLTest()
@@ -96,14 +96,15 @@ Imports System.IO.Abstractions.TestingHelpers
 
         Dim geneInfos As New Evolution.GeneInfos()
         Dim geneInfo1 As New GeneInfo(0, "NULL", 0, "Nothing happens")
+        Dim modifierAddressFactory As New ModifierAddressFactoryImpl()
         geneInfo1.Modifiers.Add(New Modifier(IModifier.ModifierOperator.Add,
-                                             New ModifierAddress(IModifierAddress.ReferenceTypeValue.Relative, 0, ICreatureDataDefinitions.CreatureData.Sunlight),
-                                             New ModifierAddress(IModifierAddress.ReferenceTypeValue.Relative, 2, ICreatureDataDefinitions.CreatureData.GeneCode),
-                                             New ModifierAddress(IModifierAddress.ReferenceTypeValue.Relative, 3, ICreatureDataDefinitions.CreatureData.XPosition)))
+                                             modifierAddressFactory.NewModifierAddress(IModifierAddress.ReferenceTypeValue.Relative, 0, ICreatureDataDefinitions.CreatureData.Sunlight),
+                                             modifierAddressFactory.NewModifierAddress(IModifierAddress.ReferenceTypeValue.Relative, 2, ICreatureDataDefinitions.CreatureData.GeneCode),
+                                             modifierAddressFactory.NewModifierAddress(IModifierAddress.ReferenceTypeValue.Relative, 3, ICreatureDataDefinitions.CreatureData.XPosition)))
         geneInfo1.Modifiers.Add(New Modifier(IModifier.ModifierOperator.Subtract,
-                                             New ModifierAddress(IModifierAddress.ReferenceTypeValue.Relative, 0, ICreatureDataDefinitions.CreatureData.GeneCode),
-                                             New ModifierAddress(IModifierAddress.ReferenceTypeValue.Relative, 5, ICreatureDataDefinitions.CreatureData.GeneCounter),
-                                             New ModifierAddress(IModifierAddress.ReferenceTypeValue.Relative, 7, ICreatureDataDefinitions.CreatureData.YPosition)))
+                                             modifierAddressFactory.NewModifierAddress(IModifierAddress.ReferenceTypeValue.Relative, 0, ICreatureDataDefinitions.CreatureData.GeneCode),
+                                             modifierAddressFactory.NewModifierAddress(IModifierAddress.ReferenceTypeValue.Relative, 5, ICreatureDataDefinitions.CreatureData.GeneCounter),
+                                             modifierAddressFactory.NewModifierAddress(IModifierAddress.ReferenceTypeValue.Relative, 7, ICreatureDataDefinitions.CreatureData.YPosition)))
         Dim geneInfo2 As New GeneInfo(1, "ADD", 2, "Mocked description number two")
         geneInfo2.Modifiers.Add(New Modifier())
         geneInfos.Add(geneInfo1)

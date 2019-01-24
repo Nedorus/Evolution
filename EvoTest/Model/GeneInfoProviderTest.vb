@@ -27,7 +27,7 @@ Imports System.Collections.ObjectModel
         'Assert
         Assert.AreEqual("Add5Energy", geneInfoAdd5Energy.Code)
         Assert.AreEqual(1, geneInfoAdd5Energy.Modifiers.Count)
-        Assert.AreEqual(ICreatureDataDefinitions.CreatureData.Sunlight, geneInfoAdd5Energy.Modifiers(0).FirstArg.ReferenceString)
+        Assert.AreEqual(ICreatureDataDefinitions.CreatureData.Sunlight, geneInfoAdd5Energy.Modifiers(0).FirstArg.ReferenceCreatureData)
         Assert.AreEqual("Add5Energy", geneInfoNothingFound.Code)
 
     End Sub
@@ -49,7 +49,7 @@ Imports System.Collections.ObjectModel
         'Assert
         Assert.AreEqual("Add5Energy", geneInfoAdd5Energy.Code)
         Assert.AreEqual(1, geneInfoAdd5Energy.Modifiers.Count)
-        Assert.AreEqual(ICreatureDataDefinitions.CreatureData.Sunlight, geneInfoAdd5Energy.Modifiers(0).FirstArg.ReferenceString)
+        Assert.AreEqual(ICreatureDataDefinitions.CreatureData.Sunlight, geneInfoAdd5Energy.Modifiers(0).FirstArg.ReferenceCreatureData)
         Assert.AreEqual("Add5Energy", geneInfoNothingFound.Code)
 
     End Sub
