@@ -80,23 +80,70 @@ Imports Evolution
 
     <TestMethod()> Public Sub GetValueByReferenceTypeTest()
         'Arrange
-        Dim creature As Creature = New Creature()
-        creature.Gene.Add(1)
-        creature.Gene.Add(2)
-        creature.Gene.Add(3)
-        creature.Gene.Add(5)
-        creature.Gene.Add(8)
-        creature.Gene.Add(13)
-        creature.Gene.Add(21)
-        creature.Gene.Add(34)
-        creature.Gene.Add(55)
+        Dim modAddFact As New ModifierAddressFactoryImpl()
 
-        creature(ICreatureDataDefinitions.CreatureData.GeneCounter) = 3
+        Dim creature As Creature = New Creature()
+        creature.Gene(0) = 1
+        creature.Gene(1) = 2
+        creature.Gene(2) = 3
+        creature.Gene(3) = 5
+        creature.Gene(4) = 8
+        creature.Gene(5) = 13
+        creature.Gene(6) = 21
+        creature.Gene(7) = 34
+        creature.Gene(8) = 55
+        creature(ICreatureDataDefinitions.CreatureData.Carbon) = 6
+        creature(ICreatureDataDefinitions.CreatureData.GeneCounter) = 0
+
+        Dim modAddAbsolute1 As IModifierAddress = modAddFact.NewModifierAddress(IModifierAddress.ReferenceTypeValue.Absolute, 3, ICreatureDataDefinitions.CreatureData.Undefined)
+        Dim modAddAbsolute2 As IModifierAddress = modAddFact.NewModifierAddress(IModifierAddress.ReferenceTypeValue.Absolute, 5, ICreatureDataDefinitions.CreatureData.Carbon)
+
+        Dim modAddUndefined As IModifierAddress = modAddFact.NewModifierAddress(IModifierAddress.ReferenceTypeValue.Undefined)
+
+        Dim modAddRelative1 As IModifierAddress = modAddFact.NewModifierAddress(IModifierAddress.ReferenceTypeValue.Relative, 3, ICreatureDataDefinitions.CreatureData.Carbon)
+        Dim modAddRelative2 As IModifierAddress = modAddFact.NewModifierAddress(IModifierAddress.ReferenceTypeValue.Relative, 3, ICreatureDataDefinitions.CreatureData.Undefined)
+        Dim modAddRelative3 As IModifierAddress = modAddFact.NewModifierAddress(IModifierAddress.ReferenceTypeValue.Relative, 3, ICreatureDataDefinitions.CreatureData.GeneCounter)
+        Dim modAddRelative4 As IModifierAddress = modAddFact.NewModifierAddress(IModifierAddress.ReferenceTypeValue.Relative, 3, ICreatureDataDefinitions.CreatureData.GeneCode)
+
+        Dim modAddIndirect1 As IModifierAddress = modAddFact.NewModifierAddress(IModifierAddress.ReferenceTypeValue.Indirect, 4, ICreatureDataDefinitions.CreatureData.GeneCode)
+        Dim modAddIndirect2 As IModifierAddress = modAddFact.NewModifierAddress(IModifierAddress.ReferenceTypeValue.Indirect, 4, ICreatureDataDefinitions.CreatureData.Carbon)
+        Dim modAddIndirect3 As IModifierAddress = modAddFact.NewModifierAddress(IModifierAddress.ReferenceTypeValue.Indirect, 4, ICreatureDataDefinitions.CreatureData.Undefined)
+
+        Dim modAddEnvironment As IModifierAddress = modAddFact.NewModifierAddress(IModifierAddress.ReferenceTypeValue.Environment)
+        Dim modAddOtherCreature As IModifierAddress = modAddFact.NewModifierAddress(IModifierAddress.ReferenceTypeValue.OtherCreature)
 
         'Act
+        Dim absolute1 As Integer = modAddAbsolute1.GetValueByReferenceType(creature)
+        Dim absolute2 As Integer = modAddAbsolute2.GetValueByReferenceType(creature)
 
+        Dim undefined As Integer = modAddUndefined.GetValueByReferenceType(creature)
+
+        Dim relative1 As Integer = modAddRelative1.GetValueByReferenceType(creature)
+        Dim relative2 As Integer = modAddRelative2.GetValueByReferenceType(creature)
+        Dim relative3 As Integer = modAddRelative3.GetValueByReferenceType(creature)
+        Dim relative4 As Integer = modAddRelative4.GetValueByReferenceType(creature)
+
+        Dim indirect1 As Integer = modAddIndirect1.GetValueByReferenceType(creature)
+        Dim indirect2 As Integer = modAddIndirect2.GetValueByReferenceType(creature)
+        Dim indirect3 As Integer = modAddIndirect3.GetValueByReferenceType(creature)
+
+        'Dim environment As Integer = modAddEnvironment.GetValueByReferenceType(creature)
+        'Dim otherCreature As Integer = modAddOtherCreature.GetValueByReferenceType(creature)
 
         'Assert
+        Assert.AreEqual(3, absolute1)
+        Assert.AreEqual(5, absolute2)
+
+        Assert.AreEqual(0, undefined)
+
+        Assert.AreEqual(6, relative1)
+        Assert.AreEqual(0, relative2)
+        Assert.AreEqual(0, relative3)
+        Assert.AreEqual(5, relative4)
+
+        Assert.AreEqual(3, indirect1)
+        Assert.AreEqual(21, indirect2)
+        Assert.AreEqual(1, indirect3)
 
     End Sub
 

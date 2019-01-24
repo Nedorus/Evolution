@@ -28,7 +28,7 @@ Public Class ModifierAddressFactoryImpl
 
     Public Function NewModifierAddress(ByVal referenceTypeValue As IModifierAddress.ReferenceTypeValue, ByVal referenceInteger As Integer, ByVal referenceCreatureData As ICreatureDataDefinitions.CreatureData) As IModifierAddress Implements IModifierAddressFactory.NewModifierAddress
         Dim returnModifierAddress As IModifierAddress = NewModifierAddress(referenceTypeValue)
-        returnModifierAddress.ReferenceInteger = referenceTypeValue
+        returnModifierAddress.ReferenceInteger = referenceInteger
         returnModifierAddress.ReferenceCreatureData = referenceCreatureData
         Return returnModifierAddress
     End Function

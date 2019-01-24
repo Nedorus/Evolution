@@ -8,7 +8,7 @@
     End Property
 
     Public Overrides Function GetValueByReferenceType(ByRef creature As Creature) As Integer
-        Return ReferenceInteger
+        Return GetValueFromCreatureByReferenceString(creature)
     End Function
 
 
@@ -17,9 +17,8 @@
         Dim returnVal As Integer = 0
         If creature.ContainsKey(ReferenceCreatureData) Then
             returnVal = creature(ReferenceCreatureData)
-        ElseIf ReferenceCreatureData = ICreatureDataDefinitions.CreatureData.GeneCode Then
-            creature(creature(ICreatureDataDefinitions.CreatureData.GeneCounter)) += 1
-            returnVal = GetValueFromCreatureGene(creature)
+        ElseIf ICreatureDataDefinitions.CreatureData.GeneCode = ReferenceCreatureData Then
+            returnVal = GetValueFromCreatureGene(creature, ReferenceInteger)
         ElseIf ReferenceCreatureData <> ICreatureDataDefinitions.CreatureData.Undefined Then
             creature.Add(ReferenceCreatureData, 0)
             returnVal = creature(ReferenceCreatureData)
@@ -27,9 +26,8 @@
         Return returnVal
     End Function
 
-
-    Private Function GetValueFromCreatureGene(ByVal creature As Creature)
-        Dim index = creature(ICreatureDataDefinitions.CreatureData.GeneCounter) Mod creature.Gene.Count
+    Private Function GetValueFromCreatureGene(ByRef creature As Creature, ByVal index As Integer)
+        index = index Mod creature.Gene.Count
         Return creature.Gene(index)
     End Function
 
