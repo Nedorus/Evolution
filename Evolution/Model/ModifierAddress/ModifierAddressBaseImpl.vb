@@ -50,23 +50,13 @@ Public MustInherit Class ModifierAddressBaseImpl
 #Region "IXMLSerializable"
 
     Public Sub ReadXml(reader As XmlReader) Implements IXmlSerializable.ReadXml
-        reader.ReadStartElement()
-        reader.MoveToContent()
-        'Me.ReferenceType = DirectCast([Enum].Parse(GetType(IModifierAddress.ReferenceTypeValue), reader.ReadElementContentAsString), IModifierAddress.ReferenceTypeValue)
-        Me.ReferenceInteger = reader.ReadElementContentAsInt
-        Dim was_empty As Boolean = reader.IsEmptyElement
-        If Not was_empty Then
-            Me.ReferenceCreatureData = DirectCast([Enum].Parse(GetType(ICreatureDataDefinitions.CreatureData), reader.ReadElementContentAsString), ICreatureDataDefinitions.CreatureData)
-        Else
-            Me.ReferenceCreatureData = ICreatureDataDefinitions.CreatureData.Undefined
-            reader.ReadElementContentAsString()
-        End If
+        'empty because parent object (Modiefier) has to implement the reading due to polymorphism
     End Sub
 
     Public Sub WriteXml(writer As XmlWriter) Implements IXmlSerializable.WriteXml
         If writer IsNot Nothing Then
-            writer.WriteStartElement("ModifierAddressAbsolute")
-
+            writer.WriteStartElement("ModifierAddress")
+            writer.WriteElementString("ReferenceType", [Enum].GetName(GetType(IModifierAddress.ReferenceTypeValue), Me.ReferenceType))
             writer.WriteElementString("ReferenceInteger", _referenceInteger)
             writer.WriteElementString("ReferenceCreatureData", [Enum].GetName(GetType(ICreatureDataDefinitions.CreatureData), _referenceCreatureData))
 

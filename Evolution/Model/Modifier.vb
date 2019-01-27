@@ -14,9 +14,10 @@ Public Class Modifier
 
     Public Sub New()
         _changeOperator = IModifier.ModifierOperator.Undefined
-        _target = New ModifierAddressAbsolute()
-        _firstArg = New ModifierAddressAbsolute()
-        _secondArg = New ModifierAddressAbsolute()
+        Dim modifierAddressFactory As ModifierAddressFactoryImpl = New ModifierAddressFactoryImpl()
+        _target = modifierAddressFactory.NewModifierAddress(IModifierAddress.ReferenceTypeValue.Undefined)
+        _firstArg = modifierAddressFactory.NewModifierAddress(IModifierAddress.ReferenceTypeValue.Undefined)
+        _secondArg = modifierAddressFactory.NewModifierAddress(IModifierAddress.ReferenceTypeValue.Undefined)
     End Sub
 
     Public Sub New(changeOperator As IModifier.ModifierOperator, target As IModifierAddress, firstArg As IModifierAddress, secondArg As IModifierAddress)
@@ -65,7 +66,7 @@ Public Class Modifier
 
     Public Sub ReadXml(reader As XmlReader) Implements IXmlSerializable.ReadXml
 
-        Dim modifierAddress_serializer As New XmlSerializer(GetType(ModifierAddressAbsolute))
+        'Dim modifierAddress_serializer As New XmlSerializer(GetType(IModifierAddress))
 
         reader.ReadStartElement()
         reader.MoveToContent()
@@ -77,18 +78,40 @@ Public Class Modifier
             reader.ReadElementContentAsString()
         End If
 
-        'Me.Target = reader.ReadElementContentAsString
-        Me.Target = DirectCast(modifierAddress_serializer.Deserialize(reader), ModifierAddressAbsolute)
-        reader.ReadEndElement()
 
-        'Me.FirstArg = reader.ReadElementContentAsString
-        Me.FirstArg = DirectCast(modifierAddress_serializer.Deserialize(reader), ModifierAddressAbsolute)
-        reader.ReadEndElement()
+        Dim modifierAddressFactory As ModifierAddressFactoryImpl = New ModifierAddressFactoryImpl()
+        Dim referenceValue As IModifierAddress.ReferenceTypeValue
+        Dim referenceInteger As Integer
+        Dim referenceCreatureData As ICreatureDataDefinitions.CreatureData
 
-        'Me.SecondArg = reader.ReadElementContentAsString
-        Me.SecondArg = DirectCast(modifierAddress_serializer.Deserialize(reader), ModifierAddressAbsolute)
+        reader.ReadStartElement()
+        reader.MoveToContent()
+        referenceValue = DirectCast([Enum].Parse(GetType(IModifierAddress.ReferenceTypeValue), reader.ReadElementContentAsString), IModifierAddress.ReferenceTypeValue)
+        referenceInteger = reader.ReadElementContentAsInt
+        referenceCreatureData = DirectCast([Enum].Parse(GetType(ICreatureDataDefinitions.CreatureData), reader.ReadElementContentAsString), ICreatureDataDefinitions.CreatureData)
         reader.ReadEndElement()
+        Me.Target = modifierAddressFactory.NewModifierAddress(referenceValue, referenceInteger, referenceCreatureData)
 
+        reader.ReadStartElement()
+        reader.MoveToContent()
+        referenceValue = DirectCast([Enum].Parse(GetType(IModifierAddress.ReferenceTypeValue), reader.ReadElementContentAsString), IModifierAddress.ReferenceTypeValue)
+        referenceInteger = reader.ReadElementContentAsInt
+        referenceCreatureData = DirectCast([Enum].Parse(GetType(ICreatureDataDefinitions.CreatureData), reader.ReadElementContentAsString), ICreatureDataDefinitions.CreatureData)
+        reader.ReadEndElement()
+        Me.FirstArg = modifierAddressFactory.NewModifierAddress(referenceValue, referenceInteger, referenceCreatureData)
+
+        reader.ReadStartElement()
+        reader.MoveToContent()
+        referenceValue = DirectCast([Enum].Parse(GetType(IModifierAddress.ReferenceTypeValue), reader.ReadElementContentAsString), IModifierAddress.ReferenceTypeValue)
+        referenceInteger = reader.ReadElementContentAsInt
+        If Not reader.IsEmptyElement Then
+            referenceCreatureData = DirectCast([Enum].Parse(GetType(ICreatureDataDefinitions.CreatureData), reader.ReadElementContentAsString), ICreatureDataDefinitions.CreatureData)
+        Else
+            referenceCreatureData = ICreatureDataDefinitions.CreatureData.Undefined
+            reader.ReadElementContentAsString()
+        End If
+        reader.ReadEndElement()
+        Me.SecondArg = modifierAddressFactory.NewModifierAddress(referenceValue, referenceInteger, referenceCreatureData)
 
     End Sub
 

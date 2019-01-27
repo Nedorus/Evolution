@@ -18,7 +18,8 @@
         If creature.ContainsKey(ReferenceCreatureData) Then
             returnVal = creature(ReferenceCreatureData)
         ElseIf ICreatureDataDefinitions.CreatureData.GeneCode = ReferenceCreatureData Then
-            returnVal = GetValueFromCreatureGene(creature, ReferenceInteger)
+            returnVal = GetValueFromCreatureGene(creature, creature(ICreatureDataDefinitions.CreatureData.GeneCounter))
+            creature(ICreatureDataDefinitions.CreatureData.GeneCounter) += 1
         ElseIf ReferenceCreatureData <> ICreatureDataDefinitions.CreatureData.Undefined Then
             creature.Add(ReferenceCreatureData, 0)
             returnVal = creature(ReferenceCreatureData)
@@ -28,6 +29,7 @@
 
     Private Function GetValueFromCreatureGene(ByRef creature As Creature, ByVal index As Integer)
         index = index Mod creature.Gene.Count
+        creature(ICreatureDataDefinitions.CreatureData.GeneCounter) += 1
         Return creature.Gene(index)
     End Function
 

@@ -5,7 +5,6 @@ Public Class GeneExcuter
     Private _geneInfoProvider As IGeneInfoProvider
     Private _creature As Creature
     Private _geneInfo As GeneInfo
-    Private _currGeneCounter As Integer
     Private _currModifier As IModifier
 
     Public Sub New(geneInfoProvider As IGeneInfoProvider)
@@ -14,14 +13,12 @@ Public Class GeneExcuter
 
     Public Sub ExecuteCurrentGeneCode(ByRef creature As Creature)
         _creature = creature
-        _currGeneCounter = _creature(ICreatureDataDefinitions.CreatureData.GeneCounter)
-        _geneInfo = _geneInfoProvider.GetGeneInfoByGeneValue(_creature.Gene(_currGeneCounter))
+        _geneInfo = _geneInfoProvider.GetGeneInfoByGeneValue(_creature.Gene(_creature(ICreatureDataDefinitions.CreatureData.GeneCounter)))
         For Each modifier As IModifier In _geneInfo.Modifiers
             _currModifier = modifier
             HandleCurrentModifier()
-            _currGeneCounter += 1
+            _creature(ICreatureDataDefinitions.CreatureData.GeneCounter) += 1
         Next
-        creature(ICreatureDataDefinitions.CreatureData.GeneCounter) = _currGeneCounter
     End Sub
 
     Private Sub HandleCurrentModifier()
@@ -73,8 +70,8 @@ Public Class GeneExcuter
         If _creature.ContainsKey(_currModifier.Target.ReferenceCreatureData) Then
             _creature(_currModifier.Target.ReferenceCreatureData) = newTargetValue
         ElseIf _currModifier.Target.ReferenceCreatureData = ICreatureDataDefinitions.CreatureData.GeneCode Then
-            _currGeneCounter += 1
-            SetValueFromCreatureGene(_currGeneCounter, newTargetValue)
+            _creature(ICreatureDataDefinitions.CreatureData.GeneCounter) += 1
+            SetValueFromCreatureGene(_creature(ICreatureDataDefinitions.CreatureData.GeneCounter), newTargetValue)
         ElseIf _currModifier.Target.ReferenceCreatureData <> ICreatureDataDefinitions.CreatureData.Undefined Then
             _creature.Add(_currModifier.Target.ReferenceCreatureData, newTargetValue)
         End If
@@ -85,8 +82,8 @@ Public Class GeneExcuter
         If _creature.ContainsKey(arg.ReferenceCreatureData) Then
             returnVal = _creature(arg.ReferenceCreatureData)
         ElseIf arg.ReferenceCreatureData = ICreatureDataDefinitions.CreatureData.GeneCode Then
-            _currGeneCounter += 1
-            returnVal = GetValueFromCreatureGene(_currGeneCounter)
+            _creature(ICreatureDataDefinitions.CreatureData.GeneCounter) += 1
+            returnVal = GetValueFromCreatureGene(_creature(ICreatureDataDefinitions.CreatureData.GeneCounter))
         ElseIf arg.ReferenceCreatureData <> ICreatureDataDefinitions.CreatureData.Undefined Then
             _creature.Add(arg.ReferenceCreatureData, 0)
             returnVal = _creature(arg.ReferenceCreatureData)
