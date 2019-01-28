@@ -98,13 +98,13 @@ Imports System.IO.Abstractions.TestingHelpers
         Dim geneInfo1 As New GeneInfo(0, "NULL", 0, "Nothing happens")
         Dim modifierAddressFactory As New ModifierAddressFactoryImpl()
         geneInfo1.Modifiers.Add(New Modifier(IModifier.ModifierOperator.Add,
-                                             modifierAddressFactory.NewModifierAddress(IModifierAddress.ReferenceTypeValue.Relative, 0, ICreatureDataDefinitions.CreatureData.Sunlight),
-                                             modifierAddressFactory.NewModifierAddress(IModifierAddress.ReferenceTypeValue.Relative, 2, ICreatureDataDefinitions.CreatureData.GeneCode),
-                                             modifierAddressFactory.NewModifierAddress(IModifierAddress.ReferenceTypeValue.Relative, 3, ICreatureDataDefinitions.CreatureData.XPosition)))
+                                             modifierAddressFactory.NewModifierAddress(IModifierAddress.ReferenceTypeValue.Direct, 0, ICreatureDataDefinitions.CreatureData.Sunlight),
+                                             modifierAddressFactory.NewModifierAddress(IModifierAddress.ReferenceTypeValue.Direct, 2, ICreatureDataDefinitions.CreatureData.GeneCode),
+                                             modifierAddressFactory.NewModifierAddress(IModifierAddress.ReferenceTypeValue.Direct, 3, ICreatureDataDefinitions.CreatureData.XPosition)))
         geneInfo1.Modifiers.Add(New Modifier(IModifier.ModifierOperator.Subtract,
-                                             modifierAddressFactory.NewModifierAddress(IModifierAddress.ReferenceTypeValue.Relative, 0, ICreatureDataDefinitions.CreatureData.GeneCode),
-                                             modifierAddressFactory.NewModifierAddress(IModifierAddress.ReferenceTypeValue.Relative, 5, ICreatureDataDefinitions.CreatureData.GeneCounter),
-                                             modifierAddressFactory.NewModifierAddress(IModifierAddress.ReferenceTypeValue.Relative, 7, ICreatureDataDefinitions.CreatureData.YPosition)))
+                                             modifierAddressFactory.NewModifierAddress(IModifierAddress.ReferenceTypeValue.Direct, 0, ICreatureDataDefinitions.CreatureData.GeneCode),
+                                             modifierAddressFactory.NewModifierAddress(IModifierAddress.ReferenceTypeValue.Direct, 5, ICreatureDataDefinitions.CreatureData.GeneCounter),
+                                             modifierAddressFactory.NewModifierAddress(IModifierAddress.ReferenceTypeValue.Direct, 7, ICreatureDataDefinitions.CreatureData.YPosition)))
         Dim geneInfo2 As New GeneInfo(1, "ADD", 2, "Mocked description number two")
         geneInfo2.Modifiers.Add(New Modifier())
         geneInfos.Add(geneInfo1)

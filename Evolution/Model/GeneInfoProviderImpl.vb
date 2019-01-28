@@ -7,7 +7,7 @@ Imports log4net
 Imports Evolution
 Imports System.Collections.ObjectModel
 
-Public Class GeneInfoProvider
+Public Class GeneInfoProviderImpl
     Implements IGeneInfoProvider
 
     Public Const DEFAULT_GENE_VALUE = 0

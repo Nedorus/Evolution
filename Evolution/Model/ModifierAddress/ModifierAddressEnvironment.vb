@@ -1,4 +1,6 @@
-﻿Public Class ModifierAddressEnvironment
+﻿Imports Evolution
+
+Public Class ModifierAddressEnvironment
     Inherits ModifierAddressBaseImpl
 
     Public Overrides ReadOnly Property ReferenceType As IModifierAddress.ReferenceTypeValue
@@ -7,32 +9,41 @@
         End Get
     End Property
 
+    'TODO define how the World works
+    ''' <summary>
+    ''' Environment (unfinished Def)
+    ''' write to world depending On CreatureData
+    '''    Undefined, XPosition, YPosition, GeneCode, GeneCounter  -> do nothing
+    '''    Other -> write that value to the world
+    ''' </summary>
+    ''' <param name="creature"></param>
+    ''' <param name="newValue"></param>
+    Public Overrides Sub SetValueByReferenceType(creature As Creature, newValue As Integer)
+        'do something cool here?
+    End Sub
+
+    'TODO define how the World works
+    ''' <summary>
+    ''' Environment (unfinished Def)
+    ''' returns the value stored In the world depending On CreatureData
+    '''    Undefined, XPosition, YPosition -> return 0
+    '''    GeneCode, GeneCounter -> return this creatures index/id
+    '''    Other -> return that value from world
+    ''' </summary>
+    ''' <param name="creature"></param>
+    ''' <returns></returns>
     Public Overrides Function GetValueByReferenceType(ByRef creature As Creature) As Integer
-        Return ReferenceInteger
-    End Function
-
-
-
-    Private Function GetValueFromCreatureByReferenceString(ByRef creature As Creature) As Integer
         Dim returnVal As Integer = 0
-        If creature.ContainsKey(ReferenceCreatureData) Then
-            returnVal = creature(ReferenceCreatureData)
-        ElseIf ReferenceCreatureData = ICreatureDataDefinitions.CreatureData.GeneCode Then
-            creature(creature(ICreatureDataDefinitions.CreatureData.GeneCounter)) += 1
-            returnVal = GetValueFromCreatureGene(creature)
-        ElseIf ReferenceCreatureData <> ICreatureDataDefinitions.CreatureData.Undefined Then
-            creature.Add(ReferenceCreatureData, 0)
-            returnVal = creature(ReferenceCreatureData)
-        End If
-        Return returnVal
-    End Function
+        Select Case Me.ReferenceCreatureData
+            Case ICreatureDataDefinitions.CreatureData.Undefined, ICreatureDataDefinitions.CreatureData.XPosition, ICreatureDataDefinitions.CreatureData.YPosition
+                returnVal = 0
+            Case ICreatureDataDefinitions.CreatureData.GeneCode, ICreatureDataDefinitions.CreatureData.GeneCounter
+                'returnVal = creature.GetWorld().GetCreatureIndex()
+            Case Else
+                'Dim world As World = creature.GetWorld().GetEnvironmentValue(creature, Me.ReferenceCreatureData)
+        End Select
 
-
-    Private Function GetValueFromCreatureGene(ByVal creature As Creature)
-        Dim xPos As Integer = creature(ICreatureDataDefinitions.CreatureData.XPosition)
-        Dim yPos As Integer = creature(ICreatureDataDefinitions.CreatureData.YPosition)
-        Throw (New NotImplementedException)
-
+        Return ReferenceInteger
     End Function
 
 End Class

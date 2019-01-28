@@ -18,7 +18,7 @@ Imports System.Collections.ObjectModel
         Dim xmlGeneInfoReader As New XMLFileReader(Of GeneInfos)(pathToMockedXML & "\" & filenameMockedXML, mockedFilesSystem)
         Dim geneInfos As Evolution.GeneInfos = xmlGeneInfoReader.LoadXML()
 
-        Dim geneInfoProvider As New GeneInfoProvider(geneInfos)
+        Dim geneInfoProvider As New GeneInfoProviderImpl(geneInfos)
 
         'Act
         Dim geneInfoAdd5Energy As GeneInfo = geneInfoProvider.GetGeneInfoByGeneValue(0)
@@ -40,7 +40,7 @@ Imports System.Collections.ObjectModel
         Dim xmlGeneInfoReader As New XMLFileReader(Of GeneInfos)(pathToMockedXML & "\" & filenameMockedXML, mockedFilesSystem)
         Dim geneInfos As Evolution.GeneInfos = xmlGeneInfoReader.LoadXML()
 
-        Dim geneInfoProvider As New GeneInfoProvider(geneInfos)
+        Dim geneInfoProvider As New GeneInfoProviderImpl(geneInfos)
 
         'Act
         Dim geneInfoAdd5Energy As GeneInfo = geneInfoProvider.GetGeneInfoByGeneCode("Add5Energy")
@@ -62,7 +62,7 @@ Imports System.Collections.ObjectModel
         Dim xmlGeneInfoReader As New XMLFileReader(Of GeneInfos)(pathToMockedXML & "\" & filenameMockedXML, mockedFilesSystem)
         Dim geneInfos As Evolution.GeneInfos = xmlGeneInfoReader.LoadXML()
 
-        Dim geneInfoProvider As New GeneInfoProvider(geneInfos)
+        Dim geneInfoProvider As New GeneInfoProviderImpl(geneInfos)
 
         'Act
         Dim foundCodeNamesWithAdd As Collection(Of String) = geneInfoProvider.GetAllMatchingCodeNames("Add")

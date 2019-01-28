@@ -46,6 +46,17 @@ Public MustInherit Class ModifierAddressBaseImpl
     End Property
 
     Public MustOverride Function GetValueByReferenceType(ByRef creature As Creature) As Integer Implements IModifierAddress.GetValueByReferenceType
+    Public MustOverride Sub SetValueByReferenceType(creature As Creature, newValue As Integer) Implements IModifierAddress.SetValueByReferenceType
+
+    Protected Function GetValueFromCreatureGene(ByRef creature As Creature, ByVal index As Integer)
+        index = index Mod creature.Gene.Count
+        Return creature.Gene(index)
+    End Function
+
+    Protected Sub SetValueToCreatureGene(ByRef creature As Creature, ByVal index As Integer, newTargetValue As Integer)
+        index = index Mod creature.Gene.Count
+        creature.Gene(index) = newTargetValue
+    End Sub
 
 #Region "IXMLSerializable"
 

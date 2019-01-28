@@ -112,18 +112,18 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Common\FileNameCleaner.vb" />
+    <Compile Include="Model\Creature.vb" />
     <Compile Include="Model\GeneExcuter.vb" />
     <Compile Include="Model\Interfaces\ICreatureDataDefinitions.vb" />
     <Compile Include="Common\ItemsChangedObservableCollection.vb" />
     <Compile Include="Common\MD5StringHasher.vb" />
     <Compile Include="Common\XMLFileWriter.vb" />
     <Compile Include="Model\CreatureDataDefinitions.vb" />
-    <Compile Include="Model\Creature.vb" />
     <Compile Include="Model\Interfaces\IGeneInfoProvider.vb" />
     <Compile Include="Model\Interfaces\IModifier.vb" />
     <Compile Include="Model\Gene.vb" />
     <Compile Include="Model\GeneInfo.vb" />
-    <Compile Include="Model\GeneInfoProvider.vb" />
+    <Compile Include="Model\GeneInfoProviderImpl.vb" />
     <Compile Include="Model\GeneInfos.vb" />
     <Compile Include="Model\Interfaces\IModifierAddress.vb" />
     <Compile Include="Model\Modifier.vb" />
@@ -134,7 +134,7 @@
     <Compile Include="Model\ModifierAddress\ModifierAddressFactoryImpl.vb" />
     <Compile Include="Model\ModifierAddress\ModifierAddressIndirect.vb" />
     <Compile Include="Model\ModifierAddress\ModifierAddressOtherCreature.vb" />
-    <Compile Include="Model\ModifierAddress\ModifierAddressRelative.vb" />
+    <Compile Include="Model\ModifierAddress\ModifierAddressDirect.vb" />
     <Compile Include="Model\ModifierAddress\ModifierAddressUndefined.vb" />
     <Compile Include="ViewModel\GenesListViewDataTemplateSelector.vb" />
     <Compile Include="ViewModel\GenesViewModel.vb" />

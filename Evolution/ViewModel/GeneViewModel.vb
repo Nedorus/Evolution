@@ -6,25 +6,25 @@ Public Class GeneViewModel
     Private _index As Integer
     Private _geneInfo As GeneInfo
     Private _selectedGeneCodeComboBoxIsopen As Boolean
-    Private _geneInfoProvider As GeneInfoProvider
+    Private _geneInfoProvider As GeneInfoProviderImpl
     Private _randomStringAndUIDGenerator As RandomStringAndUidGenerator
 
     Public Sub New(ByVal randomStringAndUidGenerator As RandomStringAndUidGenerator)
-        _geneInfoProvider = New GeneInfoProvider()
+        _geneInfoProvider = New GeneInfoProviderImpl()
         _index = 0
         _geneInfo = New GeneInfo()
         _randomStringAndUIDGenerator = randomStringAndUidGenerator
     End Sub
 
     Public Sub New(ByVal index As Integer)
-        _geneInfoProvider = New GeneInfoProvider()
+        _geneInfoProvider = New GeneInfoProviderImpl()
         _index = index
         _geneInfo = New GeneInfo(_index, _randomStringAndUIDGenerator.RandomString(4), _randomStringAndUIDGenerator.RandomNumberString(1), _randomStringAndUIDGenerator.RandomString(15))
     End Sub
 
     Public Sub New(ByVal index As Integer, ByVal geneInfo As GeneInfo)
         _index = index
-        _geneInfoProvider = New GeneInfoProvider()
+        _geneInfoProvider = New GeneInfoProviderImpl()
         If geneInfo IsNot Nothing Then
             _geneInfo = _geneInfoProvider.CloneGeneInfo(geneInfo)
         Else

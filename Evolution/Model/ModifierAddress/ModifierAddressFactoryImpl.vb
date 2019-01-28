@@ -17,8 +17,8 @@ Public Class ModifierAddressFactoryImpl
                 Return New ModifierAddressIndirect()
             Case IModifierAddress.ReferenceTypeValue.OtherCreature
                 Return New ModifierAddressOtherCreature()
-            Case IModifierAddress.ReferenceTypeValue.Relative
-                Return New ModifierAddressRelative
+            Case IModifierAddress.ReferenceTypeValue.Direct
+                Return New ModifierAddressDirect
             Case IModifierAddress.ReferenceTypeValue.Undefined
                 Return New ModifierAddressUndefined()
             Case Else

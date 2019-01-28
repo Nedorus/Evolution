@@ -16,7 +16,7 @@ Imports Moq
         Dim mockedFilesSystem As MockFileSystem = xmlTestDataProvider.BuildFileSystem(pathToMockedXML, filenameMockedXML, selectedXMLType:=XMLTestDataProvider.TestDataKey.GeneInfosComplex)
         Dim xmlGeneInfoReader As New XMLFileReader(Of GeneInfos)(pathToMockedXML & "\" & filenameMockedXML, mockedFilesSystem)
         Dim geneInfos As Evolution.GeneInfos = xmlGeneInfoReader.LoadXML()
-        Dim geneInfoFactory As New GeneInfoProvider(geneInfos)
+        Dim geneInfoFactory As New GeneInfoProviderImpl(geneInfos)
 
         'Act
 

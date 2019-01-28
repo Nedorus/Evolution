@@ -17,7 +17,7 @@ Imports Moq
         Dim xmlGeneInfoReader As New XMLFileReader(Of GeneInfos)(pathToMockedXML & "\" & filenameMockedXML, mockedFilesSystem)
 
         Dim geneInfos As Evolution.GeneInfos = xmlGeneInfoReader.LoadXML()
-        Dim geneInfoProvider As New GeneInfoProvider(geneInfos)
+        Dim geneInfoProvider As New GeneInfoProviderImpl(geneInfos)
         Dim geneExecuter As New GeneExcuter(geneInfoProvider)
 
         Dim creature As New Creature()
@@ -51,7 +51,7 @@ Imports Moq
         Dim xmlGeneInfoReader As New XMLFileReader(Of GeneInfos)(pathToMockedXML & "\" & filenameMockedXML, mockedFilesSystem)
 
         Dim geneInfos As Evolution.GeneInfos = xmlGeneInfoReader.LoadXML()
-        Dim geneInfoProvider As New GeneInfoProvider(geneInfos)
+        Dim geneInfoProvider As New GeneInfoProviderImpl(geneInfos)
         Dim geneExecuter As New GeneExcuter(geneInfoProvider)
 
         Dim creature As New Creature()
@@ -87,7 +87,7 @@ Imports Moq
         Dim xmlGeneInfoReader As New XMLFileReader(Of GeneInfos)(pathToMockedXML & "\" & filenameMockedXML, mockedFilesSystem)
 
         Dim geneInfos As Evolution.GeneInfos = xmlGeneInfoReader.LoadXML()
-        Dim geneInfoProvider As New GeneInfoProvider(geneInfos)
+        Dim geneInfoProvider As New GeneInfoProviderImpl(geneInfos)
         Dim geneExecuter As New GeneExcuter(geneInfoProvider)
 
         Dim creature As New Creature()
@@ -122,7 +122,7 @@ Imports Moq
         Dim xmlGeneInfoReader As New XMLFileReader(Of GeneInfos)(pathToMockedXML & "\" & filenameMockedXML, mockedFilesSystem)
 
         Dim geneInfos As Evolution.GeneInfos = xmlGeneInfoReader.LoadXML()
-        Dim geneInfoProvider As New GeneInfoProvider(geneInfos)
+        Dim geneInfoProvider As New GeneInfoProviderImpl(geneInfos)
         Dim geneExecuter As New GeneExcuter(geneInfoProvider)
 
         Dim creature As New Creature()
@@ -151,7 +151,7 @@ Imports Moq
         Dim xmlGeneInfoReader As New XMLFileReader(Of GeneInfos)(pathToMockedXML & "\" & filenameMockedXML, mockedFilesSystem)
 
         Dim geneInfos As Evolution.GeneInfos = xmlGeneInfoReader.LoadXML()
-        Dim geneInfoProvider As New GeneInfoProvider(geneInfos)
+        Dim geneInfoProvider As New GeneInfoProviderImpl(geneInfos)
         Dim geneExecuter As New GeneExcuter(geneInfoProvider)
 
         Dim creature As New Creature()
@@ -180,7 +180,7 @@ Imports Moq
         Dim xmlGeneInfoReader As New XMLFileReader(Of GeneInfos)(pathToMockedXML & "\" & filenameMockedXML, mockedFilesSystem)
 
         Dim geneInfos As Evolution.GeneInfos = xmlGeneInfoReader.LoadXML()
-        Dim geneInfoProvider As New GeneInfoProvider(geneInfos)
+        Dim geneInfoProvider As New GeneInfoProviderImpl(geneInfos)
         Dim geneExecuter As New GeneExcuter(geneInfoProvider)
 
         Dim creature As New Creature()
@@ -203,7 +203,7 @@ Imports Moq
         Dim xmlGeneInfoReader As New XMLFileReader(Of GeneInfos)(pathToMockedXML & "\" & filenameMockedXML, mockedFilesSystem)
 
         Dim geneInfos As Evolution.GeneInfos = xmlGeneInfoReader.LoadXML()
-        Dim geneInfoProvider As New GeneInfoProvider(geneInfos)
+        Dim geneInfoProvider As New GeneInfoProviderImpl(geneInfos)
         Dim geneExecuter As New GeneExcuter(geneInfoProvider)
 
         Dim creature As New Creature()
@@ -227,7 +227,7 @@ Imports Moq
         Dim xmlGeneInfoReader As New XMLFileReader(Of GeneInfos)(pathToMockedXML & "\" & filenameMockedXML, mockedFilesSystem)
 
         Dim geneInfos As Evolution.GeneInfos = xmlGeneInfoReader.LoadXML()
-        Dim geneInfoProvider As New GeneInfoProvider(geneInfos)
+        Dim geneInfoProvider As New GeneInfoProviderImpl(geneInfos)
         Dim geneExecuter As New GeneExcuter(geneInfoProvider)
 
         Dim creature As New Creature()
@@ -253,7 +253,7 @@ Imports Moq
         Dim xmlGeneInfoReader As New XMLFileReader(Of GeneInfos)(pathToMockedXML & "\" & filenameMockedXML, mockedFilesSystem)
 
         Dim geneInfos As Evolution.GeneInfos = xmlGeneInfoReader.LoadXML()
-        Dim geneInfoProvider As New GeneInfoProvider(geneInfos)
+        Dim geneInfoProvider As New GeneInfoProviderImpl(geneInfos)
         Dim geneExecuter As New GeneExcuter(geneInfoProvider)
 
         Dim creature As New Creature()
@@ -278,7 +278,7 @@ Imports Moq
         Dim xmlGeneInfoReader As New XMLFileReader(Of GeneInfos)(pathToMockedXML & "\" & filenameMockedXML, mockedFilesSystem)
 
         Dim geneInfos As Evolution.GeneInfos = xmlGeneInfoReader.LoadXML()
-        Dim geneInfoProvider As New GeneInfoProvider(geneInfos)
+        Dim geneInfoProvider As New GeneInfoProviderImpl(geneInfos)
         Dim geneExecuter As New GeneExcuter(geneInfoProvider)
 
         Dim creature As New Creature()
@@ -303,7 +303,7 @@ Imports Moq
         Dim xmlGeneInfoReader As New XMLFileReader(Of GeneInfos)(pathToMockedXML & "\" & filenameMockedXML, mockedFilesSystem)
 
         Dim geneInfos As Evolution.GeneInfos = xmlGeneInfoReader.LoadXML()
-        Dim geneInfoProvider As New GeneInfoProvider(geneInfos)
+        Dim geneInfoProvider As New GeneInfoProviderImpl(geneInfos)
         Dim geneExecuter As New GeneExcuter(geneInfoProvider)
 
         Dim creature As New Creature()
@@ -328,7 +328,7 @@ Imports Moq
         Dim xmlGeneInfoReader As New XMLFileReader(Of GeneInfos)(pathToMockedXML & "\" & filenameMockedXML, mockedFilesSystem)
 
         Dim geneInfos As Evolution.GeneInfos = xmlGeneInfoReader.LoadXML()
-        Dim geneInfoProvider As New GeneInfoProvider(geneInfos)
+        Dim geneInfoProvider As New GeneInfoProviderImpl(geneInfos)
         Dim geneExecuter As New GeneExcuter(geneInfoProvider)
 
         Dim creature As New Creature()
@@ -358,7 +358,7 @@ Imports Moq
         Dim xmlGeneInfoReader As New XMLFileReader(Of GeneInfos)(pathToMockedXML & "\" & filenameMockedXML, mockedFilesSystem)
 
         Dim geneInfos As Evolution.GeneInfos = xmlGeneInfoReader.LoadXML()
-        Dim geneInfoProvider As New GeneInfoProvider(geneInfos)
+        Dim geneInfoProvider As New GeneInfoProviderImpl(geneInfos)
         Dim geneExecuter As New GeneExcuter(geneInfoProvider)
 
         Dim creature As New Creature()

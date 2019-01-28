@@ -32,17 +32,17 @@ Public Class XMLTestDataProvider
       <Modifier>
         <ChangeOperator>Add</ChangeOperator>
         <ModifierAddress>
-          <ReferenceType>Relative</ReferenceType>
+          <ReferenceType>Direct</ReferenceType>
           <ReferenceInteger>0</ReferenceInteger>
           <ReferenceCreatureData>Sunlight</ReferenceCreatureData>
         </ModifierAddress>
         <ModifierAddress>
-          <ReferenceType>Relative</ReferenceType>
+          <ReferenceType>Direct</ReferenceType>
           <ReferenceInteger>2</ReferenceInteger>
           <ReferenceCreatureData>GeneCode</ReferenceCreatureData>
         </ModifierAddress>
         <ModifierAddress>
-          <ReferenceType>Relative</ReferenceType>
+          <ReferenceType>Direct</ReferenceType>
           <ReferenceInteger>3</ReferenceInteger>
           <ReferenceCreatureData>XPosition</ReferenceCreatureData>
         </ModifierAddress>
@@ -50,17 +50,17 @@ Public Class XMLTestDataProvider
       <Modifier>
         <ChangeOperator>Subtract</ChangeOperator>
         <ModifierAddress>
-          <ReferenceType>Relative</ReferenceType>
+          <ReferenceType>Direct</ReferenceType>
           <ReferenceInteger>0</ReferenceInteger>
           <ReferenceCreatureData>GeneCode</ReferenceCreatureData>
         </ModifierAddress>
         <ModifierAddress>
-          <ReferenceType>Relative</ReferenceType>
+          <ReferenceType>Direct</ReferenceType>
           <ReferenceInteger>5</ReferenceInteger>
           <ReferenceCreatureData>GeneCounter</ReferenceCreatureData>
         </ModifierAddress>
         <ModifierAddress>
-          <ReferenceType>Relative</ReferenceType>
+          <ReferenceType>Direct</ReferenceType>
           <ReferenceInteger>7</ReferenceInteger>
           <ReferenceCreatureData>YPosition</ReferenceCreatureData>
         </ModifierAddress>
@@ -105,12 +105,12 @@ Public Class XMLTestDataProvider
       <Modifier>
         <ChangeOperator>Add</ChangeOperator>
         <ModifierAddress>
-          <ReferenceType>Relative</ReferenceType>
+          <ReferenceType>Direct</ReferenceType>
           <ReferenceInteger>0</ReferenceInteger>
           <ReferenceCreatureData>Sunlight</ReferenceCreatureData>
         </ModifierAddress>
         <ModifierAddress>
-          <ReferenceType>Relative</ReferenceType>
+          <ReferenceType>Direct</ReferenceType>
           <ReferenceInteger>0</ReferenceInteger>
           <ReferenceCreatureData>Sunlight</ReferenceCreatureData>
         </ModifierAddress>
@@ -131,17 +131,17 @@ Public Class XMLTestDataProvider
       <Modifier>
         <ChangeOperator>Subtract</ChangeOperator>
         <ModifierAddress>
-          <ReferenceType>Relative</ReferenceType>
+          <ReferenceType>Direct</ReferenceType>
           <ReferenceInteger>0</ReferenceInteger>
           <ReferenceCreatureData>Sunlight</ReferenceCreatureData>
         </ModifierAddress>
         <ModifierAddress>
-          <ReferenceType>Relative</ReferenceType>
+          <ReferenceType>Direct</ReferenceType>
           <ReferenceInteger>0</ReferenceInteger>
           <ReferenceCreatureData>Sunlight</ReferenceCreatureData>
         </ModifierAddress>
         <ModifierAddress>
-          <ReferenceType>Relative</ReferenceType>
+          <ReferenceType>Direct</ReferenceType>
           <ReferenceInteger>0</ReferenceInteger>
           <ReferenceCreatureData>GeneCode</ReferenceCreatureData>
         </ModifierAddress>
@@ -167,7 +167,7 @@ Public Class XMLTestDataProvider
           <ReferenceCreatureData>GeneCode</ReferenceCreatureData>
         </ModifierAddress>
         <ModifierAddress>
-          <ReferenceType>Relative</ReferenceType>
+          <ReferenceType>Direct</ReferenceType>
           <ReferenceInteger>0</ReferenceInteger>
           <ReferenceCreatureData>GeneCode</ReferenceCreatureData>
         </ModifierAddress>
@@ -208,12 +208,12 @@ Public Class XMLTestDataProvider
       <Modifier>
         <ChangeOperator>Add</ChangeOperator>
         <ModifierAddress>
-          <ReferenceType>Relative</ReferenceType>
+          <ReferenceType>Direct</ReferenceType>
           <ReferenceInteger>0</ReferenceInteger>
           <ReferenceCreatureData>Sunlight</ReferenceCreatureData>
         </ModifierAddress>
         <ModifierAddress>
-          <ReferenceType>Relative</ReferenceType>
+          <ReferenceType>Direct</ReferenceType>
           <ReferenceInteger>0</ReferenceInteger>
           <ReferenceCreatureData>GeneCode</ReferenceCreatureData>
         </ModifierAddress>
@@ -242,7 +242,7 @@ Public Class XMLTestDataProvider
           <ReferenceCreatureData>GeneCode</ReferenceCreatureData>
         </ModifierAddress>
         <ModifierAddress>
-          <ReferenceType>Relative</ReferenceType>
+          <ReferenceType>Direct</ReferenceType>
           <ReferenceInteger>0</ReferenceInteger>
           <ReferenceCreatureData>Sunlight</ReferenceCreatureData>
         </ModifierAddress>
@@ -266,7 +266,7 @@ Public Class XMLTestDataProvider
       <Modifier>
         <ChangeOperator>Add</ChangeOperator>
         <ModifierAddress>
-          <ReferenceType>Relative</ReferenceType>
+          <ReferenceType>Direct</ReferenceType>
           <ReferenceInteger>0</ReferenceInteger>
           <ReferenceCreatureData>Sunlight</ReferenceCreatureData>
         </ModifierAddress>
@@ -292,7 +292,7 @@ Public Class XMLTestDataProvider
       <Modifier>
         <ChangeOperator>Add</ChangeOperator>
         <ModifierAddress>
-          <ReferenceType>Relative</ReferenceType>
+          <ReferenceType>Direct</ReferenceType>
           <ReferenceInteger>0</ReferenceInteger>
           <ReferenceCreatureData>GeneCode</ReferenceCreatureData>
         </ModifierAddress>
@@ -396,17 +396,17 @@ Public Class XMLTestDataProvider
       <Modifier>
         <ChangeOperator>Add</ChangeOperator>
         <ModifierAddress>
-          <ReferenceType>Relative</ReferenceType>
+          <ReferenceType>Direct</ReferenceType>
           <ReferenceInteger>0</ReferenceInteger>
           <ReferenceCreatureData>Sunlight</ReferenceCreatureData>
         </ModifierAddress>
         <ModifierAddress>
-          <ReferenceType>Relative</ReferenceType>
+          <ReferenceType>Direct</ReferenceType>
           <ReferenceInteger>11</ReferenceInteger>
           <ReferenceCreatureData>Sunlight</ReferenceCreatureData>
         </ModifierAddress>
         <ModifierAddress>
-          <ReferenceType>Relative</ReferenceType>
+          <ReferenceType>Direct</ReferenceType>
           <ReferenceInteger>12</ReferenceInteger>
           <ReferenceCreatureData>GeneCode</ReferenceCreatureData>
         </ModifierAddress>
@@ -422,7 +422,7 @@ Public Class XMLTestDataProvider
       <Modifier>
         <ChangeOperator>Add</ChangeOperator>
         <ModifierAddress>
-          <ReferenceType>Relative</ReferenceType>
+          <ReferenceType>Direct</ReferenceType>
           <ReferenceInteger>0</ReferenceInteger>
           <ReferenceCreatureData>Sunlight</ReferenceCreatureData>
         </ModifierAddress>
