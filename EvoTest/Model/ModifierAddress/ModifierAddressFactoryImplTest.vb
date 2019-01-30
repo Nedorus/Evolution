@@ -1,6 +1,7 @@
 ﻿Imports System.Text
 Imports Microsoft.VisualStudio.TestTools.UnitTesting
 Imports Evolution
+Imports Evolution.ModifierAddress
 
 <TestClass()> Public Class ModifierAddressFactoryImplTest
 

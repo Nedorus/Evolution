@@ -3,6 +3,8 @@ Imports System.Xml
 Imports System.Xml.Schema
 Imports System.Xml.Serialization
 Imports Evolution
+Imports Evolution.Modifier
+Imports Evolution.ModifierAddress
 
 Public Class CreatureDataDefinitions
     Implements ICreatureDataDefinitions

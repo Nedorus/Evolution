@@ -1,79 +1,84 @@
 ﻿Imports Evolution
 
-Public Class ModifierAddressIndirect
-    Inherits ModifierAddressBaseImpl
+Namespace ModifierAddress
 
-    Public Overrides ReadOnly Property ReferenceType As IModifierAddress.ReferenceTypeValue
-        Get
-            Return IModifierAddress.ReferenceTypeValue.Indirect
-        End Get
-    End Property
+    Public Class ModifierAddressIndirect
+        Inherits ModifierAddressBaseImpl
 
-    ''' <summary>
-    ''' Indirect
-    ''' write to GenCode using an index depending On CreatureData
-    '''    Undefined -> use 0 as index
-    '''    GeneCode -> use value found in GeneCode at index GeneCounter as index and increase GeneCounter
-    '''    Other -> use that value as index
-    ''' </summary>
-    ''' <param name="creature"></param>
-    ''' <param name="newValue"></param>
-    Public Overrides Sub SetValueByReferenceType(creature As Creature, newValue As Integer)
+        Public Overrides ReadOnly Property ReferenceType As IModifierAddress.ReferenceTypeValue
+            Get
+                Return IModifierAddress.ReferenceTypeValue.Indirect
+            End Get
+        End Property
 
-        Dim index As Integer = 0
+        ''' <summary>
+        ''' Indirect
+        ''' write to GenCode using an index depending On CreatureData
+        '''    Undefined -> use 0 as index
+        '''    GeneCode -> use value found in GeneCode at index GeneCounter as index and increase GeneCounter
+        '''    Other -> use that value as index
+        ''' </summary>
+        ''' <param name="creature"></param>
+        ''' <param name="newValue"></param>
+        Public Overrides Sub SetValueByReferenceType(creature As Creature, newValue As Integer)
 
-        Select Case Me.ReferenceCreatureData
-            Case ICreatureDataDefinitions.CreatureData.Undefined
-                index = 0
-            Case ICreatureDataDefinitions.CreatureData.GeneCode
-                index = creature(ICreatureDataDefinitions.CreatureData.GeneCounter)
-                index = GetValueFromCreatureGene(creature, index)
-                creature(ICreatureDataDefinitions.CreatureData.GeneCounter) += 1
-            Case ICreatureDataDefinitions.CreatureData.GeneCounter
-                index = creature(ICreatureDataDefinitions.CreatureData.GeneCounter)
-                creature(ICreatureDataDefinitions.CreatureData.GeneCounter) += 1
-            Case Else
-                index = creature(Me.ReferenceCreatureData)
-        End Select
+            Dim index As Integer = 0
 
-        ' now go indirect
-        SetValueToCreatureGene(creature, index, newValue)
-    End Sub
+            Select Case Me.ReferenceCreatureData
+                Case ICreatureDataDefinitions.CreatureData.Undefined
+                    index = 0
+                Case ICreatureDataDefinitions.CreatureData.GeneCode
+                    index = creature(ICreatureDataDefinitions.CreatureData.GeneCounter)
+                    index = GetValueFromCreatureGene(creature, index)
+                    creature(ICreatureDataDefinitions.CreatureData.GeneCounter) += 1
+                Case ICreatureDataDefinitions.CreatureData.GeneCounter
+                    index = creature(ICreatureDataDefinitions.CreatureData.GeneCounter)
+                    creature(ICreatureDataDefinitions.CreatureData.GeneCounter) += 1
+                Case Else
+                    index = creature(Me.ReferenceCreatureData)
+            End Select
 
-    ''' <summary>
-    ''' Indirect
-    ''' returns the GeneCode value Using an index stored In GeneCode at an Index depending On CreatureData
-    '''    Undefined -> use 0 as index
-    '''    GeneCode -> use value found in GeneCode at index GeneCounter as index and increase GeneCounter
-    '''    GeneCounter -> use that value as index and increase GeneCounter and increase GeneCounter
-    '''    Other -> use that value as index
-    ''' </summary>
-    ''' <param name="creature"></param>
-    ''' <returns></returns>
-    Public Overrides Function GetValueByReferenceType(ByRef creature As Creature) As Integer
+            ' now go indirect
+            SetValueToCreatureGene(creature, index, newValue)
+        End Sub
 
-        Dim returnVal As Integer = 0
-        Dim index As Integer = 0
+        ''' <summary>
+        ''' Indirect
+        ''' returns the GeneCode value Using an index stored In GeneCode at an Index depending On CreatureData
+        '''    Undefined -> use 0 as index
+        '''    GeneCode -> use value found in GeneCode at index GeneCounter as index and increase GeneCounter
+        '''    GeneCounter -> use that value as index and increase GeneCounter and increase GeneCounter
+        '''    Other -> use that value as index
+        ''' </summary>
+        ''' <param name="creature"></param>
+        ''' <returns></returns>
+        Public Overrides Function GetValueByReferenceType(ByRef creature As Creature) As Integer
 
-        'Which index is to be used?
-        Select Case Me.ReferenceCreatureData
-            Case ICreatureDataDefinitions.CreatureData.Undefined
-                index = 0
-            Case ICreatureDataDefinitions.CreatureData.GeneCode
-                index = creature(ICreatureDataDefinitions.CreatureData.GeneCounter)
-                index = GetValueFromCreatureGene(creature, index)
-                creature(ICreatureDataDefinitions.CreatureData.GeneCounter) += 1
-            Case ICreatureDataDefinitions.CreatureData.GeneCounter
-                index = creature(ICreatureDataDefinitions.CreatureData.GeneCounter)
-                creature(ICreatureDataDefinitions.CreatureData.GeneCounter) += 1
-            Case Else
-                index = creature(Me.ReferenceCreatureData)
-        End Select
+            Dim returnVal As Integer = 0
+            Dim index As Integer = 0
 
-        ' now go indirect
-        returnVal = GetValueFromCreatureGene(creature, index)
-        Return returnVal
+            'Which index is to be used?
+            Select Case Me.ReferenceCreatureData
+                Case ICreatureDataDefinitions.CreatureData.Undefined
+                    index = 0
+                Case ICreatureDataDefinitions.CreatureData.GeneCode
+                    index = creature(ICreatureDataDefinitions.CreatureData.GeneCounter)
+                    index = GetValueFromCreatureGene(creature, index)
+                    creature(ICreatureDataDefinitions.CreatureData.GeneCounter) += 1
+                Case ICreatureDataDefinitions.CreatureData.GeneCounter
+                    index = creature(ICreatureDataDefinitions.CreatureData.GeneCounter)
+                    creature(ICreatureDataDefinitions.CreatureData.GeneCounter) += 1
+                Case Else
+                    index = creature(Me.ReferenceCreatureData)
+            End Select
 
-    End Function
+            ' now go indirect
+            returnVal = GetValueFromCreatureGene(creature, index)
+            Return returnVal
 
-End Class
+        End Function
+
+    End Class
+
+End Namespace
+

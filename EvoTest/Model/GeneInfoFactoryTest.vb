@@ -4,6 +4,7 @@ Imports Evolution
 Imports Microsoft.VisualStudio.TestTools.UnitTesting
 Imports System.IO.Abstractions
 Imports Moq
+Imports Evolution.ModifierAddress
 
 <TestClass()> Public Class GeneInfoFactoryTest
 

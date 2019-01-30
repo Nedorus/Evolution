@@ -1,4 +1,7 @@
-﻿Public Interface ICreatureDataDefinitions
+﻿Imports Evolution.Modifier
+Imports Evolution.ModifierAddress
+
+Public Interface ICreatureDataDefinitions
 
     Enum CreatureData
         Undefined

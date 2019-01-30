@@ -2,6 +2,7 @@
 Imports System.Xml.Schema
 Imports System.Xml.Serialization
 Imports System.Diagnostics.CodeAnalysis
+Imports Evolution.Modifier
 
 Public Class GeneInfo
     Implements IXmlSerializable
@@ -73,7 +74,8 @@ Public Class GeneInfo
 
     Public Sub ReadXml(reader As XmlReader) Implements IXmlSerializable.ReadXml
 
-        Dim modifiers_serializer As New XmlSerializer(GetType(Modifier))
+        Dim modifiers_serializer As New XmlSerializer(GetType(Evolution.Modifier.ModifierBaseImpl))
+        Dim modifierFactory As New ModifierFactoryImpl()
 
         reader.ReadStartElement()
         reader.MoveToContent()
@@ -85,7 +87,15 @@ Public Class GeneInfo
         reader.ReadStartElement("Modifiers")
         If Not was_empty Then
             Do While reader.NodeType <> Xml.XmlNodeType.EndElement
-                Dim modifier As IModifier = DirectCast(modifiers_serializer.Deserialize(reader), Modifier)
+                Dim modifier As IModifier
+
+                If Not reader.IsEmptyElement Then
+                    reader.ReadStartElement()
+                    reader.MoveToContent()
+                    modifier = modifierFactory.XmlDeserializeModifier(reader)
+                Else
+                    modifier = modifierFactory.NewModifier()
+                End If
                 reader.ReadEndElement()
                 Me.Modifiers.Add(modifier)
                 reader.MoveToContent()
@@ -103,6 +113,8 @@ Public Class GeneInfo
         writer.WriteElementString("Description", Description)
 
         writer.WriteStartElement("Modifiers")
+        Dim modifierFactory As New ModifierFactoryImpl()
+
         For Each currModifier In Me.Modifiers
             currModifier.WriteXml(writer)
         Next
