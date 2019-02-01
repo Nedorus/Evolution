@@ -121,7 +121,13 @@
     <Compile Include="Model\GeneExcuterTest.vb" />
     <Compile Include="Model\GeneTest.vb" />
     <Compile Include="Model\CreatureTest.vb" />
+    <Compile Include="Model\ModifierAddress\ModifierAddressUndefinedTest.vb" />
     <Compile Include="Model\ModifierAddress\ModifierAddressFactoryImplTest.vb" />
+    <Compile Include="Model\ModifierAddress\ModifierAddressAbsoluteTest.vb" />
+    <Compile Include="Model\ModifierAddress\ModifierAddressDirectTest.vb" />
+    <Compile Include="Model\ModifierAddress\ModifierAddressIndirectTest.vb" />
+    <Compile Include="Model\ModifierAddress\ModifierAddressOtherCreatureTest.vb" />
+    <Compile Include="Model\ModifierAddress\ModifierAddressEnvironmentTest.vb" />
     <Compile Include="TestResources\XMLTestDataProvider.vb" />
     <Compile Include="ViewModel\GeneViewModelTest.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />

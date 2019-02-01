@@ -35,16 +35,6 @@ Namespace ModifierAddress
         ''' <param name="creature"></param>
         ''' <returns></returns>
         Public Overrides Function GetValueByReferenceType(ByRef creature As Creature) As Integer
-            Dim returnVal As Integer = 0
-            Select Case Me.ReferenceCreatureData
-                Case ICreatureDataDefinitions.CreatureData.Undefined, ICreatureDataDefinitions.CreatureData.XPosition, ICreatureDataDefinitions.CreatureData.YPosition
-                    returnVal = 0
-                Case ICreatureDataDefinitions.CreatureData.GeneCode, ICreatureDataDefinitions.CreatureData.GeneCounter
-                    'returnVal = creature.GetWorld().GetCreatureIndex()
-                Case Else
-                    'Dim world As World = creature.GetWorld().GetEnvironmentValue(creature, Me.ReferenceCreatureData)
-            End Select
-
             Return ReferenceInteger
         End Function
 

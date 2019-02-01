@@ -38,9 +38,9 @@ Namespace ModifierAddress
         ''' 
         ''' <para>
         ''' Direct
-        ''' write the value specified by CreatureData (for GeneCode use ReferenceInteger as Index)
+        ''' write the value specified by CreatureData (for GeneCode use GeneCode as Index)
         '''    Undefined -> do nothing
-        '''    GeneCode -> use ReferenceInteger as index and set GeneCode there
+        '''    GeneCode -> use GeneCounter as index and set GeneCode there and increase GeneCounter
         '''    Other -> set that value
         ''' </para>
         ''' 
@@ -49,6 +49,7 @@ Namespace ModifierAddress
         ''' write to GenCode using an index depending On CreatureData
         '''    Undefined -> use 0 as index
         '''    GeneCode -> use value found in GeneCode at index ReferenceInteger as index
+        '''    GeneCounter -> use that value as index and increase GeneCounter
         '''    Other -> use that value as index
         ''' </para>
         ''' 

@@ -16,6 +16,7 @@ Namespace ModifierAddress
         ''' write to GenCode using an index depending On CreatureData
         '''    Undefined -> use 0 as index
         '''    GeneCode -> use value found in GeneCode at index GeneCounter as index and increase GeneCounter
+        '''    GeneCounter -> use that value as index and increase GeneCounter
         '''    Other -> use that value as index
         ''' </summary>
         ''' <param name="creature"></param>

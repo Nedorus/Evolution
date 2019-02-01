@@ -13,7 +13,7 @@ Namespace ModifierAddress
 
         ''' <summary>
         ''' Direct
-        ''' write the value specified by CreatureData (for GeneCode use ReferenceInteger as Index)
+        ''' write the value specified by CreatureData (for GeneCode use GeneCode as Index)
         '''    Undefined -> do nothing
         '''    GeneCode -> use GeneCounter as index and set GeneCode there and increase GeneCounter
         '''    Other -> set that value

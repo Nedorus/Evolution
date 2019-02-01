@@ -63,7 +63,6 @@ Namespace ModifierAddress
                 writer.WriteElementString("ReferenceType", [Enum].GetName(GetType(IModifierAddress.ReferenceTypeValue), Me.ReferenceType))
                 writer.WriteElementString("ReferenceInteger", _referenceInteger)
                 writer.WriteElementString("ReferenceCreatureData", [Enum].GetName(GetType(ICreatureDataDefinitions.CreatureData), _referenceCreatureData))
-
                 writer.WriteEndElement()
             Else
                 Dim writerIsNullException As New NullReferenceException("The writer object passed was Nothing!")

@@ -16,7 +16,7 @@ Namespace ModifierAddress
         ''' </summary>
         ''' <param name="creature"></param>
         Public Overrides Sub SetValueByReferenceType(creature As Creature, newValue As Integer)
-            'nothinbg to do here
+            'nothing to do here
         End Sub
 
         ''' <summary>
