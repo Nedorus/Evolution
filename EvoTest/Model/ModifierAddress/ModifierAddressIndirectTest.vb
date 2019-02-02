@@ -95,15 +95,26 @@ Imports Evolution.ModifierAddress
         modAddIndirectOxy.ReferenceInteger = 17
         modAddIndirectOxy.ReferenceCreatureData = ICreatureDataDefinitions.CreatureData.Sunlight
 
+        Dim modAddIndirectGeneCounter As IModifierAddress = modAddFactory.NewModifierAddress(IModifierAddress.ReferenceTypeValue.Indirect)
+        modAddIndirectGeneCounter.ReferenceInteger = 17
+        modAddIndirectGeneCounter.ReferenceCreatureData = ICreatureDataDefinitions.CreatureData.GeneCounter
+
         Dim creatureUndef As New Creature()
         creatureUndef.Gene(0) = 8
+
         Dim creatureGeneCode As New Creature()
         creatureGeneCode(ICreatureDataDefinitions.CreatureData.GeneCounter) = 5
         creatureGeneCode.Gene(5) = 12
         creatureGeneCode.Gene(12) = 42
+
         Dim creatureOxy As New Creature()
         creatureOxy(ICreatureDataDefinitions.CreatureData.Sunlight) = 47
         creatureOxy.Gene(47) = 11
+
+        Dim creatureGeneCounter As New Creature()
+        creatureGeneCounter(ICreatureDataDefinitions.CreatureData.GeneCounter) = 42
+        creatureGeneCounter.Gene(42) = 23
+        creatureGeneCounter.Gene(23) = 123
 
 
 
@@ -111,18 +122,26 @@ Imports Evolution.ModifierAddress
         Dim resultUndef As Integer = modAddIndirectUndef.GetValueByReferenceType(creatureUndef)
         Dim resultGeneCode As Integer = modAddIndirectGeneCode.GetValueByReferenceType(creatureGeneCode)
         Dim resultSun As Integer = modAddIndirectOxy.GetValueByReferenceType(creatureOxy)
+        Dim resultGeneCounter As Integer = modAddIndirectGeneCounter.GetValueByReferenceType(creatureGeneCounter)
 
         'Assert
         'The Gene at index 0 must be changed to 11
         Assert.AreEqual(8, resultUndef)
 
-        'Creature2 Gene has changed at position 5 and GgeneCounter was increased
+        'Creature2 Gene has changed at position 5 and GeneCounter was increased
         Assert.AreEqual(42, resultGeneCode)
         Assert.AreEqual(12, creatureGeneCode.Gene(5))
         Assert.AreEqual(6, creatureGeneCode(ICreatureDataDefinitions.CreatureData.GeneCounter))
 
         'creature3 has a new Gene value where Mineral points to (Gene(47))
         Assert.AreEqual(11, resultSun)
+
+        'Creature4 Gene has changed at position 5 and GeneCounter was increased
+        Assert.AreEqual(23, resultGeneCounter)
+        Assert.AreEqual(123, creatureGeneCounter.Gene(23))
+        Assert.AreEqual(43, creatureGeneCounter(ICreatureDataDefinitions.CreatureData.GeneCounter))
+
+
 
     End Sub
 

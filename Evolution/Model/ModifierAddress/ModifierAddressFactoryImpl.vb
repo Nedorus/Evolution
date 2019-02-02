@@ -23,8 +23,6 @@ Namespace ModifierAddress
                     Return New ModifierAddressOtherCreature()
                 Case IModifierAddress.ReferenceTypeValue.Direct
                     Return New ModifierAddressDirect
-                Case IModifierAddress.ReferenceTypeValue.Undefined
-                    Return New ModifierAddressUndefined()
                 Case Else
                     Return New ModifierAddressUndefined()
             End Select
