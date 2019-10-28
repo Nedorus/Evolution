@@ -13,12 +13,7 @@ Namespace ModifierAddress
         Private _referenceCreatureData As ICreatureDataDefinitions.CreatureData
 
 
-        Public Overridable ReadOnly Property ReferenceType As IModifierAddress.ReferenceTypeValue Implements IModifierAddress.ReferenceType
-            Get
-                Return IModifierAddress.ReferenceTypeValue.Undefined
-            End Get
-        End Property
-
+        Public MustOverride ReadOnly Property ReferenceType As IModifierAddress.ReferenceTypeValue Implements IModifierAddress.ReferenceType
 
         Public Overridable Property ReferenceInteger As Integer Implements IModifierAddress.ReferenceInteger
             Get
@@ -53,21 +48,17 @@ Namespace ModifierAddress
 
 #Region "IXMLSerializable"
 
+        <ExcludeFromCodeCoverage()>
         Public Sub ReadXml(reader As XmlReader) Implements IXmlSerializable.ReadXml
             'empty because parent object (Modiefier) has to implement the reading due to polymorphism
         End Sub
 
         Public Sub WriteXml(writer As XmlWriter) Implements IXmlSerializable.WriteXml
-            If writer IsNot Nothing Then
-                writer.WriteStartElement("ModifierAddress")
-                writer.WriteElementString("ReferenceType", [Enum].GetName(GetType(IModifierAddress.ReferenceTypeValue), Me.ReferenceType))
-                writer.WriteElementString("ReferenceInteger", _referenceInteger)
-                writer.WriteElementString("ReferenceCreatureData", [Enum].GetName(GetType(ICreatureDataDefinitions.CreatureData), _referenceCreatureData))
-                writer.WriteEndElement()
-            Else
-                Dim writerIsNullException As New NullReferenceException("The writer object passed was Nothing!")
-                Throw writerIsNullException
-            End If
+            writer.WriteStartElement("ModifierAddress")
+            writer.WriteElementString("ReferenceType", [Enum].GetName(GetType(IModifierAddress.ReferenceTypeValue), Me.ReferenceType))
+            writer.WriteElementString("ReferenceInteger", _referenceInteger)
+            writer.WriteElementString("ReferenceCreatureData", [Enum].GetName(GetType(ICreatureDataDefinitions.CreatureData), _referenceCreatureData))
+            writer.WriteEndElement()
         End Sub
 
         <ExcludeFromCodeCoverage()>
