@@ -83,7 +83,9 @@
             <ListView Name="GenesListView" ItemsSource="{Binding Path=Genes}" ItemTemplateSelector="{Binding Source={StaticResource genesListViewDataTemplateSelector}}" Width="176" Margin="0,0,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 
             </ListView>
+
         </Border>
+      
 
 
     </Grid>

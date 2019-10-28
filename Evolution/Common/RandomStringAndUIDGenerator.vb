@@ -17,8 +17,15 @@ Public Class RandomStringAndUidGenerator
     ''' <returns>random string of length pLength</returns>
     ''' <remarks></remarks>
     Public Function RandomString(ByVal pLength As Integer) As String
-        Dim returnString As New System.Text.StringBuilder
         Dim charRescourceString As String = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+
+        Return RandomString(pLength, charRescourceString)
+
+    End Function
+
+    Public Function RandomString(ByVal pLength As Integer, ByVal pCandicatesToChooseFrom As String) As String
+        Dim returnString As New System.Text.StringBuilder
+        Dim charRescourceString As String = pCandicatesToChooseFrom
 
         For i As Integer = 1 To pLength
             Dim rndIndex As Integer = _random.Next(0, charRescourceString.Length - 1)
@@ -28,28 +35,23 @@ Public Class RandomStringAndUidGenerator
         Return returnString.ToString()
     End Function
 
+
     Public Function RandomUID(ByVal pLength As Integer) As String
-        Dim returnString As New System.Text.StringBuilder
         Dim charRescourceString As String = "0123456789"
 
-        For i As Integer = 1 To pLength
-            Dim rndIndex As Integer = _random.Next(0, charRescourceString.Length - 1)
-            returnString.Append(charRescourceString.Substring(rndIndex, 1))
-        Next
+        Return RandomString(pLength, charRescourceString)
 
-        Return returnString.ToString()
     End Function
 
     Public Function RandomNumberString(ByVal pLength As Integer) As String
-        Dim returnString As New System.Text.StringBuilder
         Dim charRescourceString As String = "0123456789"
 
-        For i As Integer = 1 To pLength
-            Dim rndIndex As Integer = _random.Next(0, charRescourceString.Length - 1)
-            returnString.Append(charRescourceString.Substring(rndIndex, 1))
-        Next
+        Return RandomString(pLength, charRescourceString)
 
-        Return returnString.ToString()
+    End Function
+
+    Public Function RandomNumber(ByVal pMax As Integer) As Integer
+        Return _random.Next(0, pMax)
     End Function
 
 End Class

@@ -120,6 +120,8 @@
     <Compile Include="Common\XMLFileWriter.vb" />
     <Compile Include="Model\CreatureDataDefinitions.vb" />
     <Compile Include="Model\Interfaces\IGeneInfoProvider.vb" />
+    <Compile Include="Model\World\CreaturePopulation.vb" />
+    <Compile Include="Model\World\IWorld.vb" />
     <Compile Include="Model\Modifier\IModifier.vb" />
     <Compile Include="Model\Gene.vb" />
     <Compile Include="Model\GeneInfo.vb" />
@@ -141,6 +143,9 @@
     <Compile Include="Model\ModifierAddress\ModifierAddressUndefined.vb" />
     <Compile Include="Model\Modifier\ModifierFactoryImpl.vb" />
     <Compile Include="Model\Modifier\ModifierUndefined.vb" />
+    <Compile Include="Model\World\Position.vb" />
+    <Compile Include="Model\World\ResourceInfo.vb" />
+    <Compile Include="Model\World\World.vb" />
     <Compile Include="ViewModel\GenesListViewDataTemplateSelector.vb" />
     <Compile Include="ViewModel\GenesViewModel.vb" />
     <Compile Include="ViewModel\GeneViewModel.vb" />

@@ -72,4 +72,5 @@
             listViewItem.DataContext = TryCast(Me.FindResource("regularItem"), DataTemplate)
         Next
     End Sub
+
 End Class
