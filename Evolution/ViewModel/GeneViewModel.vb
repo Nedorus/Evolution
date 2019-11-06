@@ -6,11 +6,11 @@ Public Class GeneViewModel
     Private _index As Integer
     Private _geneInfo As GeneInfo
     Private _selectedGeneCodeComboBoxIsopen As Boolean
-    Private _geneInfoProvider As GeneInfoProviderImpl
+    Private _geneInfoProvider As IGeneInfoProvider
     Private _randomStringAndUIDGenerator As RandomStringAndUidGenerator
 
-    Public Sub New(ByVal randomStringAndUidGenerator As RandomStringAndUidGenerator)
-        _geneInfoProvider = New GeneInfoProviderImpl()
+    Public Sub New(ByVal geneInfoProvider As IGeneInfoProvider, ByVal randomStringAndUidGenerator As RandomStringAndUidGenerator)
+        _geneInfoProvider = geneInfoProvider
         _index = 0
         _geneInfo = New GeneInfo()
         _randomStringAndUIDGenerator = randomStringAndUidGenerator
@@ -18,8 +18,9 @@ Public Class GeneViewModel
 
     Public Sub New(ByVal index As Integer)
         _geneInfoProvider = New GeneInfoProviderImpl()
+        Dim randomNumber As Integer = RandomGenerator.Instance.Random().Next(_geneInfoProvider.GeneInfos.Count - 1)
         _index = index
-        _geneInfo = New GeneInfo(_index, _randomStringAndUIDGenerator.RandomString(4), _randomStringAndUIDGenerator.RandomNumberString(1), _randomStringAndUIDGenerator.RandomString(15))
+        _geneInfo = New GeneInfo(_index, _geneInfoProvider.GeneInfos(randomNumber).Code, _geneInfoProvider.GeneInfos(randomNumber).NumberOfArgs, _geneInfoProvider.GeneInfos(randomNumber).Description)
     End Sub
 
     Public Sub New(ByVal index As Integer, ByVal geneInfo As GeneInfo)
@@ -28,7 +29,8 @@ Public Class GeneViewModel
         If geneInfo IsNot Nothing Then
             _geneInfo = _geneInfoProvider.CloneGeneInfo(geneInfo)
         Else
-            _geneInfo = New GeneInfo(_index, _randomStringAndUIDGenerator.RandomString(4), _randomStringAndUIDGenerator.RandomNumberString(1), _randomStringAndUIDGenerator.RandomString(15))
+            Dim randomNumber As Integer = RandomGenerator.Instance.Random().Next(_geneInfoProvider.GeneInfos.Count - 1)
+            _geneInfo = New GeneInfo(_index, _geneInfoProvider.GeneInfos(randomNumber).Code, _geneInfoProvider.GeneInfos(randomNumber).NumberOfArgs, _geneInfoProvider.GeneInfos(randomNumber).Description)
         End If
     End Sub
 

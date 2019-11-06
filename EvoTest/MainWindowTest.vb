@@ -8,7 +8,8 @@ Imports Evolution
         'Arrange
         'Dim mockedVieModel 
         Dim _mainWindow As Evolution.MainWindow = New Evolution.MainWindow()
-        _mainWindow.ViewModel.Genes.Add(New GeneViewModel(New RandomStringAndUidGenerator(New Random())))
+        Dim geneInfoProvider As New GeneInfoProviderImpl()
+        _mainWindow.ViewModel.Genes.Add(New GeneViewModel(geneInfoProvider, New RandomStringAndUidGenerator(New Random())))
 
         'Akt
         _mainWindow.ViewModel.Genes.Item(0).Code = "HELL"

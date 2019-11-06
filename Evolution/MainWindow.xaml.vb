@@ -71,6 +71,19 @@
         For Each listViewItem As ListViewItem In Me.GenesListView.Items
             listViewItem.DataContext = TryCast(Me.FindResource("regularItem"), DataTemplate)
         Next
+        Dim geneInfoProvider As New GeneInfoProviderImpl()
+        System.Console.WriteLine("DEBUG - Start")
+        System.Console.WriteLine("Count:" & geneInfoProvider.GeneInfos.Count())
+        System.Console.WriteLine("DEBUG - Stop")
+
+        Me.ViewModel.Genes.Add(New GeneViewModel(0))
+        Me.ViewModel.Genes.Add(New GeneViewModel(1))
+        Me.ViewModel.Genes.Add(New GeneViewModel(2))
+        Me.ViewModel.Genes.Add(New GeneViewModel(3))
+        Me.ViewModel.Genes.Add(New GeneViewModel(40))
+        Me.ViewModel.Genes.Add(New GeneViewModel(41))
+        Me.ViewModel.Genes.Add(New GeneViewModel(42))
+        Me.ViewModel.Genes.Add(New GeneViewModel(43))
     End Sub
 
 End Class

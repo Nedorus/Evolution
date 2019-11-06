@@ -19,10 +19,10 @@ Public Class GeneInfoProviderImpl
 
     Public Sub New()
         _geneInfos = New GeneInfos
-        '_appPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase).Remove(0, 6)
-        '_appPath = _appPath & Path.DirectorySeparatorChar & "Resources" & Path.DirectorySeparatorChar & "GeneInfos.xml"
-        '_xmlGenesInfoReader = New XMLFileReader(Of GeneInfos)(_appPath)
-        'InitializeGenesInfoFromXML()
+        _appPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase).Remove(0, 6)
+        _appPath = _appPath & Path.DirectorySeparatorChar & "Resources" & Path.DirectorySeparatorChar & "GeneInfos.xml"
+        _xmlGenesInfoReader = New XMLFileReader(Of GeneInfos)(_appPath)
+        InitializeGenesInfoFromXML()
     End Sub
 
     Public Sub New(geneInfos As GeneInfos)

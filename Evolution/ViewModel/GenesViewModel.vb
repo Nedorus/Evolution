@@ -5,9 +5,6 @@ Public Class GenesViewModel
     Inherits ItemsChangedObservableCollection(Of GeneViewModel)
 
     Public Sub New()
-        For i = 0 To 255
-            'Dim randomGeneInfo As GeneInfo = GeneInfoProvider.Instance.GetGeneInfoByGeneValue(RandomGenerator.Instance.Random.Next(0, 9))
-        Next
 
     End Sub
 
